@@ -1,0 +1,472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.65">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'Lucida Grande'}
+    span.s2 {font: 12.0px 'Hiragino Sans'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;Vineyard Biological Risk Assessment | BARS Institute New Zealand&lt;/title&gt;</p>
+<p class="p1">&lt;meta name="description" content="Quantified GLRaV-3 and trunk disease risk for vineyards. Scored outputs built to ISO 17025 standards for lenders, valuers, and transaction advisers. Pruning window closing."&gt;</p>
+<p class="p1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}</p>
+<p class="p1">:root{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--green:#1A3A2E;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--green-mid:#265241;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--green-light:#EEF4F0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--gold:#B8922A;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--gold-light:#F5ECDA;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--cream:#FAF7F2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--cream-dark:#F2EDE5;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--text:#1C1C1A;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--text-mid:#4A4A47;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--text-muted:#8A8A85;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--white:#FFFFFF;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--border:#E2DDD6;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--border-dark:#CCC7BF;</p>
+<p class="p1">}</p>
+<p class="p1">html{scroll-behavior:smooth}</p>
+<p class="p1">body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── HEADER ── */</p>
+<p class="p1">header{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>position:sticky;top:0;z-index:100;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:rgba(250,247,242,0.95);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>backdrop-filter:blur(8px);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border-bottom:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:0 48px;height:60px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:flex;align-items:center;justify-content:space-between;</p>
+<p class="p1">}</p>
+<p class="p1">.logo{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'DM Sans',sans-serif;font-weight:500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:12px;letter-spacing:0.18em;text-transform:uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color:var(--green);display:flex;align-items:center;gap:10px;</p>
+<p class="p1">}</p>
+<p class="p1">.logo-mark{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>width:32px;height:32px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:flex;align-items:center;justify-content:center;</p>
+<p class="p1">}</p>
+<p class="p1">.logo-mark svg{width:100%;height:100%;fill:none}</p>
+<p class="p1">.logo-name span{color:var(--gold)}</p>
+<p class="p1">.header-cta{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--green);color:var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>letter-spacing:0.06em;padding:9px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border:none;cursor:pointer;text-decoration:none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>transition:background 0.2s;display:inline-block;</p>
+<p class="p1">}</p>
+<p class="p1">.header-cta:hover{background:var(--green-mid)}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── HERO ── */</p>
+<p class="p1">.hero{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:88px 48px 72px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>max-width:1140px;margin:0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:grid;grid-template-columns:1fr 340px;gap:80px;align-items:start;</p>
+<p class="p1">}</p>
+<p class="p1">.hero-eyebrow{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom:20px;display:flex;align-items:center;gap:10px;</p>
+<p class="p1">}</p>
+<p class="p1">.hero-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--gold)}</p>
+<p class="p1">.hero h1{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'Cormorant Garamond',serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:clamp(44px,5.5vw,72px);font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>line-height:1.06;color:var(--text);max-width:680px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom:24px;letter-spacing:-0.02em;</p>
+<p class="p1">}</p>
+<p class="p1">.hero h1 em{font-style:italic;color:var(--green-mid)}</p>
+<p class="p1">.hero-sub{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:16px;font-weight:300;color:var(--text-mid);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>max-width:520px;line-height:1.7;margin-bottom:40px;</p>
+<p class="p1">}</p>
+<p class="p1">.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:40px}</p>
+<p class="p1">.btn-primary{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--green);color:var(--cream);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:13px 26px;text-decoration:none;letter-spacing:0.04em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>transition:background 0.2s,transform 0.15s;display:inline-block;</p>
+<p class="p1">}</p>
+<p class="p1">.btn-primary:hover{background:var(--green-mid);transform:translateY(-1px)}</p>
+<p class="p1">.hero-badge{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:11px;color:var(--text-muted);letter-spacing:0.04em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:flex;align-items:center;gap:6px;</p>
+<p class="p1">}</p>
+<p class="p1">.hero-badge::before{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>content:'';width:6px;height:6px;background:var(--gold);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:inline-block;border-radius:50%;</p>
+<p class="p1">}</p>
+<p class="p1">.hero-sidebar{margin-top:8px}</p>
+<p class="p1">.accred-card{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border:1px solid var(--border);background:var(--white);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:28px;</p>
+<p class="p1">}</p>
+<p class="p1">.accred-card-label{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:10px;font-weight:500;letter-spacing:0.18em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;</p>
+<p class="p1">}</p>
+<p class="p1">.accred-item{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:14px 0;border-bottom:1px solid var(--border);</p>
+<p class="p1">}</p>
+<p class="p1">.accred-item:last-child{border-bottom:none;padding-bottom:0}</p>
+<p class="p1">.accred-item:first-child{padding-top:0}</p>
+<p class="p1">.accred-key{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}</p>
+<p class="p1">.accred-val{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--text);line-height:1.3}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── URGENCY BANNER ── */</p>
+<p class="p1">.urgency{background:var(--green);padding:44px 48px}</p>
+<p class="p1">.urgency-inner{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>max-width:1140px;margin:0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:start;</p>
+<p class="p1">}</p>
+<p class="p1">.urgency-tag{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--gold);color:var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>letter-spacing:0.16em;text-transform:uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:8px 14px;white-space:nowrap;margin-top:3px;</p>
+<p class="p1">}</p>
+<p class="p1">.urgency-body h2{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'Cormorant Garamond',serif;font-size:26px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-weight:600;color:var(--cream);margin-bottom:10px;letter-spacing:-0.01em;</p>
+<p class="p1">}</p>
+<p class="p1">.urgency-body p{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:14px;font-weight:300;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color:rgba(250,247,242,0.75);line-height:1.7;max-width:660px;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── SCORES ── */</p>
+<p class="p1">.scores{padding:88px 48px;max-width:1140px;margin:0 auto}</p>
+<p class="p1">.section-label{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:10px;font-weight:500;letter-spacing:0.2em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;</p>
+<p class="p1">}</p>
+<p class="p1">.section-heading{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'Cormorant Garamond',serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:clamp(28px,3.5vw,42px);font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color:var(--text);margin-bottom:52px;letter-spacing:-0.01em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>max-width:500px;line-height:1.18;</p>
+<p class="p1">}</p>
+<p class="p1">.score-grid{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:grid;grid-template-columns:repeat(3,1fr);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>gap:0;background:var(--border-dark);border:1px solid var(--border-dark);</p>
+<p class="p1">}</p>
+<p class="p1">.score-card{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--white);padding:36px 32px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>position:relative;transition:background 0.2s;</p>
+<p class="p1">}</p>
+<p class="p1">.score-card::after{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>content:'';position:absolute;top:0;left:0;right:0;height:3px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--green);</p>
+<p class="p1">}</p>
+<p class="p1">.score-abbrev{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'Cormorant Garamond',serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:52px;font-weight:700;color:var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>line-height:1;margin-bottom:6px;letter-spacing:-0.03em;</p>
+<p class="p1">}</p>
+<p class="p1">.score-fullname{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:10px;font-weight:500;letter-spacing:0.12em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-transform:uppercase;color:var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);</p>
+<p class="p1">}</p>
+<p class="p1">.score-desc{font-size:13px;color:var(--text-mid);line-height:1.7;font-weight:300}</p>
+<p class="p1">.score-range{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-top:20px;display:flex;align-items:center;gap:8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:11px;color:var(--text-muted);</p>
+<p class="p1">}</p>
+<p class="p1">.score-bar{flex:1;height:2px;background:linear-gradient(to right,#A3BFB2,var(--green))}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── AUDIENCE ── */</p>
+<p class="p1">.audience{background:var(--green-light);padding:88px 48px}</p>
+<p class="p1">.audience-inner{max-width:1140px;margin:0 auto}</p>
+<p class="p1">.audience-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:52px}</p>
+<p class="p1">.audience-card{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--white);padding:32px 28px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border-left:3px solid var(--green);</p>
+<p class="p1">}</p>
+<p class="p1">.audience-type{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'Cormorant Garamond',serif;font-size:21px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:-0.01em;</p>
+<p class="p1">}</p>
+<p class="p1">.audience-desc{font-size:13px;font-weight:300;color:var(--text-mid);line-height:1.7}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── METHODOLOGY ── */</p>
+<p class="p1">.methodology{padding:88px 48px;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}</p>
+<p class="p1">.methodology-body p{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.75;margin-bottom:18px}</p>
+<p class="p1">.methodology-body p:last-child{margin-bottom:0}</p>
+<p class="p1">.cred-panel{border:1px solid var(--border);background:var(--white);padding:36px}</p>
+<p class="p1">.cred-panel-title{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}</p>
+<p class="p1">.cred-row{padding:16px 0;border-bottom:1px solid var(--border)}</p>
+<p class="p1">.cred-row:last-child{border-bottom:none;padding-bottom:0}</p>
+<p class="p1">.cred-row:first-of-type{padding-top:0}</p>
+<p class="p1">.cred-k{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}</p>
+<p class="p1">.cred-v{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--text);line-height:1.35}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── STANDARDS STRIP ── */</p>
+<p class="p1">.standards{background:var(--cream-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 48px}</p>
+<p class="p1">.standards-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:48px;flex-wrap:wrap}</p>
+<p class="p1">.standards-label{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted)}</p>
+<p class="p1">.standards-items{display:flex;gap:32px;flex-wrap:wrap}</p>
+<p class="p1">.std-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-mid);font-weight:400}</p>
+<p class="p1">.std-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── CTA ── */</p>
+<p class="p1">.cta-section{background:var(--green);padding:88px 48px;text-align:center}</p>
+<p class="p1">.cta-section h2{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'Cormorant Garamond',serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:clamp(32px,4.5vw,54px);font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color:var(--cream);margin-bottom:16px;letter-spacing:-0.01em;line-height:1.1;</p>
+<p class="p1">}</p>
+<p class="p1">.cta-section p{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size:15px;font-weight:300;color:rgba(250,247,242,0.7);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom:40px;max-width:440px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-left:auto;margin-right:auto;line-height:1.7;</p>
+<p class="p1">}</p>
+<p class="p1">.btn-cream{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--cream);color:var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:14px 32px;text-decoration:none;letter-spacing:0.04em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:inline-block;transition:background 0.2s,transform 0.15s;</p>
+<p class="p1">}</p>
+<p class="p1">.btn-cream:hover{background:var(--white);transform:translateY(-1px)}</p>
+<p class="p1">.cta-small{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-top:28px;font-size:11px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color:rgba(250,247,242,0.38);font-weight:300;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>max-width:480px;margin-left:auto;margin-right:auto;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── FOOTER ── */</p>
+<p class="p1">footer{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:#0E1F19;padding:28px 48px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;</p>
+<p class="p1">}</p>
+<p class="p1">.footer-l{font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(250,247,242,0.45)}</p>
+<p class="p1">.footer-r{font-size:11px;color:rgba(250,247,242,0.28);font-weight:300;letter-spacing:0.02em}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── ANIMATIONS ── */</p>
+<p class="p1">.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}</p>
+<p class="p1">.fade-up.in{opacity:1;transform:none}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ── RESPONSIVE ── */</p>
+<p class="p1">@media(max-width:900px){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header{padding:0 24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero{padding:56px 24px 48px;grid-template-columns:1fr;gap:40px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hero-sidebar{display:none}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.urgency{padding:36px 24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.urgency-inner{grid-template-columns:1fr;gap:16px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.scores{padding:56px 24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.score-grid{grid-template-columns:1fr}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.audience{padding:56px 24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.audience-grid{grid-template-columns:1fr}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.methodology{padding:56px 24px;grid-template-columns:1fr;gap:36px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.standards{padding:24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cta-section{padding:56px 24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>footer{padding:20px 24px;flex-direction:column;align-items:flex-start}</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="logo"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="logo-mark"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;path d="M100,32 A68,68 0 0,0 100,168 A68,68 0 0,1 100,32 Z" fill="#1A3A2E"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;circle cx="100" cy="100" r="68" stroke="#1A3A2E" stroke-width="4"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;line x1="100" y1="32" x2="100" y2="168" stroke="#1A3A2E" stroke-width="4"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="logo-name"&gt;BARS&lt;span&gt;™&lt;/span&gt; INSTITUTE&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="mailto:hello@bars.institute" class="header-cta"&gt;Enquire now <span class="s1">→</span>&lt;/a&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-eyebrow"&gt;Biological Asset Risk Score&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Quantified &lt;em&gt;biological risk&lt;/em&gt; for vineyard assets&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="hero-sub"&gt;Structured impairment evidence for agricultural lenders, registered valuers, accountants, and transaction advisers — backed by ISO 17025 standard testing methodologies.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="mailto:hello@bars.institute" class="btn-primary"&gt;Enquire about an assessment <span class="s1">→</span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero-badge"&gt;Expert-Led Framework · ISO/IEC 17025 Aligned · New Zealand&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-sidebar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="accred-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="accred-card-label"&gt;Framework Design&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="accred-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-key"&gt;Lead Architect&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-val"&gt;Sarah Macfarlane&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="accred-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-key"&gt;Expertise Basis&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-val"&gt;Former IANZ Key Technical Person (Plant Virus Detection)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="accred-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-key"&gt;Testing Standard&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-val"&gt;Processed via IANZ Accredited Laboratories (ISO/IEC 17025)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="accred-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-key"&gt;Methodology&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="accred-val"&gt;MET-BARS-001 v1.2&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="urgency"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="urgency-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="urgency-tag"&gt;<span class="s2">⚠</span> 2026 Pruning window&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="urgency-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;GLRaV-3 sampling must be completed before pruning begins&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Once pruning starts on a block, cane tissue sampling is no longer possible until the next growing season. If you are reviewing a vineyard asset now — for security, valuation, or transaction purposes — contact BARS Institute before your block's pruning date.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;section class="scores"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="section-label"&gt;Assessment outputs&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2 class="section-heading"&gt;Three scored, auditable outputs per block&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="score-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="score-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-abbrev"&gt;BVS&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-fullname"&gt;BARS Virus Score&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="score-desc"&gt;PCR-confirmed GLRaV-3 infection prevalence expressed as a current-condition score from 0–100. Derived from data processed under ISO/IEC 17025 accredited laboratory workflows. No projections, no modelled assumptions — observed biological condition only.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-range"&gt;&lt;span&gt;0&lt;/span&gt;&lt;div class="score-bar"&gt;&lt;/div&gt;&lt;span&gt;100&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="score-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-abbrev"&gt;BGS&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-fullname"&gt;BARS GTD Score&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="score-desc"&gt;Grapevine trunk disease incidence confirmed at assessment tier, expressed as a current-condition score from 0–100. Tiered from visual foliar assessment through to molecular species confirmation, with uncertainty intervals disclosed per tier.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-range"&gt;&lt;span&gt;0&lt;/span&gt;&lt;div class="score-bar"&gt;&lt;/div&gt;&lt;span&gt;100&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="score-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-abbrev"&gt;NPV&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-fullname"&gt;NPV Impairment&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="score-desc"&gt;Discounted cashflow impairment in dollars per hectare and as a percentage of clean NPV. 10,000-run Monte Carlo simulation. Reported separately for virus, trunk disease, and combined — with full sensitivity disclosures for NZ IAS 36 and NZ IFRS 13.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-range"&gt;&lt;span&gt;P5&lt;/span&gt;&lt;div class="score-bar"&gt;&lt;/div&gt;&lt;span&gt;P95&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;section class="audience"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="audience-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-label"&gt;Who engages BARS Institute&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-heading"&gt;Built for the professionals who carry the liability&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="audience-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="audience-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="audience-type"&gt;Agricultural lenders&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="audience-desc"&gt;Biological risk schedule for credit memos, covenant monitoring, impairment watchlists, and replant-CAPEX planning. The P50 / P95 Monte Carlo output is structured for NZ IAS 36 recoverable amount testing.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="audience-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="audience-type"&gt;Registered valuers&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="audience-desc"&gt;Supporting technical appendix for impairment-related adjustments where vine health is a material value driver. BVS and BGS provide separate current-condition metrics relevant to specific NZ IAS 36 paragraph 12 indicators.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="audience-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="audience-type"&gt;Accountants &amp;amp; auditors&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="audience-desc"&gt;Source-backed evidence package with model version, raw output traceability, and sensitivity disclosures structured for NZ IAS 36, NZ IAS 41, and NZ IFRS 13 Level 3 audit working papers. Method statement included in every report.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="audience-card fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="audience-type"&gt;Transaction advisers&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="audience-desc"&gt;Pre-transaction due diligence quantifying biological condition and its financial effect on the asset being transacted. Buyers, sellers, and legal advisers receive a structured, auditable evidence package referenced to current field data.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;section class="methodology"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="methodology-text fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="section-label"&gt;Methodology &amp;amp; Standards&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-heading" style="max-width:400px"&gt;Designed to survive professional scrutiny&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="methodology-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;BARS assessments are governed by a published Assessment Methodology Statement (MET-BARS-001). Every parameter is explicitly disclosed — calibration status, source basis, and sensitivity ranges.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;All diagnostic tissue samples are sent directly to independent, third-party IANZ-accredited laboratories for definitive PCR analysis. Rigid chain-of-custody documentation accompanies every sample from collection through to laboratory receipt.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;The core BARS protocol was architected by an established specialist with years of hands-on experience managing plant virus detection inside accredited laboratory systems.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="fade-up"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="cred-panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-panel-title"&gt;Framework Summary&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-k"&gt;Framework Lead&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-v"&gt;Sarah Macfarlane&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-k"&gt;Technical Foundation&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-v"&gt;Designed to BARS Institute standard specifications&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-k"&gt;Diagnostic Testing&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-v"&gt;Executed exclusively by independent, IANZ-accredited labs&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-k"&gt;Methodology document&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-v"&gt;MET-BARS-001 v1.2&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-k"&gt;Monte Carlo runs&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-v"&gt;10,000 per block&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cred-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-k"&gt;Independence&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cred-v"&gt;No vineyard management, supply, or purchase conflicts&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="standards"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="standards-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="standards-label"&gt;Framework alignment&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="standards-items"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="std-item"&gt;&lt;div class="std-dot"&gt;&lt;/div&gt;NZ IAS 36 — Impairment of Assets&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="std-item"&gt;&lt;div class="std-dot"&gt;&lt;/div&gt;NZ IAS 41 — Agriculture&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="std-item"&gt;&lt;div class="std-dot"&gt;&lt;/div&gt;NZ IFRS 13 — Fair Value Measurement&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="std-item"&gt;&lt;div class="std-dot"&gt;&lt;/div&gt;NZ IAS 16 — Bearer Plants&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;section class="cta-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Enquire about an assessment&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;Engagements are accepted by signed Engagement Proposal. Contact BARS Institute to discuss scope, timing, and the pruning window for your block.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="mailto:hello@bars.institute" class="btn-cream"&gt;hello@bars.institute <span class="s1">→</span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="cta-small"&gt;BARS outputs are decision-support evidence for engaging professionals. They do not constitute registered valuations, accounting opinions, or credit recommendations.&lt;/p&gt;</p>
+<p class="p1">&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="footer-l"&gt;BARS™ Institute Limited · New Zealand · bars.institute&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="footer-r"&gt;ISO/IEC 17025 Aligned Protocols · © 2026 BARS Institute Limited&lt;/div&gt;</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const io = new IntersectionObserver((entries) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let delay = 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>entries.forEach(e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(e.isIntersecting){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; e.target.classList.add('in'), delay);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>delay += 70;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>io.unobserve(e.target);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">},{threshold:0.08});</p>
+<p class="p1">document.querySelectorAll('.fade-up').forEach(el =&gt; io.observe(el));</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
