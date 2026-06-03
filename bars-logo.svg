@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="leftCrescent">
+      <rect width="200" height="200" fill="white" />
+      <circle cx="115" cy="100" r="45" fill="black" />
+    </mask>
+  </defs>
+  <circle cx="85" cy="100" r="45" fill="#1a3a2e" mask="url(#leftCrescent)" />
+  <circle cx="85" cy="100" r="45" fill="none" stroke="#1a3a2e" stroke-width="1.5" />
+  <circle cx="115" cy="100" r="45" fill="none" stroke="#1a3a2e" stroke-width="1.5" />
+  <line x1="100" y1="55" x2="100" y2="145" stroke="#1a3a2e" stroke-width="1" />
+</svg>
