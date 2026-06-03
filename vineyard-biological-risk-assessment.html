@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vineyard Biological Risk Assessment | BARS Institute</title>
+  <meta name="description" content="A vineyard biological risk assessment quantifies the financial impact of GLRaV-3 and grapevine trunk disease on vineyard assets. Designed for lenders, valuers, and transaction advisers in New Zealand.">
+  <meta property="og:title" content="Vineyard Biological Risk Assessment | BARS Institute">
+  <meta property="og:description" content="Quantified vine disease impairment for lenders, valuers, and transaction advisers. GLRaV-3, trunk disease, NPV impairment, and replant decision support.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bars.institute/vineyard-biological-risk-assessment">
+
+  <link rel="icon" type="image/svg+xml" href="bars-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1A3A2E;
+      --green-mid: #265241;
+      --green-light: #EEF4F0;
+      --gold: #B8922A;
+      --cream: #FAF7F2;
+      --cream-dark: #F2EDE5;
+      --text: #1C1C1A;
+      --text-mid: #4A4A47;
+      --text-muted: #8A8A85;
+      --white: #FFFFFF;
+      --border: #E2DDD6;
+      --border-dark: #CCC7BF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Geist', sans-serif; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .logo-mark { display: flex; align-items: center; justify-content: center; }
+    .header-cta {
+      background: var(--green); color: var(--cream);
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.06em; padding: 9px 20px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s; display: inline-block;
+    }
+    .header-cta:hover { background: var(--green-mid); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--green); padding: 64px 48px;
+    }
+    .page-hero-inner { max-width: 800px; margin: 0 auto; }
+    .page-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .page-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); }
+    .page-hero h1 {
+      font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+      line-height: 1.08; color: var(--cream);
+      margin-bottom: 20px; letter-spacing: -0.02em;
+    }
+    .page-hero-sub {
+      font-size: 16px; font-weight: 300; color: rgba(250,247,242,0.8);
+      line-height: 1.7;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 16px 48px; border-bottom: 1px solid var(--border);
+      font-size: 12px; color: var(--text-muted);
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green); }
+    .breadcrumb span { margin: 0 8px; }
+
+    /* ── CONTENT LAYOUT ── */
+    .content-wrap {
+      max-width: 1140px; margin: 0 auto;
+      padding: 72px 48px;
+      display: grid; grid-template-columns: 1fr 300px; gap: 72px; align-items: start;
+    }
+
+    /* ── ARTICLE ── */
+    article h2 {
+      font-size: 26px; font-weight: 600; color: var(--text);
+      margin: 48px 0 16px; letter-spacing: -0.01em; line-height: 1.2;
+    }
+    article h2:first-child { margin-top: 0; }
+    article h3 {
+      font-size: 18px; font-weight: 500; color: var(--text);
+      margin: 32px 0 12px;
+    }
+    article p {
+      font-size: 15px; color: var(--text-mid); line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    article p:last-child { margin-bottom: 0; }
+    article .lead {
+      font-size: 17px; font-weight: 300; color: var(--text-mid);
+      line-height: 1.75; margin-bottom: 24px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border);
+    }
+
+    .callout {
+      background: var(--green-light); border-left: 3px solid var(--green);
+      padding: 20px 24px; margin: 32px 0;
+    }
+    .callout p { font-size: 14px; color: var(--text-mid); margin: 0; line-height: 1.7; }
+    .callout strong { color: var(--green); }
+
+    .definition-block {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 24px 28px; margin: 28px 0;
+    }
+    .definition-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .definition-block p { font-size: 14px; color: var(--text-mid); margin: 0; line-height: 1.7; }
+
+    .section-divider {
+      border: none; border-top: 1px solid var(--border); margin: 48px 0;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { position: sticky; top: 80px; }
+    .sidebar-card {
+      border: 1px solid var(--border); background: var(--white); padding: 28px;
+      margin-bottom: 20px;
+    }
+    .sidebar-card-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px;
+    }
+    .sidebar-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sidebar-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .sidebar-item:first-child { padding-top: 0; }
+    .sidebar-key {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+    }
+    .sidebar-val { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.3; }
+
+    .toc { border: 1px solid var(--border); background: var(--white); padding: 28px; }
+    .toc-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;
+    }
+    .toc a {
+      display: block; font-size: 13px; color: var(--text-mid);
+      text-decoration: none; padding: 7px 0;
+      border-bottom: 1px solid var(--border); line-height: 1.4;
+    }
+    .toc a:last-child { border-bottom: none; padding-bottom: 0; }
+    .toc a:hover { color: var(--green); }
+
+    .sidebar-cta {
+      background: var(--green); padding: 28px; text-align: center;
+    }
+    .sidebar-cta p {
+      font-size: 13px; color: rgba(250,247,242,0.8);
+      margin-bottom: 16px; line-height: 1.6;
+    }
+    .sidebar-cta a {
+      display: block; background: var(--cream); color: var(--green);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+      padding: 11px 16px; text-decoration: none; text-align: center;
+      transition: background 0.2s;
+    }
+    .sidebar-cta a:hover { background: var(--white); }
+
+    /* ── STANDARDS STRIP ── */
+    .standards {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 36px 48px;
+    }
+    .standards-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .standards-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+    .standards-items { display: flex; gap: 32px; flex-wrap: wrap; }
+    .std-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-mid); font-weight: 500; }
+    .std-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0E1F19; padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-l {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(250,247,242,0.6);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .footer-r { font-size: 12px; color: rgba(250,247,242,0.4); font-weight: 400; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 900px) {
+      header { padding: 0 24px; }
+      .breadcrumb { padding: 16px 24px; }
+      .page-hero { padding: 48px 24px; }
+      .content-wrap { padding: 48px 24px; grid-template-columns: 1fr; gap: 48px; }
+      .sidebar { position: static; }
+      .standards { padding: 28px 24px; }
+      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" width="32" height="32" xmlns="http://www.w3.org/2000/svg" style="color: #1A3A2E;">
+        <defs>
+          <mask id="leftCrescent">
+            <rect width="200" height="200" fill="white" />
+            <circle cx="115" cy="100" r="45" fill="black" />
+          </mask>
+        </defs>
+        <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#leftCrescent)" />
+        <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1" />
+      </svg>
+    </div>
+    BARS INSTITUTE
+  </a>
+  <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="header-cta">Enquire now →</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>Vineyard Biological Risk Assessment
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">BARS Institute · New Zealand</div>
+    <h1>Vineyard Biological Risk Assessment</h1>
+    <p class="page-hero-sub">What it is, why it matters to lenders and valuers, and how quantified biological impairment evidence is used in vineyard asset decisions.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <article>
+
+    <p class="lead">A vineyard biological risk assessment quantifies the financial impact of grapevine disease on vineyard assets — translating vine health data into dollar-denominated impairment figures, replant timing projections, and capital allocation priorities that lenders, valuers, accountants, and transaction advisers can use directly in their professional workflows.</p>
+
+    <h2 id="what-is">What is a Vineyard Biological Risk Assessment?</h2>
+    <p>Grapevine diseases — principally Grapevine Leafroll-associated Virus 3 (GLRaV-3) and grapevine trunk diseases — cause material reductions in vineyard yield, grape quality, and vine productive life. These biological impairments have direct financial consequences: reduced revenue, accelerated replant CAPEX, and diminished asset value over the productive life of the vineyard.</p>
+    <p>A vineyard biological risk assessment moves beyond a binary positive or negative test result to quantify those consequences. It combines accredited laboratory diagnostics, epidemiological spread modelling, and discounted cashflow analysis to produce outputs that are structured for financial decision-making — not just agronomic management.</p>
+
+    <div class="definition-block">
+      <div class="definition-label">BARS Institute Definition</div>
+      <p>A BARS assessment produces three primary financial outputs: NPV impairment expressed per hectare and as a percentage of clean vineyard value; replant decision intelligence identifying when each block will reach its economic replant threshold; and capital allocation priorities ranking blocks by their contribution to total portfolio biological and financial risk.</p>
+    </div>
+
+    <h2 id="glrav3">GLRaV-3 Risk in New Zealand Vineyards</h2>
+    <p>Grapevine Leafroll-associated Virus 3 (GLRaV-3) is the most economically significant grapevine virus in New Zealand. It is transmitted primarily by mealybug species — principally <em>Pseudococcus longispinus</em> and <em>Planococcus ficus</em> — and spreads within and between vineyard blocks as vector populations move through the canopy.</p>
+    <p>The financial consequences of GLRaV-3 infection are well documented in the New Zealand literature. Infected vines show reduced sugar accumulation, increased titratable acidity, delayed ripening, and reduced harvest weight. For red cultivars in particular, symptom expression is pronounced — visible as interveinal reddening and premature leaf senescence. For white cultivars, infection may be symptomless in the field while impairment continues silently.</p>
+
+    <div class="callout">
+      <p><strong>Key financial effect:</strong> At a yield-loss coefficient of α = 0.40, a fully infected block retains approximately 67% of healthy baseline yield. At α = 0.60, the retained yield floor falls to approximately 55%. For a premium Marlborough Sauvignon Blanc block at $1,800 per tonne, that represents a revenue impairment of $585–$810 per tonne at full infection — compounding across the remaining productive life of the vineyard.</p>
+    </div>
+
+    <p>Prevalence is estimated using composite pool testing — a validated group-testing methodology in which tissue samples from multiple vines are pooled and tested together. Vine-level infection prevalence is then inferred from the pool-positive proportion using the Dorfman pooling inversion formula. This approach provides statistically robust prevalence estimates at significantly lower cost than individual vine testing, and is the standard method used in large-scale commercial vineyard surveillance programmes in New Zealand.</p>
+
+    <h2 id="trunk-disease">Grapevine Trunk Disease Risk</h2>
+    <p>Grapevine trunk diseases — principally <em>Eutypa</em> dieback, <em>Botryosphaeriales</em> dieback, and esca — are a major and growing cause of vineyard structural impairment in New Zealand. Unlike virus diseases, trunk diseases cause progressive physical destruction of the vine's woody architecture: cordons die back, arms become non-productive, and severely affected vines require removal and replanting.</p>
+    <p>The financial character of trunk disease impairment is fundamentally different from virus impairment. Where virus impairment is revenue-driven — reducing yield and quality over the productive life — trunk disease impairment is CAPEX-driven. It generates replacement and replanting costs, lost gross margin from affected vine positions, and operational disruption costs. These must be reported separately to allow lenders and valuers to identify the nature and scale of each liability independently.</p>
+    <p>Trunk disease assessment is conducted across three tiers of increasing diagnostic precision. Tier 1 is a whole-block visual symptom census. Tier 2 adds pruning wound cross-section inspection at dormancy, revealing internal wood discolouration that may not yet have expressed as visible foliar symptoms. Tier 3 applies species-level qPCR confirmation — the highest diagnostic precision, standard for pre-purchase due diligence and insurance contexts.</p>
+
+    <h2 id="impairment">Vineyard Impairment: What Financial Professionals Need</h2>
+    <p>The gap that most vine health assessments leave open is the translation from biological condition to financial consequence. A PCR-positive result, a trunk disease incidence percentage, or a visual health classification does not, by itself, answer the questions that lenders, valuers, and transaction advisers need answered.</p>
+    <p>Those questions are: what is the present value of impairment arising from current disease burden? What is the stress-case downside? How long before trunk disease forces a replant decision? Which blocks are driving the most risk across the portfolio?</p>
+    <p>BARS Institute addresses this translation gap through a Monte Carlo simulation framework — 10,000 simulation runs per block — that propagates uncertainty in spread rate, yield-loss coefficient, grape price, and operating costs through a discounted cashflow model. Outputs are reported as median (P50) and stress-case (P95) impairment figures, expressed per hectare and as a percentage of clean NPV.</p>
+
+    <div class="definition-block">
+      <div class="definition-label">Monte Carlo Output Structure</div>
+      <p>Virus NPV impairment and trunk disease NPV impairment are calculated in parallel and reported separately, then summed to a combined block-level figure. For multi-block engagements, a correlated vineyard-level simulation produces a property-wide P95 that reflects coherent joint scenarios — not the sum of independent block stress cases.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <h2 id="replant">Replant Decisions and Capital Planning</h2>
+    <p>One of the most consequential decisions in vineyard asset management is when to replant a block. Replanting a mature block is a major capital event — typically $80,000–$120,000 per hectare in establishment costs alone, plus three to four years of lost production before the block reaches commercial bearing. Timing that decision incorrectly, in either direction, has material financial consequences.</p>
+    <p>The BARS trunk disease model projects each block's disease trajectory forward and identifies the year in which it will reach the operational replant threshold — the fraction of affected vine positions beyond which replacement becomes the economically preferred response. Default replant thresholds are 15% for premium varieties, 20% for mid-tier, and 25% for commodity varieties, reflecting the higher quality standards and lower tolerance for missing vine positions in premium production.</p>
+    <p>This replant trigger year is a primary output of every BARS Report containing a trunk disease assessment. It provides a specific capital planning horizon that lenders can use for covenant design, valuers can incorporate into productive life assumptions, and property owners can use to sequence block redevelopment.</p>
+
+    <h2 id="due-diligence">Vineyard Due Diligence for Transactions</h2>
+    <p>Vineyard transactions — whether freehold sales, lease assignments, or vineyard-secured lending — increasingly require evidence of biological condition as a component of due diligence. Buyer's advisers, lenders, and their valuers need to know whether the vine assets being transacted carry material latent impairment that would affect recoverable value, productive life, or near-term capital requirements.</p>
+    <p>The BARS Pre-Purchase Enhanced Due Diligence tier is specifically designed for transaction contexts. It combines individual vine PCR confirmation on all positive bays — narrowing the uncertainty interval around vine-level prevalence — with Tier 3 qPCR trunk disease assessment providing species-level pathogen confirmation. The result is the highest-precision biological condition evidence available for a vineyard asset, with output labelling and method disclosure designed for direct use in legal, financial, and insurance contexts.</p>
+
+    <h2 id="lending-valuation">Applications in Lending and Valuation</h2>
+    <p>Agricultural lenders use BARS outputs to assess biological risk in vineyard-secured lending portfolios. The NPV impairment figures support biological risk schedules in credit memos, impairment watchlists, and replant-CAPEX covenant design. The Annual Monitor engagement provides successive empirical verification that the management regime assumed in the base-year BARS Report is consistent with observed spread behaviour — giving lenders confidence that the biological risk assumption underpinning their security valuation remains defensible.</p>
+    <p>Registered valuers use BARS outputs as a technical appendix for impairment-related adjustments and biological condition disclosures where vine health is a material value driver. The BARS scoring architecture — with its disclosed calibration status, sensitivity ranges, and method statement — is designed to be referenced directly in valuation workpapers without requiring translation before professional use.</p>
+    <p>For accounting and audit purposes, the BARS Monte Carlo P5/P95 range provides a probability-weighted cashflow distribution consistent with NZ IAS 36 paragraph 30 requirements for recoverable amount sensitivity analysis. The method statement in each BARS Report is designed to support NZ IFRS 13 Level 3 fair value disclosure requirements, with explicit identification of unobservable inputs and their calibration status.</p>
+
+    <div class="callout">
+      <p><strong>Professional scope:</strong> BARS outputs are decision-support evidence for use by engaging professionals within their own workflows. BARS Institute does not provide accounting opinions, registered valuations, or credit approval recommendations. The application of NZ IAS 36, NZ IAS 41, NZ IFRS 13, and NZ IAS 16 to specific assets and transactions must be confirmed with a registered accountant or auditor.</p>
+    </div>
+
+    <h2 id="get-started">Requesting a BARS Assessment</h2>
+    <p>BARS Institute assessments are available across New Zealand vineyards. Engagements are scoped per property following submission of a Commercial Intake Form, which collects the block, variety, and contextual information needed to prepare a formal Engagement Proposal. No assessment is scheduled and no fees are incurred until the signed Engagement Proposal has been received.</p>
+    <p>All assessments are conducted under MET-BARS-001 v1.2, the published BARS methodology statement. Diagnostic samples are submitted to independent IANZ-accredited laboratories for PCR analysis. Results are written directly to the BARS data pipeline on receipt and reviewed by the Lead Assessor before model execution.</p>
+
+  </article>
+
+  <aside class="sidebar">
+
+    <div class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#what-is">What is a biological risk assessment?</a>
+      <a href="#glrav3">GLRaV-3 risk</a>
+      <a href="#trunk-disease">Grapevine trunk disease</a>
+      <a href="#impairment">Vineyard impairment</a>
+      <a href="#replant">Replant decisions</a>
+      <a href="#due-diligence">Vineyard due diligence</a>
+      <a href="#lending-valuation">Lending and valuation</a>
+      <a href="#get-started">Request an assessment</a>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Framework Design</div>
+        <div class="sidebar-item">
+          <div class="sidebar-key">Lead Assessor</div>
+          <div class="sidebar-val">Sarah Macfarlane</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-key">Expertise Basis</div>
+          <div class="sidebar-val">Former IANZ-Accredited Key Technical Person — Plant Virus Detection</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-key">Testing Standard</div>
+          <div class="sidebar-val">IANZ Accredited Laboratories (ISO/IEC 17025)</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-key">Methodology</div>
+          <div class="sidebar-val">MET-BARS-001 v1.2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-cta">
+      <p>Ready to request an assessment for your vineyard or client property?</p>
+      <a href="https://barsinstitute.fillout.com/004a" target="_blank">Request an assessment →</a>
+    </div>
+
+  </aside>
+
+</div>
+
+<div class="standards">
+  <div class="standards-inner">
+    <div class="standards-label">Framework alignment</div>
+    <div class="standards-items">
+      <div class="std-item"><div class="std-dot"></div>NZ IAS 36</div>
+      <div class="std-item"><div class="std-dot"></div>NZ IAS 41</div>
+      <div class="std-item"><div class="std-dot"></div>NZ IFRS 13</div>
+      <div class="std-item"><div class="std-dot"></div>NZ IAS 16</div>
+      <div class="std-item"><div class="std-dot"></div>ISO/IEC 17025</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-l">
+    <svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg" style="color: rgba(250,247,242,0.6);">
+      <defs>
+        <mask id="leftCrescentFooter">
+          <rect width="200" height="200" fill="white" />
+          <circle cx="115" cy="100" r="45" fill="black" />
+        </mask>
+      </defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#leftCrescentFooter)" />
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1" />
+    </svg>
+    BARS Institute Limited · New Zealand · bars.institute
+  </div>
+  <div class="footer-r">ISO/IEC 17025 Aligned Protocols · © 2026 BARS Institute Limited</div>
+</footer>
+
+</body>
+</html>
