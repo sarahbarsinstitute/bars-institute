@@ -6,7 +6,7 @@
   <title>Assessment Types | BARS Institute</title>
   <meta name="description" content="BARS Institute offers four vineyard biological risk assessment engagement types — Health Certificate, BARS Report, Annual Monitor, and Pre-Purchase Enhanced Due Diligence. Designed for lenders, valuers, and transaction advisers.">
   <meta property="og:title" content="Assessment Types | BARS Institute">
-  <meta property="og:description" content="Four vineyard biological risk assessment engagement types for lenders, valuers, and transaction advisers. GLRaV-3, trunk disease, NPV impairment, and replant decision support.">
+  <meta property="og:description" content="Four vineyard biological risk assessment engagement types for lenders, valuers, receivers, and vineyard owners. Virus and trunk disease testing, spatial infection mapping, financial impairment estimates, and replant decision support.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bars.institute/assessment-types">
 
@@ -67,10 +67,7 @@
       color: var(--text-mid); text-decoration: none;
       transition: color 0.2s;
     }
-    .header-nav a.header-cta { 
-  color: var(--cream); 
-  background: var(--green);
-}
+    .header-nav a:hover { color: var(--green); }
     .header-nav a.active { color: var(--green); }
     .header-cta {
       background: var(--green); color: var(--cream);
@@ -116,6 +113,87 @@
       line-height: 1.8; margin-bottom: 16px;
     }
     .intro p:last-child { margin-bottom: 0; }
+
+
+    /* ── MATRIX TABLE ── */
+    .matrix-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--border-dark);
+      font-size: 13px;
+    }
+    .matrix-table thead tr:first-child { background: var(--green); }
+    .matrix-table thead tr:first-child th {
+      padding: 20px 16px; text-align: center;
+      font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 600;
+      color: var(--cream); letter-spacing: 0.01em;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .matrix-table thead tr:first-child th:first-child {
+      text-align: left; width: 240px;
+      color: rgba(250,247,242,0.45); font-size: 10px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .matrix-table thead tr:first-child th:last-child { border-right: none; }
+    .matrix-table thead tr:nth-child(2) { background: var(--green-mid); }
+    .matrix-table thead tr:nth-child(2) td {
+      padding: 10px 16px; text-align: center;
+      font-size: 11px; color: rgba(250,247,242,0.75);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      line-height: 1.5;
+    }
+    .matrix-table thead tr:nth-child(2) td:first-child { text-align: left; }
+    .matrix-table thead tr:nth-child(2) td:last-child { border-right: none; }
+    .matrix-table tr.section-row td {
+      padding: 8px 16px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      background: var(--cream-dark);
+      border-bottom: 1px solid var(--border);
+    }
+    .matrix-table tbody tr { border-bottom: 1px solid var(--border); }
+    .matrix-table tbody tr:last-child { border-bottom: none; }
+    .matrix-table tbody tr:not(.section-row):hover { background: #F6F3EE; }
+    .matrix-table tbody td.row-label {
+      padding: 13px 16px; vertical-align: middle;
+      font-size: 12px; font-weight: 500; color: var(--text);
+      border-right: 1px solid var(--border);
+      background: var(--white); line-height: 1.45;
+    }
+    .matrix-table tbody td.row-label span {
+      display: block; font-size: 11px; font-weight: 400;
+      color: var(--text-muted); margin-top: 2px;
+    }
+    .matrix-table tbody td.cell {
+      padding: 13px 12px; text-align: center; vertical-align: middle;
+      border-right: 1px solid var(--border);
+      font-size: 12px; color: var(--text-mid);
+    }
+    .matrix-table tbody td.cell:last-child { border-right: none; }
+    .tick {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; background: var(--green-light);
+      border-radius: 50%;
+    }
+    .tick::after { content: '✓'; font-size: 11px; color: var(--green); font-weight: 700; }
+    .tick-plus {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; background: var(--gold);
+      border-radius: 50%;
+    }
+    .tick-plus::after { content: '✓'; font-size: 11px; color: var(--white); font-weight: 700; }
+    .dash { color: var(--border-dark); font-size: 16px; line-height: 1; }
+    .cell-note {
+      font-size: 10px; color: var(--text-muted);
+      margin-top: 4px; line-height: 1.35; display: block;
+    }
+    .visits-badge {
+      display: inline-block;
+      background: rgba(250,247,242,0.15);
+      color: var(--cream); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.08em; padding: 3px 8px;
+      border-radius: 2px; margin-bottom: 4px;
+    }
 
     /* ── COMPARISON TABLE ── */
     .table-wrap { padding: 0 48px 72px; overflow-x: auto; }
@@ -165,12 +243,6 @@
       letter-spacing: 0.1em; text-transform: uppercase;
       padding: 3px 8px; border-radius: 2px;
     }
-    .tag-addon {
-      display: inline-block; background: var(--gold-light, #F5ECDA);
-      color: var(--gold); font-size: 10px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 3px 8px; border-radius: 2px;
-    }
     .tag-na {
       color: var(--text-muted); font-size: 12px;
     }
@@ -188,6 +260,7 @@
       color: var(--text); margin-bottom: 48px; letter-spacing: -0.01em;
     }
     .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
 
     .eng-card { background: var(--white); padding: 36px 32px; border-top: 3px solid var(--green); }
     .eng-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; gap: 16px; }
@@ -245,7 +318,7 @@
       font-size: 14px; color: var(--text-mid); line-height: 1.7;
       max-width: 680px; margin-bottom: 32px;
     }
-    .addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .addon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .addon-card {
       background: var(--white); border: 1px solid var(--border);
       padding: 28px; border-left: 3px solid var(--gold);
@@ -316,9 +389,9 @@
       .table-wrap { padding: 0 24px 48px; }
       .cards-section { padding: 48px 24px; }
       .cards-grid { grid-template-columns: 1fr; }
+      .standards { padding: 28px 24px; }
       .addon-section { padding: 48px 24px; }
       .addon-grid { grid-template-columns: 1fr; }
-      .standards { padding: 28px 24px; }
       .cta-section { padding: 56px 24px; }
       footer { padding: 24px; flex-direction: column; align-items: flex-start; }
     }
@@ -359,77 +432,142 @@
   <div class="page-hero-inner">
     <div class="page-eyebrow">BARS Institute · New Zealand</div>
     <h1>Assessment Types</h1>
-    <p class="page-hero-sub">Four engagement types covering the full spectrum of vineyard biological risk — from annual health monitoring through to pre-purchase enhanced due diligence for high-value transactions.</p>
+    <p class="page-hero-sub">Four engagement types covering vineyard biological risk — from annual health checks through to pre-purchase due diligence for high-value transactions.</p>
   </div>
 </div>
 
 <div class="intro">
-  <p>Every BARS engagement begins with a signed Engagement Proposal confirming scope, fees, and visit timing. The engagement type determines the number of field visits, the diagnostic scope, the trunk disease assessment tier, and the outputs produced. Select the engagement that matches your context — or contact BARS Institute if you are unsure which applies.</p>
-  <p>All assessments include GLRaV-3 composite pool screening as standard. Additional virus targets (GRBV, GPGV) are available as separately scoped add-ons — see below.</p>
+  <p>Every engagement begins with a signed proposal confirming scope, fees, and visit timing. The comparison below sets out what each engagement type includes — if the right fit isn't immediately clear, contact BARS Institute directly.</p>
+  <p>All engagement types include a stratified GLRaV-3 survey with GPS waypoints and a Tier 1 trunk disease visual assessment. What differs is the number of field visits, the additional testing applied, and the financial outputs produced.</p>
 </div>
 
 <!-- COMPARISON TABLE -->
 <div class="table-wrap">
   <div class="table-inner">
-    <div class="section-label">Engagement comparison</div>
-    <table>
+    <div class="section-label">What each engagement includes</div>
+    <table class="matrix-table">
       <thead>
         <tr>
-          <th>Feature</th>
+          <th>Output</th>
           <th>Health Certificate</th>
           <th>BARS Report</th>
           <th>Annual Monitor</th>
-          <th>Pre-Purchase Enhanced Due Diligence</th>
+          <th>Pre-Purchase EDD</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td><span class="visits-badge">1 visit</span><br>Annual check · Covenant · Mothball</td>
+          <td><span class="visits-badge">1–2 visits</span><br>New · Finance · Security</td>
+          <td><span class="visits-badge">1 visit</span><br>Year-on-year tracking</td>
+          <td><span class="visits-badge">2 visits</span><br>Transactions · Legal</td>
         </tr>
       </thead>
       <tbody>
+
+        <tr class="section-row"><td colspan="5">Field assessment</td></tr>
         <tr>
-          <th>Field visits</th>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>2</td>
+          <td class="row-label">GLRaV-3 composite pool survey</td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
         </tr>
         <tr>
-          <th>GLRaV-3 scope</th>
-          <td>Composite pool survey</td>
-          <td>Composite pool survey; Dorfman inversion prevalence estimation</td>
-          <td>Re-survey; updated I₀ and BVS; spread trajectory reconciliation against prior-year 90% simulation interval</td>
-          <td>Full BARS Report scope plus individual vine RT-qPCR confirmation on all positive composite bays</td>
+          <td class="row-label">Individual vine PCR confirmation<span>All positive bays</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick-plus"></div></td>
         </tr>
         <tr>
-          <th>Trunk disease scope</th>
-          <td>Tier 1 visual survey — D₀ recorded; BGS with wide uncertainty interval</td>
-          <td>Tier 1 standard; Tier 2 pruning-cut wood inspection available as dormancy add-on — narrows BGS uncertainty interval and infers pathogen class</td>
-          <td>Updated Tier 1 visual survey; BGS progression reconciled against prior model trajectory</td>
-          <td>Tier 3 qPCR — species-level pathogen confirmation; narrow uncertainty interval; standard scope</td>
+          <td class="row-label">Trunk disease — Tier 1 visual census<span>Block-wide, all-season assessment for gaps, cankers, dead or missing arms, and foliar symptoms</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
         </tr>
         <tr>
-          <th>Primary output</th>
-          <td>
-            Health Certificate — no GLRaV-3 detected; trunk disease visual indicators recorded
-            <div class="upgrade-note">Auto-upgrades to full BARS Report if any positive pool is found — no additional field visit required.</div>
-          </td>
-          <td>BVS · BGS · ESS · NPV impairment P5/P50/P95 (virus and GTD) · Replant trigger year · Intervention value · Block tail-risk contribution (multi-block)</td>
-          <td>Annual Monitor Report — updated BVS and BGS; Management Regime Divergence status; revised NPV impairment disclosed to lender where divergence detected</td>
-          <td>Enhanced Due Diligence Report — all BARS Report outputs plus species-level pathogen confirmation, vine-level co-occurrence data, and narrow uncertainty intervals across all figures</td>
+          <td class="row-label">Spatial map of positive bays<span>Georeferenced infection locations overlaid on block boundary</span></td>
+          <td class="cell"><span class="cell-note">Add-on</span></td>
+          <td class="cell"><span class="cell-note">Add-on</span></td>
+          <td class="cell"><div class="tick-plus"></div><span class="cell-note">Add-on; prior-year overlay available</span></td>
+          <td class="cell"><span class="cell-note">Add-on</span></td>
+        </tr>
+
+        <tr class="section-row"><td colspan="5">Current-condition scores</td></tr>
+        <tr>
+          <td class="row-label">BARS Virus Score (BVS)<span>GLRaV-3 prevalence, 0–100</span></td>
+          <td class="cell"><span class="tick">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div><span class="cell-note">Updated</span></td>
+          <td class="cell"><div class="tick-plus"></div></td>
         </tr>
         <tr>
-          <th>Prerequisite</th>
-          <td><span class="tag-na">—</span></td>
-          <td><span class="tag-na">—</span></td>
-          <td>Prior BARS Report at the same property</td>
-          <td><span class="tag-na">—</span></td>
+          <td class="row-label">BARS GTD Score (BGS)<span>Trunk disease incidence, 0–100</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div><span class="cell-note">Updated</span></td>
+          <td class="cell"><div class="tick-plus"></div></td>
         </tr>
         <tr>
-          <th>Typical use case</th>
-          <td>Annual monitoring of known-healthy blocks; lender covenant compliance</td>
-          <td>New engagements; financing and security review; property transaction; refinancing or loan renewal; impairment indicator assessment; valuation requiring biological condition evidence; change of ownership or entity; covenant establishment; any engagement where independent biological risk evidence is required.</td>
-          <td>Year-on-year biological risk tracking; lender covenant monitoring following a base-year BARS Report</td>
-          <td>Pre-purchase due diligence; legal and insurance contexts; high-value transactions requiring maximum biological certainty</td>
+          <td class="row-label">Economic Sensitivity Score (ESS)<span>Revenue exposure if virus compounds</span></td>
+          <td class="cell"><span class="tick">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
         </tr>
+
+        <tr class="section-row"><td colspan="5">Financial outputs</td></tr>
+        <tr>
+          <td class="row-label">NPV impairment P50 / P95<span>Virus and trunk disease, $/ha and % of clean value</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div><span class="cell-note">Revised if<br>divergence found</span></td>
+          <td class="cell"><div class="tick-plus"></div></td>
+        </tr>
+        <tr>
+          <td class="row-label">Intervention value<span>NPV difference under active vs low-intervention management</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+        </tr>
+        <tr>
+          <td class="row-label">Replant trigger year<span>When each block is projected to reach its replant threshold</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><div class="tick"></div></td>
+        </tr>
+        <tr>
+          <td class="row-label">Block tail-risk contribution<span>Which blocks drive vineyard-level downside; multi-block only</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+        </tr>
+        <tr>
+          <td class="row-label">Vine-level co-occurrence data<span>Where virus and trunk disease affect the same vine positions</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick-plus"></div></td>
+        </tr>
+        <tr>
+          <td class="row-label">Full sensitivity tables<span>Amax, κ, ρ, ESS — standard disclosure</span></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+          <td class="cell"><span class="dash">—</span></td>
+          <td class="cell"><div class="tick"></div></td>
+        </tr>
+
       </tbody>
     </table>
+    <p style="font-size:11px; color:var(--text-muted); margin-top:12px; line-height:1.6;">
+      <strong style="color:var(--text-mid);">Gold tick</strong> indicates an enhanced or higher-precision version of that output.
+      The Annual Monitor spatial map can be overlaid against the prior-year map to show year-on-year spread pattern change — its most differentiated use.
+      GRBV and GPGV virus targets are available as separately scoped add-ons across all engagement types — see below.
+    </p>
   </div>
 </div>
 
@@ -445,15 +583,15 @@
           <div class="eng-card-title">Health Certificate</div>
           <div class="eng-visits">1 visit</div>
         </div>
-        <div class="eng-tagline">Annual monitoring · Lender covenant compliance</div>
-        <p class="eng-desc">The Health Certificate is a single-visit screening engagement designed for blocks with no known infection history. It confirms absence of GLRaV-3 at the stated detection confidence and records trunk disease visual indicators across all vine positions. It is the appropriate engagement for lender covenant monitoring of known-healthy blocks and for properties seeking annual confirmation of clean biological status.</p>
-        <p class="eng-desc">If any positive GLRaV-3 composite pool is found during the visit, the engagement automatically upgrades to a full BARS Report using the RT-qPCR and Tier 1 trunk disease data already collected. No additional field visit is required. The BGS in an auto-upgraded report carries a Tier 1 wide uncertainty interval, disclosed in the report.</p>
-        <div class="eng-outputs-label">Outputs</div>
+        <div class="eng-tagline">Current biological status and Economic Sensitivity</div>
+        <p class="eng-desc">Quantifies current GLRaV-3 prevalence (BVS) and records visible trunk disease indicators (BGS).</p>
+        <p class="eng-desc">Designed as a fast, entry-level screening engagement for annual monitoring, lender covenant compliance, and identifying blocks that may require a full BARS assessment.</p>
+        <div class="eng-outputs-label">BEST FOR</div>
         <ul class="eng-outputs">
-          <li>Health Certificate confirming no GLRaV-3 detected</li>
-          <li>Trunk disease visual indicators recorded across the block</li>
-          <li>D₀ and BGS with Tier 1 disclosed uncertainty interval</li>
-          <li>Auto-upgrade to BARS Report if any positive pool detected</li>
+          <li>Annual lender reporting</li>
+          <li>Biological health screening</li>
+          <li>Entry-level first assessment</li>
+          <li>Identifying blocks for further investigation</li>
         </ul>
       </div>
 
@@ -462,19 +600,14 @@
           <div class="eng-card-title">BARS Report</div>
           <div class="eng-visits">1–2 visits</div>
         </div>
-        <div class="eng-tagline">New engagements · Financing · Security review</div>
-        <p class="eng-desc">The BARS Report is the core engagement for new assessments, blocks over ten years old, and any context requiring quantified biological impairment evidence. It produces the full suite of BARS financial outputs — NPV impairment, replant trigger year, intervention value, and block-level tail-risk contribution for multi-block properties — alongside the independently derived BVS and BGS current-condition scores.</p>
-        <p class="eng-desc">A single growing-season visit is the standard configuration. Where Tier 2 trunk disease assessment is required, a dormancy visit is added to perform pruning-cut wood inspection — narrowing the BGS uncertainty interval and enabling pathogen class inference from internal wood symptom patterns.</p>
-        <div class="eng-outputs-label">Outputs</div>
+        <div class="eng-tagline">Quantified biological risk and financial impact</div>
+        <p class="eng-desc">The core BARS assessment. Quantifies biological impairment, identifies likely replant timing, estimates the value of improved management, and identifies the blocks driving vineyard risk.</p>
+        <div class="eng-outputs-label">BEST FOR</div>
         <ul class="eng-outputs">
-          <li>BARS Virus Score (BVS) and BARS GTD Score (BGS)</li>
-          <li>Economic Sensitivity Score (ESS)</li>
-          <li>NPV impairment P5 / P50 / P95 — virus and GTD separately and combined</li>
-          <li>Replant trigger year and CAPEX planning horizon</li>
-          <li>Intervention value — financial benefit of vector pressure reduction</li>
-          <li>Block economic weights and tail-risk contribution (multi-block properties)</li>
-          <li>Co-occurrence disclosure where BVS and BGS both exceed zero</li>
-          <li>Full sensitivity tables — Amax, κ, ρ, and ESS</li>
+          <li>Financing and security reviews</li>
+          <li>Vineyard acquisitions</li>
+          <li>Biological impairment assessments</li>
+          <li>Establishing a baseline for future monitoring</li>
         </ul>
       </div>
 
@@ -483,17 +616,16 @@
           <div class="eng-card-title">Annual Monitor</div>
           <div class="eng-visits">1 visit</div>
         </div>
-        <div class="eng-tagline">Year-on-year tracking · Covenant monitoring</div>
-        <p class="eng-desc">The Annual Monitor re-surveys a property that has received a base-year BARS Report, updating BVS and BGS and reconciling observed disease progression against the prior-year model projection. Where the newly observed I₀ exceeds the P95 upper bound of the prior-year 90% simulation interval, a Management Regime Divergence is declared — triggering a formal review of the vector-pressure multiplier and recalculation of NPV impairment under the revised regime.</p>
-        <p class="eng-desc">This reconciliation structure means the base-year BARS Report does not assume stated management will be followed. It quantifies impairment risk under the stated regime and prices the consequence of divergence transparently when it occurs. Lenders receive a direct report of divergence findings and revised impairment figures.</p>
-        <div class="eng-outputs-label">Outputs</div>
+        <div class="eng-tagline">YTracks biological risk over time</div>
+        <p class="eng-desc">Updates an existing BARS Report and measures whether disease progression is tracking as expected. Flags management divergence and updates impairment figures where required.</p>
+        <div class="eng-outputs-label">BEST FOR</div>
         <ul class="eng-outputs">
-          <li>Updated BVS and BGS</li>
-          <li>Management Regime Divergence status against prior-year 90% simulation interval</li>
-          <li>Revised NPV impairment where divergence is detected</li>
-          <li>Disclosure to engaging lender of divergence findings and revised figures</li>
+          <li>Lender covenant monitoring</li>
+          <li>Annual credit reviews</li>
+          <li>Portfolio surveillance</li>
+          <li>Ongoing risk management</li>
         </ul>
-        <div class="eng-prereq"><strong>Prerequisite:</strong> Prior BARS Report at the same property.</div>
+        <div class="eng-prereq"><strong>Prerequisite:</strong> Requires an existing BARS Report.</div>
       </div>
 
       <div class="eng-card">
@@ -501,17 +633,15 @@
           <div class="eng-card-title">Pre-Purchase Enhanced Due Diligence</div>
           <div class="eng-visits">2 visits</div>
         </div>
-        <div class="eng-tagline">Transactions · Legal and insurance · High-value assets</div>
-        <p class="eng-desc">The Pre-Purchase Enhanced Due Diligence engagement is the highest-precision biological assessment available for vineyard assets. It combines all BARS Report outputs with individual vine RT-qPCR confirmation on every positive composite bay — narrowing the uncertainty interval around vine-level prevalence — and Tier 3 qPCR trunk disease assessment providing species-level pathogen confirmation.</p>
-        <p class="eng-desc">This engagement is designed for transaction contexts where maximum biological certainty is required: pre-purchase due diligence, legal disputes, insurance claims, and high-value transactions where latent impairment risk must be characterised at the narrowest achievable uncertainty interval. The two-visit protocol covers both dormancy (trunk disease) and growing season (virus).</p>
-        <div class="eng-outputs-label">Outputs</div>
+        <div class="eng-tagline">Maximum biological certainty</div>
+        <p class="eng-desc">The highest-precision assessment available. Includes all BARS outputs plus vine-level testing and pathogen confirmation to reduce uncertainty before major transactions.</p>
+        
+        <div class="eng-outputs-label">BEST FOR</div>
         <ul class="eng-outputs">
-          <li>All standard BARS Report outputs</li>
-          <li>Individual vine RT-qPCR confirmation on all positive composite bays</li>
-          <li>Tier 3 qPCR — species-level pathogen confirmation</li>
-          <li>Vine-level co-occurrence data (GLRaV-3 and trunk disease at the same vine position)</li>
-          <li>Narrow uncertainty intervals across all reported figures</li>
-          <li>Output labelling and method disclosure suitable for legal, financial, and insurance use</li>
+          <li>High-value vineyard purchases</li>
+          <li>Legal and insurance matters</li>
+          <li>Dispute resolution</li>
+          <li>Maximum transaction certainty</li>
         </ul>
       </div>
 
@@ -521,10 +651,15 @@
 
 <!-- ADD-ONS -->
 <div class="addon-section">
-  <div class="section-label">Virus add-ons</div>
-  <h2>Additional virus targets</h2>
-  <p>All assessments include GLRaV-3 RT-qPCR screening as standard. The following virus targets are available as separately scoped add-ons where specified in the signed Engagement Proposal. Tissue collection requirements and seasonal timing constraints differ from the GLRaV-3 standard — contact BARS Institute before engagement to confirm scope.</p>
+  <div class="section-label">Add-ons</div>
+  <h2>Optional add-ons</h2>
+  <p>The following are available as separately scoped add-ons across all engagement types. Virus add-ons have specific tissue collection and seasonal timing requirements — contact BARS Institute before engagement to confirm scope.</p>
   <div class="addon-grid">
+    <div class="addon-card">
+      <div class="addon-title">Spatial map of positive bays</div>
+      <p class="addon-desc">A georeferenced map of all sampled bays, with positive bays marked by location, overlaid on the block boundary polygon and stratification zones. Produced from GPS coordinates collected at assessment — no additional field work required.</p>
+      <p class="addon-note">Available across all engagement types. For Annual Monitor engagements, the current-year map can be overlaid against the prior-year map to show year-on-year change in infection distribution — useful for distinguishing new boundary ingress from established within-block spread.</p>
+    </div>
     <div class="addon-card">
       <div class="addon-title">GRBV — Grapevine Red Blotch Virus</div>
       <p class="addon-desc">Available as a biosecurity surveillance add-on for clients seeking to confirm absence in imported material or newly established blocks, or where symptoms consistent with GRBV have been observed. Requires leaf blade tissue collected December–February. Petiole tissue and collection outside this window are not approved for GRBV assessment.</p>
