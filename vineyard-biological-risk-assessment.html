@@ -63,7 +63,7 @@
     }
     .logo-mark { display: flex; align-items: center; justify-content: center; }
     .header-cta {
-      background: var(--green); color: var(--cream);
+      background: var(--green); color: var(--cream)!important;
       font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
       letter-spacing: 0.06em; padding: 9px 20px;
       border: none; cursor: pointer; text-decoration: none;
@@ -149,6 +149,22 @@
     .section-divider {
       border: none; border-top: 1px solid var(--border); margin: 48px 0;
     }
+    .bridge-divider {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 16px;
+    }
+    .bridge-label-text {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      white-space: nowrap;
+    }
+    .bridge-label-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+    .bridge-intro {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 32px;
+    }
 
     /* ── SIDEBAR ── */
     .sidebar { position: sticky; top: 80px; }
@@ -197,6 +213,38 @@
     }
     .sidebar-cta a:hover { background: var(--white); }
 
+    /* ── HEADER NAV ── */
+    .header-nav { display: flex; align-items: center; gap: 28px; }
+    .header-nav a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--text-mid); text-decoration: none; transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--green); }
+    .header-nav a.active { color: var(--green); }
+
+    /* ── SECTION BRIDGE ── */
+    .section-bridge {
+      max-width: 1140px; margin: 0 auto;
+      padding: 0 48px 16px;
+    }
+    .bridge-label {
+      display: flex; align-items: center; gap: 16px;
+      padding: 48px 0 0;
+    }
+    .bridge-label-text {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      white-space: nowrap;
+    }
+    .bridge-label-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+    .bridge-intro {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.7; padding: 12px 0 0;
+      max-width: 680px;
+    }
+
     /* ── STANDARDS STRIP ── */
     .standards {
       background: var(--cream-dark);
@@ -224,6 +272,7 @@
     /* ── RESPONSIVE ── */
     @media(max-width: 900px) {
       header { padding: 0 24px; }
+      .header-nav a:not(.header-cta) { display: none; }
       .breadcrumb { padding: 16px 24px; }
       .page-hero { padding: 48px 24px; }
       .content-wrap { padding: 48px 24px; grid-template-columns: 1fr; gap: 48px; }
@@ -253,10 +302,12 @@
     </div>
     BARS INSTITUTE
   </a>
-  <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
-  <a href="/assessment-types">Assessment types</a>
-  <a href="/process">The process</a>
-  <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="header-cta">Enquire now →</a>
+  <div class="header-nav">
+    <a href="/vineyard-biological-risk-assessment" class="active">What is a BARS assessment?</a>
+    <a href="/assessment-types">Assessment types</a>
+    <a href="/process">The process</a>
+    <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="header-cta">Enquire now →</a>
+  </div>
 </header>
 
 <div class="breadcrumb">
@@ -287,19 +338,19 @@
     </div>
 
     <h2 id="glrav3">GLRaV-3 Risk in New Zealand Vineyards</h2>
-    <p>Grapevine Leafroll-associated Virus 3 (GLRaV-3) is the most economically significant grapevine virus in New Zealand. It is transmitted primarily by mealybug species — principally <em>Pseudococcus calceolariae</em> and <em>Pseudococcus longispinus</em> — and spreads within and between vineyard blocks as vector populations move through the canopy.</p>
+    <p>Grapevine Leafroll-associated Virus 3 (GLRaV-3) is the most economically significant grapevine virus in New Zealand. It is transmitted primarily by mealybug species — principally <em>Pseudococcus longispinus</em> and <em>Planococcus ficus</em> — and spreads within and between vineyard blocks as vector populations move through the canopy.</p>
     <p>The financial consequences of GLRaV-3 infection are well documented in the New Zealand literature. Infected vines show reduced sugar accumulation, increased titratable acidity, delayed ripening, and reduced harvest weight. For red cultivars in particular, symptom expression is pronounced — visible as interveinal reddening and premature leaf senescence. For white cultivars, infection may be symptomless in the field while impairment continues silently.</p>
 
     <div class="callout">
-      <p><strong>The compounding cost of undetected infection:</strong> A 4 ha Marlborough Sauvignon Blanc block — 10 years old, 15 years of productive life remaining — modelled at 14.1 t/ha and $1,800 per tonne, may show little visible yield effect today even at 5% vine-level GLRaV-3 prevalence. But if infection is not detected and contained early, modelled spread can lift prevalence to around 17% by end of productive life, with present-value revenue loss of $29,000 at P50 and $51,000 at P95 — approximately 3–5% of clean block value. Early detection enables rouging before spread compounds. Late detection does not.</p>
+      <p><strong>The compounding cost of undetected infection:</strong> A 4 ha Marlborough Sauvignon Blanc block — 10 years old, 15 years of productive life remaining — modelled at 14.1 t/ha and $1,800 per tonne, may show little visible yield effect today even at 5% vine-level GLRaV-3 prevalence. If infection is not detected and contained early, modelled spread can lift prevalence to around 17% by end of productive life, with present-value revenue loss of $29,000 at P50 and $51,000 at P95 — approximately 3–5% of clean block value. Early detection enables rouging before spread compounds. Late detection does not.</p>
     </div>
 
-    <p>Prevalence is estimated using composite pool testing — a validated group-testing methodology in which tissue samples from multiple vines are pooled and tested together. Vine-level infection prevalence is then inferred from the pool-positive proportion using the Dorfman pooling inversion formula. This approach provides statistically robust prevalence estimates at significantly lower cost than individual vine testing.</p>
+
 
     <h2 id="trunk-disease">Grapevine Trunk Disease Risk</h2>
     <p>Grapevine trunk diseases — principally <em>Eutypa</em> dieback, <em>Botryosphaeriales</em> dieback, and esca — are a major and growing cause of vineyard structural impairment in New Zealand. Unlike virus diseases, trunk diseases cause progressive physical destruction of the vine's woody architecture: cordons die back, arms become non-productive, and severely affected vines require removal and replanting.</p>
     <p>The financial character of trunk disease impairment is fundamentally different from virus impairment. Where virus impairment is revenue-driven — reducing yield and quality over the productive life — trunk disease impairment is CAPEX-driven. It generates replacement and replanting costs, lost gross margin from affected vine positions, and operational disruption costs. These must be reported separately to allow lenders and valuers to identify the nature and scale of each liability independently.</p>
-    <p>Trunk disease assessment is conducted across three tiers of increasing diagnostic precision. Tier 1 is a whole-block visual symptom census. Tier 2 adds pruning wound cross-section inspection at dormancy, revealing internal wood discolouration that may not yet have expressed as visible foliar symptoms. Tier 3 applies species-level qPCR confirmation — the highest diagnostic precision, standard for pre-purchase due diligence contexts.</p>
+
 
     <h2 id="impairment">Vineyard Impairment: What Financial Professionals Need</h2>
     <p>The gap that most vine health assessments leave open is the translation from biological condition to financial consequence. A PCR-positive result, a trunk disease incidence percentage, or a visual health classification does not, by itself, answer the questions that lenders, valuers, and transaction advisers need answered.</p>
@@ -313,27 +364,32 @@
 
     <hr class="section-divider">
 
+    <div class="bridge-divider">
+      <div class="bridge-label-text">For lenders, valuers &amp; advisers</div>
+      <div class="bridge-label-line"></div>
+    </div>
+    <p class="bridge-intro">The sections below address how BARS outputs integrate into financial workflows — lending, valuation, due diligence, and accounting framework alignment.</p>
+
     <h2 id="replant">Replant Decisions and Capital Planning</h2>
-    <p>One of the most consequential decisions in vineyard asset management is when to replant a block. Replanting a mature block is a major capital event — significant establishment costs plus three years of lost production before the block reaches commercial bearing. Timing that decision incorrectly, in either direction, has material financial consequences.</p>
-    <p>The BARS trunk disease model projects each block's disease trajectory forward and identifies the year in which it will reach the operational replant threshold — the fraction of affected vine positions beyond which replacement becomes the economically preferred response. Default replant thresholds are 15% for premium varieties, 20% for mid-tier, and 25% for commodity varieties, reflecting the higher quality standards and lower tolerance for missing vine positions in premium production.</p>
-    <p>This replant trigger year is a primary output of every BARS Report containing a trunk disease assessment. It provides a specific capital planning horizon that lenders can use for covenant design, valuers can incorporate into productive life assumptions, and property owners can use to sequence block redevelopment.</p>
+    <p>One of the most consequential decisions in vineyard asset management is when to replant a block. Replanting a mature block is a major capital event — establishment costs plus several years of lost production before the block reaches commercial bearing. Timing that decision incorrectly, in either direction, has material financial consequences.</p>
+    <p>The BARS trunk disease model projects each block's disease trajectory forward and identifies the year in which it will reach its operational replant threshold. This replant trigger year is a primary output of every BARS Report containing a trunk disease assessment — providing a specific capital planning horizon that lenders can use for covenant design, valuers can incorporate into productive life assumptions, and property owners can use to sequence block redevelopment.</p>
 
     <h2 id="due-diligence">Vineyard Due Diligence for Transactions</h2>
     <p>Vineyard transactions — whether freehold sales, lease assignments, or vineyard-secured lending — increasingly require evidence of biological condition as a component of due diligence. Buyer's advisers, lenders, and their valuers need to know whether the vine assets being transacted carry material latent impairment that would affect recoverable value, productive life, or near-term capital requirements.</p>
-    <p>The BARS Pre-Purchase Enhanced Due Diligence tier is specifically designed for transaction contexts. It combines individual vine RT-qPCR confirmation on all positive bays — narrowing the uncertainty interval around vine-level prevalence — with Tier 3 qPCR trunk disease assessment providing species-level pathogen confirmation. The result is the highest-precision biological condition evidence available for a vineyard asset, with output labelling and method disclosure designed for direct use in legal, financial, and insurance contexts.</p>
+    <p>The BARS Pre-Purchase Enhanced Due Diligence tier is specifically designed for transaction contexts. It combines individual vine PCR confirmation on all positive bays — narrowing the uncertainty interval around vine-level prevalence — with Tier 3 qPCR trunk disease assessment providing species-level pathogen confirmation. The result is the highest-precision biological condition evidence available for a vineyard asset, with output labelling and method disclosure designed for direct use in legal, financial, and insurance contexts.</p>
 
     <h2 id="lending-valuation">Applications in Lending and Valuation</h2>
-    <p>Agricultural lenders use BARS outputs to assess biological risk in vineyard-secured lending portfolios. The NPV impairment figures support biological risk schedules in credit memos, impairment watchlists, and replant-CAPEX covenant design. The Annual Monitor engagement provides successive empirical verification that the management regime assumed in the base-year BARS Report is consistent with observed spread behaviour — giving lenders confidence that the biological risk assumption underpinning their security valuation remains defensible.</p>
-    <p>Registered valuers use BARS outputs as a technical appendix for impairment-related adjustments and biological condition disclosures where vine health is a material value driver. The BARS scoring architecture — with its disclosed calibration status, sensitivity ranges, and method statement — is designed to be referenced directly in valuation workpapers without requiring translation before professional use.</p>
-    <p>For accounting and audit purposes, the BARS Monte Carlo P5/P95 range provides a probability-weighted cashflow distribution consistent with NZ IAS 36 paragraph 30 requirements for recoverable amount sensitivity analysis. The method statement in each BARS Report is designed to support NZ IFRS 13 Level 3 fair value disclosure requirements, with explicit identification of unobservable inputs and their calibration status.</p>
+    <p>Agricultural lenders use BARS outputs to support biological risk schedules in credit memos, covenant design, and impairment watchlists. The Annual Monitor provides successive empirical verification that the management regime assumed in the base-year report is consistent with observed spread behaviour — giving lenders ongoing confidence in the biological risk assumption underpinning their security.</p>
+    <p>Registered valuers can reference BARS outputs directly in valuation workpapers as supporting evidence for impairment-related adjustments where vine health is a material value driver. The disclosed calibration status, sensitivity ranges, and method statement are designed for professional use without requiring translation.</p>
+    <p>For accounting and audit purposes, the Monte Carlo P50/P95 range provides a probability-weighted cashflow distribution suitable for recoverable amount sensitivity analysis. The method statement supports NZ IFRS 13 Level 3 fair value disclosure requirements, with explicit identification of unobservable inputs and their calibration status.</p>
 
     <div class="callout">
-      <p><strong>Professional scope:</strong> BARS outputs are decision-support evidence for use by engaging professionals within their own workflows. BARS Institute does not provide accounting opinions, registered valuations, or credit approval recommendations. The application of NZ IAS 36, NZ IAS 41, NZ IFRS 13, and NZ IAS 16 to specific assets and transactions must be confirmed with a registered accountant or auditor.</p>
+      <p><strong>Professional scope:</strong> BARS outputs are decision-support evidence for use by engaging professionals within their own workflows. BARS Institute does not provide accounting opinions, registered valuations, or credit approval recommendations.</p>
     </div>
 
     <h2 id="get-started">Requesting a BARS Assessment</h2>
-    <p>BARS Institute assessments are available across New Zealand vineyards. Engagements are scoped per property following submission of a Commercial Intake Form, which collects the block, variety, and contextual information needed to prepare a formal Engagement Proposal. No assessment is scheduled and no fees are incurred until the signed Engagement Proposal has been received.</p>
-    <p>All assessments are conducted under MET-BARS-001 v1.2, the published BARS methodology statement. Diagnostic samples are submitted to independent IANZ-accredited laboratories for PCR analysis. Results are written directly to the BARS data pipeline on receipt and reviewed by the Lead Assessor before model execution.</p>
+    <p>BARS Institute assessments are available across New Zealand vineyards. Engagements are scoped per property following a short intake process — no assessment is scheduled and no fees are incurred until the signed Engagement Proposal has been received.</p>
+    <p>If you are unsure which engagement type suits your context, contact BARS Institute directly. We are happy to discuss scope and fit before any proposal is issued.</p>
 
   </article>
 
@@ -364,11 +420,11 @@
         </div>
         <div class="sidebar-item">
           <div class="sidebar-key">Testing Standard</div>
-          <div class="sidebar-val">IANZ Accredited Laboratories (ISO/IEC 17025)</div>
+          <div class="sidebar-val">IANZ Accredited Laboratories</div>
         </div>
         <div class="sidebar-item">
           <div class="sidebar-key">Methodology</div>
-          <div class="sidebar-val">MET-BARS-001 v1.2</div>
+          <div class="sidebar-val">MET-BARS-001</div>
         </div>
       </div>
     </div>
