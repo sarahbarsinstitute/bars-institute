@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Process | BARS Institute</title>
+  <meta name="description" content="How a BARS assessment works — from signed proposal and stratified sampling through to laboratory testing, financial analysis, and final report delivery.">
+  <meta property="og:title" content="The Process | BARS Institute">
+  <meta property="og:description" content="Eight steps from signed engagement proposal to delivered report. Clear, efficient, and defensible at every stage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1A3A2E;
+      --green-mid: #265241;
+      --green-light: #EEF4F0;
+      --gold: #B8922A;
+      --cream: #FAF7F2;
+      --cream-dark: #F2EDE5;
+      --text: #1C1C1A;
+      --text-mid: #4A4A47;
+      --text-muted: #8A8A85;
+      --white: #FFFFFF;
+      --border: #E2DDD6;
+      --border-dark: #CCC7BF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Geist', sans-serif; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .header-nav { display: flex; align-items: center; gap: 28px; }
+    .header-nav a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--text-mid); text-decoration: none; transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--green); }
+    .header-nav a.active { color: var(--green); }
+    .header-cta {
+      background: var(--green); color: var(--cream);
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.06em; padding: 9px 20px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s; display: inline-block;
+    }
+    .header-cta:hover { background: var(--green-mid); }
+
+    /* ── PAGE HERO ── */
+    .page-hero { background: var(--green); padding: 64px 48px; }
+    .page-hero-inner { max-width: 900px; margin: 0 auto; }
+    .page-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .page-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 1px; background: var(--gold);
+    }
+    .page-hero h1 {
+      font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+      line-height: 1.08; color: var(--cream);
+      margin-bottom: 20px; letter-spacing: -0.02em;
+    }
+    .page-hero-sub {
+      font-size: 16px; font-weight: 300; color: rgba(250,247,242,0.8);
+      line-height: 1.7; max-width: 680px;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 16px 48px; border-bottom: 1px solid var(--border);
+      font-size: 12px; color: var(--text-muted);
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green); }
+    .breadcrumb span { margin: 0 8px; }
+
+    /* ── INTRO ── */
+    .intro { max-width: 900px; margin: 0 auto; padding: 56px 48px 40px; }
+    .intro p {
+      font-size: 16px; font-weight: 300; color: var(--text-mid);
+      line-height: 1.8; margin-bottom: 16px;
+    }
+    .intro p:last-child { margin-bottom: 0; }
+
+    /* ── PROCESS STEPS ── */
+    .process-section {
+      max-width: 900px; margin: 0 auto;
+      padding: 16px 48px 80px;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 32px;
+      position: relative;
+      padding-bottom: 0;
+    }
+
+    /* Connector line between steps */
+    .process-step:not(:last-child) .step-spine::after {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 56px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .step-spine {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .step-num {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.04em;
+      background: var(--cream);
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+
+    .step-body {
+      padding-bottom: 48px;
+    }
+
+    .step-phase {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 8px; padding-top: 8px;
+    }
+
+    .step-title {
+      font-family: 'Geist', sans-serif; font-size: 20px; font-weight: 600;
+      color: var(--text); letter-spacing: -0.01em;
+      margin-bottom: 12px; line-height: 1.2;
+    }
+
+    .step-desc {
+      font-size: 14px; color: var(--text-mid); line-height: 1.8;
+    }
+
+    .step-note {
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-left: 2px solid var(--gold);
+      background: var(--cream-dark);
+      font-size: 12px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* Phase divider — spans both columns */
+    .phase-divider {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 16px;
+      padding: 32px 0 28px;
+    }
+    .phase-divider-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      white-space: nowrap;
+    }
+    .phase-divider-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── QUERY BOX ── */
+    .query-section {
+      background: var(--green-light);
+      border-top: 1px solid var(--border);
+      padding: 48px;
+    }
+    .query-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .query-text h3 {
+      font-size: 18px; font-weight: 600; color: var(--text);
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .query-text p {
+      font-size: 14px; color: var(--text-mid); line-height: 1.7; max-width: 480px;
+    }
+    .btn-green {
+      background: var(--green); color: var(--cream);
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      padding: 13px 28px; text-decoration: none; letter-spacing: 0.04em;
+      display: inline-block; transition: background 0.2s; white-space: nowrap;
+    }
+    .btn-green:hover { background: var(--green-mid); }
+
+    /* ── STANDARDS ── */
+    .standards {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 36px 48px;
+    }
+    .standards-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .standards-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .standards-items { display: flex; gap: 32px; flex-wrap: wrap; }
+    .std-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-mid); font-weight: 500;
+    }
+    .std-dot {
+      width: 5px; height: 5px; background: var(--gold);
+      border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--green); padding: 72px 48px; text-align: center; }
+    .cta-section h2 {
+      font-size: clamp(24px, 4vw, 40px); font-weight: 500;
+      color: var(--cream); margin-bottom: 16px; letter-spacing: -0.01em;
+    }
+    .cta-sub {
+      font-size: 15px; font-weight: 300; color: rgba(250,247,242,0.7);
+      max-width: 440px; margin: 0 auto 32px; line-height: 1.7;
+    }
+    .btn-cream {
+      background: var(--cream); color: var(--green);
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      padding: 14px 32px; text-decoration: none; letter-spacing: 0.04em;
+      display: inline-block; transition: background 0.2s, transform 0.15s;
+      margin-bottom: 24px;
+    }
+    .btn-cream:hover { background: var(--white); transform: translateY(-1px); }
+    .cta-small {
+      font-size: 12px; color: rgba(250,247,242,0.4); font-weight: 400;
+      max-width: 520px; margin: 0 auto; line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0E1F19; padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-l {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(250,247,242,0.6);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .footer-r { font-size: 12px; color: rgba(250,247,242,0.4); font-weight: 400; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { padding: 0 24px; }
+      .header-nav a { display: none; }
+      .breadcrumb { padding: 16px 24px; }
+      .page-hero { padding: 48px 24px; }
+      .intro { padding: 40px 24px 24px; }
+      .process-section { padding: 16px 24px 60px; }
+      .process-step { grid-template-columns: 44px 1fr; gap: 0 20px; }
+      .step-num { width: 34px; height: 34px; font-size: 12px; }
+      .process-step:not(:last-child) .step-spine::after { left: 21px; top: 48px; }
+      .query-section { padding: 40px 24px; }
+      .query-inner { flex-direction: column; }
+      .standards { padding: 28px 24px; }
+      .cta-section { padding: 56px 24px; }
+      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" width="32" height="32" xmlns="http://www.w3.org/2000/svg" style="color: #1A3A2E;">
+        <defs>
+          <mask id="leftCrescent">
+            <rect width="200" height="200" fill="white" />
+            <circle cx="115" cy="100" r="45" fill="black" />
+          </mask>
+        </defs>
+        <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#leftCrescent)" />
+        <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1" />
+      </svg>
+    </div>
+    BARS INSTITUTE
+  </a>
+  <div class="header-nav">
+    <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
+    <a href="/assessment-types">Assessment types</a>
+    <a href="/process" class="active">The process</a>
+    <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="header-cta">Enquire now →</a>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>The process
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">How it works</div>
+    <h1>From fieldwork<br>to financial metrics</h1>
+    <p class="page-hero-sub">Every BARS assessment follows the same structured sequence — from signed proposal to delivered report. The steps below are consistent across all engagement types; what varies is the scope applied at each stage.</p>
+  </div>
+</div>
+
+<div class="intro">
+  <p>Every engagement begins with a signed proposal confirming scope, fees, and visit timing. The comparison below sets out what each engagement type includes — if the right fit isn't immediately clear, <a href="https://barsinstitute.fillout.com/004a" target="_blank" style="color:var(--green); text-decoration:underline; text-underline-offset:3px;">contact BARS Institute directly</a>.</p>
+  <p>All engagement types include a stratified GLRaV-3 survey with GPS waypoints and a Tier 1 trunk disease visual assessment. What differs is the number of field visits, the additional testing applied, and the financial outputs produced.</p>
+</div>
+
+<!-- PROCESS STEPS -->
+<div class="process-section">
+
+  <!-- STEP 1 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">1</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Pre-engagement</div>
+      <h2 class="step-title">Signed engagement proposal</h2>
+      <p class="step-desc">Scope, fee, visit timing, and deliverables are confirmed in writing before any field work begins. The proposal sets the terms of the engagement and ensures the assessment is calibrated to the property and decision context.</p>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">2</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Pre-field</div>
+      <h2 class="step-title">Stratified sampling plan</h2>
+      <p class="step-desc">Before the field visit, a GPS-referenced sampling plan is prepared based on block geometry, vine spacing, and any known risk zones. Composite bay waypoints are allocated across edge, interior, and symptom-cluster strata — so sampling effort is directed where it matters most.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">3</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Field visit</div>
+      <h2 class="step-title">Sampling and trunk disease assessment</h2>
+      <p class="step-desc">We attend site to collect composite tissue samples and complete a block-wide Tier 1 visual trunk disease assessment. GPS coordinates are recorded for every bay. All samples are sealed and placed into cold chain immediately on collection.</p>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">4</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Logistics</div>
+      <h2 class="step-title">Chain of custody to the laboratory</h2>
+      <p class="step-desc">Samples are transferred to an accredited laboratory under documented chain of custody. Traceability is maintained from the moment of collection through to the diagnostic result.</p>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">5</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Diagnostics</div>
+      <h2 class="step-title">Laboratory testing</h2>
+      <p class="step-desc">The laboratory performs RT-qPCR testing on the submitted composite pools. Where positive pools are identified, follow-up testing proceeds in line with the engagement scope.</p>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">6</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Analysis</div>
+      <h2 class="step-title">BARS calculations and financial analysis</h2>
+      <p class="step-desc">Laboratory results are combined with field observations, block inputs, and analytical parameters to generate the BARS outputs — prevalence estimation, spread modelling, financial impairment calculations, and sensitivity analysis.</p>
+      <div class="step-note">This is where biological condition becomes a financial figure: BVS and BGS current-condition scores, NPV impairment at P50 and P95, replant trigger year, and intervention value.</div>
+    </div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">7</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Delivery</div>
+      <h2 class="step-title">Report delivery</h2>
+      <p class="step-desc">The completed report is issued in PDF format, structured for direct use in credit files, valuation workpapers, or transaction due diligence. All assumptions, calibration bases, and sensitivity ranges are disclosed within the report.</p>
+    </div>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="process-step">
+    <div class="step-spine">
+      <div class="step-num">8</div>
+    </div>
+    <div class="step-body">
+      <div class="step-phase">Post-delivery</div>
+      <h2 class="step-title">Follow-up</h2>
+      <p class="step-desc">A call or meeting can be arranged to walk through the findings. Most clients find this useful when results require further context, when next steps are not straightforward, or when the report will be presented to a wider group.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- PRE-ENGAGEMENT QUERY -->
+<div class="query-section">
+  <div class="query-inner">
+    <div class="query-text">
+      <h3>Questions before committing to an engagement?</h3>
+      <p>We're happy to talk through the process, scope options, or whether BARS is the right tool for your situation — before any proposal is issued.</p>
+    </div>
+    <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="btn-green">Get in touch →</a>
+  </div>
+</div>
+
+<!-- STANDARDS -->
+<div class="standards">
+  <div class="standards-inner">
+    <div class="standards-label">Framework alignment</div>
+    <div class="standards-items">
+      <div class="std-item"><div class="std-dot"></div>NZ IAS 36</div>
+      <div class="std-item"><div class="std-dot"></div>NZ IAS 41</div>
+      <div class="std-item"><div class="std-dot"></div>NZ IFRS 13</div>
+      <div class="std-item"><div class="std-dot"></div>NZ IAS 16</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Enquire about an assessment</h2>
+  <p class="cta-sub">Tell us about the property, blocks, and context. We'll confirm scope and fee within one business day.</p>
+  <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="btn-cream">Start an enquiry →</a>
+  <p class="cta-small">BARS outputs are decision-support evidence for engaging professionals. They do not replace a registered valuation, accounting opinion, or credit decision.</p>
+</section>
+
+<footer>
+  <div class="footer-l">
+    <svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg" style="color: rgba(250,247,242,0.6);">
+      <defs>
+        <mask id="leftCrescentFooter">
+          <rect width="200" height="200" fill="white" />
+          <circle cx="115" cy="100" r="45" fill="black" />
+        </mask>
+      </defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#leftCrescentFooter)" />
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1" />
+    </svg>
+    BARS Institute Limited · New Zealand · bars.institute
+  </div>
+  <div class="footer-r">© 2026 BARS Institute Limited</div>
+</footer>
+
+</body>
+</html>
