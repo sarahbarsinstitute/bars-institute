@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8Y5Y8Q9EH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M8Y5Y8Q9EH');
 </script>
-  
-  <meta charset="UTF-8">
-  <title>BARS Institute</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BARS Institute | Biological Risk Assessment for Vineyard Assets</title>
@@ -20,16 +15,13 @@
   <meta property="og:title" content="BARS Institute | Biological Risk Assessment for Vineyard Assets">
   <meta property="og:description" content="Independent vineyard biological risk assessments quantifying disease-related value impairment, replant timing, and asset risk.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bars.institute"> 
-  
+  <meta property="og:url" content="https://bars.institute">
+  <link rel="icon" type="image/svg+xml" href="bars-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Geist for Headings, DM Sans for Body -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
     :root {
       --green: #1A3A2E;
       --green-mid: #265241;
@@ -45,9 +37,7 @@
       --border: #E2DDD6;
       --border-dark: #CCC7BF;
     }
-    
     html { scroll-behavior: smooth; }
-    
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
@@ -56,15 +46,14 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
     h1, h2, h3, .score-abbrev, .audience-type, .cred-v, .hero-eyebrow, .accred-card-label {
       font-family: 'Geist', sans-serif;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(250, 247, 242, 0.95);
+      background: rgba(250,247,242,0.95);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       padding: 0 48px; height: 60px;
@@ -74,29 +63,24 @@
       font-family: 'DM Sans', sans-serif; font-weight: 500;
       font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--green); display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
     }
-    .logo-mark {
-      display: flex; align-items: center; justify-content: center;
+    .header-nav { display: flex; align-items: center; gap: 28px; }
+    .header-nav a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--text-mid); text-decoration: none; transition: color 0.2s;
     }
-    .logo-mark img {
-      width: 32px; height: auto;
-    }
+    .header-nav a:hover { color: var(--green); }
     .header-cta {
-      background: var(--green); color: var(--cream);
+      background: var(--green); color: var(--cream) !important;
       font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
       letter-spacing: 0.06em; padding: 9px 20px;
       border: none; cursor: pointer; text-decoration: none;
       transition: background 0.2s; display: inline-block;
     }
-    .header-cta:hover { background: var(--green-mid); }
-    .header-nav { display: flex; align-items: center; gap: 28px; }
-    .header-nav a { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
-    .header-nav a.header-cta { 
-  color: var(--cream); 
-  background: var(--green);
-}
+    .header-cta:hover { background: var(--green-mid); color: var(--cream) !important; }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       padding: 88px 48px 72px;
       max-width: 1140px; margin: 0 auto;
@@ -133,11 +117,8 @@
       content: ''; width: 6px; height: 6px; background: var(--gold);
       display: inline-block; border-radius: 50%;
     }
-    
     .hero-sidebar { margin-top: 8px; }
-    .accred-card {
-      border: 1px solid var(--border); background: var(--white); padding: 28px;
-    }
+    .accred-card { border: 1px solid var(--border); background: var(--white); padding: 28px; }
     .accred-card-label {
       font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
       text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px;
@@ -148,7 +129,7 @@
     .accred-key { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
     .accred-val { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.3; }
 
-    /* ── URGENCY BANNER ── */
+    /* URGENCY */
     .urgency { background: var(--green); padding: 44px 48px; }
     .urgency-inner {
       max-width: 1140px; margin: 0 auto;
@@ -166,10 +147,10 @@
     }
     .urgency-body p {
       font-size: 15px; font-weight: 300;
-      color: rgba(250, 247, 242, 0.85); line-height: 1.7; max-width: 720px;
+      color: rgba(250,247,242,0.85); line-height: 1.7; max-width: 720px;
     }
 
-    /* ── SCORES / OUTPUTS ── */
+    /* SCORES */
     .scores { padding: 88px 48px; max-width: 1140px; margin: 0 auto; }
     .section-label {
       font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
@@ -205,14 +186,14 @@
       text-transform: uppercase; color: var(--text-muted);
       margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
     }
-    .score-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; font-weight: 400; }
+    .score-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
     .score-range {
       margin-top: 20px; font-size: 13px; color: var(--text-mid);
       line-height: 1.4; border-top: 1px dashed var(--border); padding-top: 16px;
     }
     .score-range strong { color: var(--green); font-weight: 500; display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
 
-    /* ── AUDIENCE ── */
+    /* AUDIENCE */
     .audience { background: var(--green-light); padding: 88px 48px; }
     .audience-inner { max-width: 1140px; margin: 0 auto; }
     .audience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 52px; }
@@ -224,39 +205,37 @@
       font-size: 20px; font-weight: 500; color: var(--text);
       margin-bottom: 10px; letter-spacing: -0.01em;
     }
-    .audience-desc { font-size: 14px; font-weight: 400; color: var(--text-mid); line-height: 1.7; }
+    .audience-desc { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
 
-    /* ──  & DECISION MAKERS ── */
+    /* METHODOLOGY */
     .methodology { padding: 88px 48px; max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 72px; align-items: start; }
-    .methodology-body p { font-size: 15px; font-weight: 400; color: var(--text-mid); line-height: 1.75; margin-bottom: 18px; }
+    .methodology-body p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 18px; }
     .methodology-body p:last-child { margin-bottom: 0; }
     .methodology-body h3 { font-size: 18px; font-weight: 500; color: var(--text); margin: 32px 0 12px; }
-    
     .cred-panel { border: 1px solid var(--border); background: var(--white); padding: 36px; position: sticky; top: 100px; }
     .cred-panel-title { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
     .cred-row { padding: 16px 0; border-bottom: 1px solid var(--border); }
     .cred-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .cred-row:first-of-type { padding-top: 0; }
     .cred-k { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
     .cred-v { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.4; }
 
-    /* ── STANDARDS STRIP ── */
+    /* STANDARDS */
     .standards { background: var(--cream-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px; }
     .standards-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
     .standards-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-    .standards-text { font-size: 14px; color: var(--text-mid); max-width: 800px; line-height: 1.6; margin-bottom: 12px; }
+    .standards-text { font-size: 14px; color: var(--text-mid); max-width: 800px; line-height: 1.6; }
     .standards-items { display: flex; gap: 32px; flex-wrap: wrap; }
     .std-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-mid); font-weight: 500; }
     .std-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
 
-    /* ── CTA ── */
+    /* CTA */
     .cta-section { background: var(--green); padding: 88px 48px; text-align: center; }
     .cta-section h2 {
       font-size: clamp(28px, 4.5vw, 48px); font-weight: 500;
       color: var(--cream); margin-bottom: 16px; letter-spacing: -0.01em; line-height: 1.1;
     }
     .cta-sub {
-      font-size: 15px; font-weight: 300; color: rgba(250, 247, 242, 0.7);
+      font-size: 15px; font-weight: 300; color: rgba(250,247,242,0.7);
       max-width: 440px; margin: 0 auto 32px; line-height: 1.7;
     }
     .btn-cream {
@@ -267,25 +246,26 @@
     }
     .btn-cream:hover { background: var(--white); transform: translateY(-1px); }
     .cta-small {
-      font-size: 12px; color: rgba(250, 247, 242, 0.48); font-weight: 400;
-      max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;
+      font-size: 12px; color: rgba(250,247,242,0.48);
+      max-width: 520px; margin: 0 auto; line-height: 1.6;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: #0E1F19; padding: 28px 48px;
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
     }
-    .footer-l { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250, 247, 242, 0.6); display: flex; align-items: center; gap: 12px; }
-    .footer-r { font-size: 12px; color: rgba(250, 247, 242, 0.4); font-weight: 400; letter-spacing: 0.02em; }
+    .footer-l { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.6); display: flex; align-items: center; gap: 12px; }
+    .footer-r { font-size: 12px; color: rgba(250,247,242,0.4); }
 
-    /* ── ANIMATIONS ── */
+    /* ANIMATIONS */
     .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .fade-up.in { opacity: 1; transform: none; }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media(max-width: 900px) {
       header { padding: 0 24px; }
+      .header-nav a:not(.header-cta) { display: none; }
       .hero { padding: 56px 24px 48px; grid-template-columns: 1fr; gap: 40px; }
       .hero-sidebar { display: none; }
       .urgency { padding: 36px 24px; }
@@ -297,37 +277,29 @@
       .methodology { padding: 56px 24px; grid-template-columns: 1fr; gap: 48px; }
       .standards { padding: 36px 24px; }
       .cta-section { padding: 56px 24px; }
-      footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
     }
   </style>
-<link rel="icon" type="image/svg+xml" href="bars-logo.svg">
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 200 200" width="32" height="32" xmlns="http://www.w3.org/2000/svg" style="color: #1A3A2E;">
-  <defs>
-    <mask id="leftCrescent">
-      <rect width="200" height="200" fill="white" />
-      <circle cx="115" cy="100" r="45" fill="black" />
-    </mask>
-  </defs>
-  <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#leftCrescent)" />
-  <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
-  <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
-  <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1" />
-</svg>
-    </div>
-    <div class="logo-name">BARS INSTITUTE</div>
-  </div>
+  <a href="/" class="logo">
+    <svg viewBox="0 0 200 200" width="32" height="32" xmlns="http://www.w3.org/2000/svg" style="color:#1A3A2E;">
+      <defs><mask id="lc"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#lc)"/>
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    BARS Institute
+  </a>
   <div class="header-nav">
-  <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
-  <a href="/assessment-types">Assessment types</a>
-  <a href="/process">The process</a>
-  <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="header-cta">Enquire now →</a>
-</div>
+    <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
+    <a href="/assessment-types">Assessment types</a>
+    <a href="/process">The process</a>
+    <a href="mailto:sarah@bars.institute" class="header-cta">Contact →</a>
+  </div>
 </header>
 
 <section class="hero">
@@ -336,7 +308,7 @@
     <h1>The financial cost of vine disease, in dollar terms.</h1>
     <p class="hero-sub">Grapevine leafroll virus (GLRaV-3) and trunk disease have a dollar figure. BARS Institute produces it — financial impairment per hectare, replant timing, and block-level capital priorities — structured for lenders, valuers, and transaction advisers.</p>
     <div class="hero-actions">
-      <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="btn-primary">Enquire about an assessment →</a>
+      <a href="mailto:sarah@bars.institute" class="btn-primary">Get in touch →</a>
     </div>
     <div class="hero-badge">Published Methodology · New Zealand</div>
   </div>
@@ -382,25 +354,19 @@
       <div class="score-abbrev">NPV</div>
       <div class="score-fullname">Impairment in dollars</div>
       <p class="score-desc">Disease-driven revenue loss and replant CAPEX, expressed per hectare and as a percentage of clean vineyard value. Reported as median (P50) and stress-case (P95) outcomes, virus and trunk disease separately.</p>
-      <div class="score-range">
-        <div><strong>Reported as:</strong> Median and P95 downside, virus and GTD separately.</div>
-      </div>
+      <div class="score-range"><strong>Reported as:</strong> Median and P95 downside, virus and GTD separately.</div>
     </div>
     <div class="score-card fade-up">
       <div class="score-abbrev">RDI</div>
       <div class="score-fullname">Replant Decision Intelligence</div>
       <p class="score-desc">Projects when each block will reach its economic replant threshold, based on current disease burden, trunk disease progression rate, and productive life remaining.</p>
-      <div class="score-range">
-        <div><strong>Reported as:</strong> Replant trigger year and CAPEX planning horizon.</div>
-      </div>
+      <div class="score-range"><strong>Reported as:</strong> Replant trigger year and CAPEX planning horizon.</div>
     </div>
     <div class="score-card fade-up">
       <div class="score-abbrev">CAP</div>
       <div class="score-fullname">Capital Allocation Priorities</div>
       <p class="score-desc">Ranks blocks by their contribution to total portfolio biological risk. Shows which blocks are driving the downside — and where intervention has the greatest financial return.</p>
-      <div class="score-range">
-        <div><strong>Reported as:</strong> Block risk ranking and tail-risk contribution table.</div>
-      </div>
+      <div class="score-range"><strong>Reported as:</strong> Block risk ranking and tail-risk contribution table.</div>
     </div>
   </div>
 </section>
@@ -424,14 +390,12 @@
 
 <section class="methodology">
   <div class="methodology-text fade-up">
-    <p class="section-label">Expertise & Standards</p>
+    <p class="section-label">Expertise and standards</p>
     <h2 class="section-heading">Built for decision-makers</h2>
     <div class="methodology-body">
       <p>BARS assessments are designed for agricultural lenders, registered valuers, accountants, and transaction advisers who need clear, defensible evidence on vineyard biological risk. The output is structured to support credit memoranda, impairment analysis, due diligence, and asset risk review.</p>
-      
       <h3>Expertise basis</h3>
       <p>Sarah Macfarlane is a former IANZ-accredited Key Technical Person for plant virus detection within an ISO/IEC 17025 laboratory. She has led commercial grapevine virus testing programmes, developed diagnostic quality systems, and managed vineyard-scale health surveillance across New Zealand. BARS Institute translates that technical depth into evidence structured for financial decision-making.</p>
-
       <h3>Methodology and standards</h3>
       <p>All assessments follow published methodology MET-BARS-001, with assumptions, calibration bases, and sensitivity ranges disclosed in every report. Diagnostic samples are submitted to independent IANZ-accredited laboratories under full chain-of-custody documentation.</p>
     </div>
@@ -439,35 +403,18 @@
   <div class="fade-up">
     <div class="cred-panel">
       <div class="cred-panel-title">Framework Summary</div>
-      <div class="cred-row">
-        <div class="cred-k">Framework Lead</div>
-        <div class="cred-v">Sarah Macfarlane</div>
-      </div>
-      <div class="cred-row">
-        <div class="cred-k">Technical Foundation</div>
-        <div class="cred-v">Designed to BARS Institute standard specifications</div>
-      </div>
-      <div class="cred-row">
-        <div class="cred-k">Diagnostic Testing</div>
-        <div class="cred-v">Executed exclusively by independent, IANZ-accredited labs</div>
-      </div>
-      <div class="cred-row">
-        <div class="cred-k">Methodology Document</div>
-        <div class="cred-v">MET-BARS-001</div>
-      </div>
-      <div class="cred-row">
-        <div class="cred-k">Monte Carlo Runs</div>
-        <div class="cred-v">10,000 per block</div>
-      </div>
-      <div class="cred-row">
-        <div class="cred-k">Independence</div>
-        <div class="cred-v">No vineyard management, supply, or purchase conflicts</div>
-      </div>
+      <div class="cred-row"><div class="cred-k">Framework Lead</div><div class="cred-v">Sarah Macfarlane</div></div>
+      <div class="cred-row"><div class="cred-k">Technical Foundation</div><div class="cred-v">Designed to BARS Institute standard specifications</div></div>
+      <div class="cred-row"><div class="cred-k">Diagnostic Testing</div><div class="cred-v">Executed exclusively by independent, IANZ-accredited labs</div></div>
+      <div class="cred-row"><div class="cred-k">Methodology Document</div><div class="cred-v">MET-BARS-001</div></div>
+      <div class="cred-row"><div class="cred-k">Monte Carlo Runs</div><div class="cred-v">10,000 per block</div></div>
+      <div class="cred-row"><div class="cred-k">Independence</div><div class="cred-v">No vineyard management, supply, or purchase conflicts</div></div>
     </div>
   </div>
 </section>
 
-<div class="standards-inner">
+<div class="standards">
+  <div class="standards-inner">
     <div class="standards-label">Framework alignment</div>
     <p class="standards-text">Outputs are designed for direct use in impairment testing, fair value assessment, and due diligence workflows aligned with these standards.</p>
     <div class="standards-items">
@@ -476,33 +423,25 @@
       <div class="std-item"><div class="std-dot"></div>NZ IFRS 13</div>
       <div class="std-item"><div class="std-dot"></div>NZ IAS 16</div>
     </div>
-    <p style="font-size: 13px; color: var(--text-mid); margin-top: 8px;">
-    </p>
-  </div>
   </div>
 </div>
 
 <section class="cta-section">
-  <h2>Enquire about an assessment</h2>
-  <p class="cta-sub">Tell us about the property, blocks, and context. We'll confirm scope and fee within one business day.</p>
-  <a href="https://barsinstitute.fillout.com/004a" target="_blank" class="btn-cream">Request an assessment →</a>
+  <h2>Discuss a specific property</h2>
+  <p class="cta-sub">Contact Sarah Macfarlane directly to discuss a property, transaction, or lending decision where biological condition may be material.</p>
+  <a href="mailto:sarah@bars.institute" class="btn-cream">Get in touch →</a>
   <p class="cta-small">BARS outputs are decision-support evidence for engaging professionals. They do not replace a registered valuation, accounting opinion, or credit decision.</p>
 </section>
 
 <footer>
   <div class="footer-l">
-    <svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg" style="color: rgba(250,247,242,0.6);">
-  <defs>
-    <mask id="leftCrescentFooter">
-      <rect width="200" height="200" fill="white" />
-      <circle cx="115" cy="100" r="45" fill="black" />
-    </mask>
-  </defs>
-  <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#leftCrescentFooter)" />
-  <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
-  <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5" />
-  <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1" />
-</svg>
+    <svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg" style="color:rgba(250,247,242,0.6);">
+      <defs><mask id="lcf"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#lcf)"/>
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1"/>
+    </svg>
     BARS Institute Limited · New Zealand · bars.institute
   </div>
   <div class="footer-r">© 2026 BARS Institute Limited</div>
