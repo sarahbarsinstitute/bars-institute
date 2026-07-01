@@ -447,18 +447,31 @@ BARS outputs are independent decision-support evidence. They do not constitute a
 </div>
 
 <footer>
-<div class="footer-l">
-<svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg" style="color:rgba(250,247,242,0.6);">
-<defs><mask id="lcf"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
-<circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#lcf)"/>
-<circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1"/>
-</svg>
-BARS Institute Limited · New Zealand · bars.institute
-</div>
-<div class="footer-r">© 2026 BARS Institute Limited</div>
+  <div class="footer-l">
+    <svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg" style="color:rgba(250,247,242,0.6);">
+      <defs><mask id="lcf"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#lcf)"/>
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    BARS Institute Limited · New Zealand · bars.institute
+  </div>
+  <div class="footer-r">© 2026 BARS Institute Limited</div>
 </footer>
 
+<script>
+const io = new IntersectionObserver((entries) => {
+  let delay = 0;
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('in'), delay);
+      delay += 70;
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
