@@ -339,7 +339,7 @@
         <div class="field">
           <div class="field-row"><label>Vector management regime</label></div>
           <div class="pillrow" id="vtPills"></div>
-          <div class="infonote">This sets the mealybug vector-suppression intensity, which slows how fast prevalence spreads (β₀·Vₜ). "High-control IPM" means sustained, documented vector suppression — it does <em>not</em> mean actively removing infected vines. Even at High-control, this model can only slow the rise in I₀; it cannot show prevalence declining, which sustained roguing has achieved in NZ trial data (Bell et al. 2018).</div>
+          <div class="infonote">This sets the mealybug vector‑suppression intensity, which slows how fast prevalence spreads (β₀·Vₜ). ‘High‑control IPM’ means sustained, documented vector suppression — it does <em>not</em> mean actively removing infected vines. Even at High‑control, this model can only slow the rise in I₀; it cannot show prevalence declining. Sustained roguing has driven prevalence down in NZ trial data (Bell et al. 2018); that effect is not captured here.</div>
         </div>
       </div>
 
@@ -729,7 +729,7 @@ function renderResult(inputs, result){
   document.getElementById('interventionTotal').textContent = '$'+fmt(interventionValuePV*blockSize)+' total across '+blockSize+' ha';
   document.getElementById('interventionPct').textContent = state.vt==='high'
     ? 'Current regime is already High-control IPM — no further intervention value from this switch.'
-    : `Value of slower spread if vector suppression moves from ${VT[state.vt].label} to High-control IPM. Reflects reduced spread rate only — not the additional value of an active roguing programme, which isn't modelled here.`;
+    : `Value of slower spread if vector suppression moves from ${VT[state.vt].label} to High-control IPM. Reflects reduced spread rate only — it does not capture the additional value of an active roguing programme, which is not modelled here.`;
 
   renderCharts(years, virusPrevSeries, virusPrevSeriesHC, affectedSeries, amax*100, replantYear, state.vt);
 }
