@@ -12,8 +12,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Block Impairment Calculator | BARS Institute</title>
-<meta name="description" content="Model the projected Net Present Value impairment of GLRaV-3, trunk disease, and gap-rate fixed-cost dilution at block level using the core BARS methodology formulas (MET-BARS-001 v1.6).">
+<title>Indicative Block Impairment Calculator | BARS Institute</title>
+<meta name="description" content="Get an indicative estimate of the potential economic impact of GLRaV-3, trunk disease, and gap-rate fixed-cost dilution at block level.">
 <link rel="icon" type="image/svg+xml" href="bars-logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,7 +273,7 @@
   <div class="header-nav">
     <a href="/assessment-types">Assessment types</a>
     <a href="/process">The process</a>
-    <a href="/ROI-calculator">ROI calculator</a>
+    <a href="/ROI-calculator" class="active">Disease cost calculator</a>
     <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
     <a href="mailto:sarah@bars.institute" class="header-cta">Contact →</a>
   </div>
@@ -282,22 +282,23 @@
 <section class="hero">
   <div class="hero-main">
     <div class="hero-eyebrow">Interactive tool</div>
-    <h1>What does vine disease cost this block, in dollar terms?</h1>
-    <p class="hero-sub">Set a block profile and current disease burden below to see how GLRaV-3, trunk disease, and gap-rate fixed-cost dilution translate into projected Net Present Value impairment over the block's remaining productive life (minimum 5-year horizon), using the core BARS methodology formulas.</p>
-    <div class="hero-badge">Illustrative model — not an assessment output for any specific vineyard</div>
+    <h1>What could disease be costing this vineyard block?</h1>
+    <p class="hero-sub">Set a block profile and current disease assumptions below to see an indicative estimate of the potential economic impact of GLRaV-3, trunk disease, and missing vine positions over the block's remaining productive life.</p>
+    <p class="hero-sub" style="margin-bottom:0;">This calculator shows a single central estimate based on your inputs. A full BARS Assessment uses block-specific evidence and uncertainty analysis to report a bounded P50/P95 range.</p>
+    <div class="hero-badge" style="margin-top:16px;">Illustrative model only — not an assessment, valuation, accounting opinion, or credit recommendation for any specific vineyard</div>
   </div>
   <div class="hero-sidebar">
     <div class="basis-card">
-      <div class="basis-label">Model Basis</div>
-      <div class="basis-item"><div class="basis-key">Formula source</div><div class="basis-val">MET-BARS-001 v1.6 §4.1–4.3.1</div></div>
-      <div class="basis-item"><div class="basis-key">This tool</div><div class="basis-val">Single central-estimate path</div></div>
-      <div class="basis-item"><div class="basis-key">Full BARS Assessment</div><div class="basis-val">10,000-run Monte Carlo, P50/P95 reported</div></div>
+      <div class="basis-label">What this shows</div>
+      <div class="basis-item"><div class="basis-key">This tool</div><div class="basis-val">A single indicative estimate from your inputs</div></div>
+      <div class="basis-item"><div class="basis-key">Full BARS Assessment</div><div class="basis-val">Field evidence, laboratory testing, and a bounded P50/P95 range</div></div>
+      <div class="basis-item"><div class="basis-key">Full detail</div><div class="basis-val"><a href="#methodology" style="color:var(--green-mid);">View methodology and assumptions →</a></div></div>
     </div>
   </div>
 </section>
 
 <section class="calc-section" id="calculator">
-  <p class="section-label">Block inputs and projected outputs</p>
+  <p class="section-label">Block inputs and indicative outputs</p>
   <h2 class="section-heading">Model a block</h2>
 
   <div class="calc-grid">
@@ -333,44 +334,44 @@
       <div class="group">
         <div class="group-label">Virus assessment — GLRaV-3</div>
         <div class="field">
-          <div class="field-row"><label for="i0">Vine-level prevalence (I₀)</label><span class="out" id="i0Out"></span></div>
+          <div class="field-row"><label for="i0">Vine-level prevalence</label><span class="out" id="i0Out"></span></div>
           <input id="i0" type="range" min="0" max="80" step="1">
         </div>
         <div class="field">
           <div class="field-row"><label>Vector management regime</label></div>
           <div class="pillrow" id="vtPills"></div>
-          <div class="infonote">This sets the mealybug vector‑suppression intensity, which slows how fast prevalence spreads (β₀·Vₜ). ‘High‑control IPM’ means sustained, documented vector suppression — it does <em>not</em> mean actively removing infected vines. Even at High‑control, this model can only slow the rise in I₀; it cannot show prevalence declining. Sustained roguing has driven prevalence down in NZ trial data (Bell et al. 2018); that effect is not captured here.</div>
+          <div class="infonote">This sets the expected level of mealybug suppression. It affects the projected rate of spread but does not include active removal of infected vines.</div>
         </div>
       </div>
 
       <div class="group">
         <div class="group-label">Trunk disease assessment</div>
         <div class="field">
-          <div class="field-row"><label for="d0">Observed disease incidence (D₀)</label><span class="out" id="d0Out"></span></div>
+          <div class="field-row"><label for="d0">Observed disease incidence</label><span class="out" id="d0Out"></span></div>
           <input id="d0" type="range" min="0" max="80" step="1">
         </div>
         <div class="field">
-          <div class="field-row"><label>Progression rate (κ)</label></div>
+          <div class="field-row"><label>Projected progression</label></div>
           <div class="pillrow" id="kappaPills"></div>
         </div>
         <div class="infonote">
           <strong>Low</strong> — documented history of consistent pruning-wound protection, minimal large-diameter wounds<br>
-          <strong>Base</strong> — standard management, no documented wound protection or history unverified — this is the population-level rate observed across the full survey cohort<br>
+          <strong>Base</strong> — standard management, no documented wound protection or history unverified<br>
           <strong>High</strong> — untreated large-diameter wounds identified during the pruning-window assessment, or significant established dieback already present
         </div>
       </div>
 
       <div class="group">
-        <div class="group-label">Gap rate — §4.3.1</div>
+        <div class="group-label">Missing vine positions</div>
         <div class="field">
-          <div class="field-row"><label for="g0">Physically missing / dead vine positions (G₀)</label><span class="out" id="g0Out"></span></div>
+          <div class="field-row"><label for="g0">Physically missing or dead vine positions</label><span class="out" id="g0Out"></span></div>
           <input id="g0" type="range" min="0" max="40" step="1">
         </div>
         <div class="field">
           <div class="field-row"><label for="opex">Operating cost</label><span class="out" id="opexOut"></span></div>
           <input id="opex" type="range" min="3000" max="14000" step="250">
         </div>
-        <div class="infonote">G₀ is distinct from D₀ — a symptomatic vine is still standing. Spray, tractor, and canopy costs are incurred per hectare and don't reduce for gapped positions, so this is modelled as a separate fixed-cost dilution effect, not folded into GTD impairment.</div>
+        <div class="infonote">Spray, tractor, and canopy costs are incurred per hectare and don't reduce for missing vine positions, so this is modelled as a separate fixed-cost dilution effect.</div>
       </div>
 
       <div class="group">
@@ -384,8 +385,6 @@
           <input id="disc" type="range" min="4" max="12" step="0.5">
         </div>
       </div>
-
-      <div class="infonote">α (yield-loss coefficient) is literature-derived from overseas trials; New Zealand calibration is the primary outstanding parameter gap. κ (trunk disease progression) reflects Marlborough and Hawke's Bay survey ranges. The gap-rate dilution figure is a disclosed conservative overstatement — harvest-labour cost scaling with gap rate is not netted out. None are observed constants for this block.</div>
     </div>
 
     <div class="output-panel">
@@ -395,21 +394,19 @@
           <div class="score-abbrev" id="bvsNum">0.0</div>
           <div class="gauge" id="bvsGauge"></div>
           <div class="gauge-labels" id="bvsGaugeLabels"></div>
-          <div class="score-evidence">These band boundaries are internal working thresholds, calibrated to biological ranges rather than independently validated benchmarks.</div>
         </div>
         <div class="score-card">
           <div class="score-top"><div class="score-fullname">BARS GTD Score</div><div class="score-band" id="bgsBand"></div></div>
           <div class="score-abbrev" id="bgsNum">0.0</div>
           <div class="gauge" id="bgsGauge"></div>
           <div class="gauge-labels" id="bgsGaugeLabels"></div>
-          <div class="score-evidence">Bands are quartered against Aₘₐₓ for the selected variety tier, not a fixed D₀ scale. No NZ research links D₀ to a severity or replant threshold — this quartering is an internal working construction, with no published benchmark at any point.</div>
         </div>
       </div>
 
       <div class="baseline-card">
         <div>
-          <div class="baseline-label">Clean revenue baseline (no disease)</div>
-          <div class="baseline-note">Discounted revenue only — yield × price, zero disease, no OPEX or CAPEX netted out. The reference point every impairment figure below is measured against.</div>
+          <div class="baseline-label">Discounted gross revenue baseline</div>
+          <div class="baseline-note">The estimated discounted gross revenue for a disease-free reference scenario over the selected horizon. The reference point every impact figure below is measured against.</div>
         </div>
         <div class="baseline-figures">
           <div class="baseline-value" id="cleanVal">$0/ha</div>
@@ -419,42 +416,44 @@
 
       <div class="imp-grid">
         <div class="imp-card">
-          <div class="imp-label">Virus Net Present Value impairment</div>
+          <div class="imp-label">GLRaV-3 impact</div>
           <div class="imp-value" id="virusVal">$0/ha</div>
           <div class="imp-total" id="virusTotal">$0 total across block</div>
-          <div class="imp-sub" id="virusPct">0% of clean NPV</div>
+          <div class="imp-sub" id="virusPct">0% of baseline</div>
         </div>
         <div class="imp-card">
-          <div class="imp-label">GTD Net Present Value impairment</div>
+          <div class="imp-label">Trunk-disease impact</div>
           <div class="imp-value" id="gtdVal">$0/ha</div>
           <div class="imp-total" id="gtdTotal">$0 total across block</div>
-          <div class="imp-sub" id="gtdPct">0% of clean NPV</div>
+          <div class="imp-sub" id="gtdPct">0% of baseline</div>
         </div>
         <div class="imp-card gap">
-          <div class="imp-label">Gap-rate dilution Net Present Value</div>
+          <div class="imp-label">Fixed-cost dilution</div>
           <div class="imp-value" id="gapVal">$0/ha</div>
           <div class="imp-total" id="gapTotal">$0 total across block</div>
-          <div class="imp-sub" id="gapPct">0% of clean NPV</div>
+          <div class="imp-sub" id="gapPct">0% of baseline</div>
         </div>
         <div class="imp-card combined">
-          <div class="imp-label">Combined Net Present Value impairment</div>
+          <div class="imp-label">Combined indicative impact</div>
           <div class="imp-value" id="combinedVal">$0/ha</div>
           <div class="imp-total" id="combinedTotal">$0 total across block</div>
-          <div class="imp-sub" id="combinedPct">0% of clean NPV</div>
+          <div class="imp-sub" id="combinedPct">0% of baseline</div>
         </div>
         <div class="imp-card intervention" style="grid-column:1/-1">
           <div class="imp-label">Intervention value — switching to High-control IPM</div>
           <div class="imp-value" id="interventionVal">$0/ha</div>
           <div class="imp-total" id="interventionTotal">$0 total across block</div>
-          <div class="imp-sub" id="interventionPct">Virus Net Present Value impairment avoided vs. current regime, per §4.4.4</div>
+          <div class="imp-sub" id="interventionPct">GLRaV-3 impact avoided vs. current regime</div>
         </div>
       </div>
+
+      <p style="font-size:12px; color:var(--text-muted); line-height:1.6; margin:-14px 0 20px;">These results are directional estimates based on the assumptions entered. Results can change materially when disease prevalence, yield, fruit price, intervention timing, and block-specific evidence are updated.</p>
 
       <div class="lead-card">
         <div class="lead-card-inner">
           <div>
             <div class="lead-title">Want the properly bounded range for this scenario?</div>
-            <div class="lead-sub">This tool shows one central-estimate path. A full BARS Assessment runs a 10,000-run Monte Carlo simulation and reports P50/P95 impairment for these exact inputs. Leave your email and Sarah will send you that range.</div>
+            <div class="lead-sub">This tool shows one central estimate. A full BARS Assessment tests uncertainty in the key biological and financial assumptions and reports a P50/P95 range for the selected block.</div>
           </div>
           <div>
             <form id="leadForm" class="lead-form">
@@ -469,7 +468,7 @@
       <div class="chart-card">
         <div class="chart-title">GLRaV-3 progression under continued spread — no active roguing modelled</div>
         <canvas id="virusChart"></canvas>
-        <div class="infonote">Both lines assume the disease is left to spread at the selected vector-management intensity; neither models a grower actively removing infected vines. The comparison line shows slower spread under stronger vector suppression only — it can rise more slowly, but this model cannot show prevalence falling, even at High-control IPM. Sustained real-world roguing has driven prevalence down in NZ trial data; that effect isn't captured here. Trunk disease is shown separately below.</div>
+        <div class="infonote">Both lines assume the disease is left to spread at the selected vector-management intensity; neither models a grower actively removing infected vines. The comparison line shows slower spread under stronger vector suppression only — it can rise more slowly, but this model cannot show prevalence falling, even at High-control IPM. Sustained real-world roguing has driven prevalence down in NZ trial data; that effect isn't captured here.</div>
       </div>
       <div class="chart-card">
         <div class="chart-title">Trunk disease progression under continued disease — no re-trunking modelled</div>
@@ -480,12 +479,23 @@
   </div>
 </section>
 
-<div class="disclaimer-band">
+<div class="disclaimer-band" id="methodology">
   <div class="disclaimer-inner">
     <div class="disclaimer-label">Scope</div>
-    <p>BARS outputs are decision-support evidence, not a registered valuation, accounting opinion, or credit approval recommendation. They do not determine market value, loan terms, impairment recognition, or financial statement treatment. This calculator is a simplified, illustrative version of the underlying formulas set out in MET-BARS-001 v1.6 and does not represent an assessment output for any specific vineyard or block.</p>
-    <p>Virus impairment uses the logistic spread trajectory (β₀·Vₜ) and exponential yield-loss function (α) described in §4.1–4.2. Trunk disease impairment uses the vine-position progression model (κ) and replant-threshold (Aₘₐₓ) logic in §4.3, valuing affected-but-not-yet-replaced positions at full lost gross revenue (a disclosed conservative simplification, not a partial-productivity discount). Gap-rate fixed-cost dilution follows §4.3.1: full per-hectare operating cost charged against the physically missing/dead fraction, without a harvest-labour offset. Full BARS Assessments report P50/P95 outputs from a 10,000-run Monte Carlo simulation with correlated α/β₀ draws and PERT-drawn OPEX; this tool shows one central-estimate path with a fixed OPEX input only.</p>
-    <p>The BARS GTD Score band in this tool is quartered against Aₘₐₓ for the selected variety tier (25% increments, with Severe beginning at 75% of Aₘₐₓ), rather than a fixed universal D₀ scale. This anchors the score to the same replant threshold the progression model itself uses, but it is an internal working construction — no NZ research currently links D₀ to a severity threshold, and this quartering is not independently evidenced.</p>
+    <p>BARS outputs are decision-support evidence, not a registered valuation, accounting opinion, or credit approval recommendation. This calculator is a simplified, illustrative version of the BARS methodology and does not represent an assessment output for any specific vineyard or block.</p>
+
+    <details style="margin-top:18px;">
+      <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--green-mid); list-style:none;">View methodology and assumptions →</summary>
+      <div style="margin-top:16px;">
+        <p>This tool is a simplified version of the BARS disease-impact and financial-modelling framework. It is intended for preliminary decision support and does not replace field assessment, laboratory testing, a formal valuation, or accounting advice.</p>
+        <p>The model estimates potential discounted revenue and cost impacts under the selected disease scenario. It does not automatically account for every intervention option, including active roguing, individual-vine remediation, re-trunking, or all possible labour-cost offsets.</p>
+        <p>GLRaV-3 impact uses a logistic spread trajectory and an exponential yield-loss function. Trunk-disease impact uses a vine-position progression model with a replant-threshold trigger, valuing affected-but-not-yet-replaced positions at full lost gross revenue — a disclosed conservative simplification rather than a partial-productivity discount. Fixed-cost dilution reflects full per-hectare operating cost charged against the physically missing or dead vine fraction, without a harvest-labour offset.</p>
+        <p>The full BARS Assessment uses block-specific evidence, documented assumptions, and a 10,000-run Monte Carlo simulation with correlated parameter draws to report bounded P50/P95 outputs; this tool shows one central-estimate path with fixed inputs only.</p>
+        <p>The BARS GTD Score band in this tool is scaled relative to the replant threshold for the selected variety tier, rather than a fixed universal scale. This anchors the score to the same replant threshold the progression model itself uses, but it is an internal working construction — no NZ research currently links observed disease incidence to a severity threshold, and this scaling is not independently evidenced.</p>
+        <p>The yield-loss coefficient is literature-derived from overseas trials; New Zealand calibration is the primary outstanding parameter gap. The trunk-disease progression rate reflects Marlborough and Hawke's Bay survey ranges. None are observed constants for this block.</p>
+        <p><a href="/vineyard-biological-risk-assessment" style="color:var(--green-mid);">View the technical methodology →</a></p>
+      </div>
+    </details>
   </div>
 </div>
 
@@ -510,9 +520,9 @@
 </footer>
 
 <script>
-// All locked BARS parameters (α, β₀, κ, Aₘₐₓ, Vt) live server-side only, in the Cloudflare Worker
-// at WORKER_BASE. This file sends block inputs and receives computed outputs — it never holds,
-// and never has access to, the calibrated coefficients themselves.
+// All locked BARS parameters live server-side only, in the Cloudflare Worker at WORKER_BASE.
+// This file sends block inputs and receives computed outputs — it never holds, and never has
+// access to, the calibrated coefficients themselves.
 
 const WORKER_BASE = 'https://api.bars.institute'; // set to your deployed Worker route
 
@@ -552,16 +562,16 @@ const KAPPA = {
   base:{label:'Base'},
   high:{label:'High'}
 };
-// BVS: 4 bands per v1.6 §4.4.1 (re-anchored)
+// BVS: 4 bands per MET-BARS-001 (re-anchored)
 const BVS_BANDS = [
   {max:5, label:'Minimal', hex:'#6B8E65'},
   {max:20, label:'Moderate', hex:'#A67C3D'},
   {max:40, label:'High', hex:'#9C5A34'},
   {max:100, label:'Severe', hex:'#7A3B2E'}
 ];
-// BGS: variety-relative bands anchored to Aₘₐₓ for the selected variety tier — same 4-band structure
-// (Minimal / Moderate / High / Severe) as BVS, quartered against the replant threshold instead of a
-// fixed universal D₀ percentage. amax is supplied by the /calculate response, not stored client-side.
+// BGS: variety-relative bands anchored to the replant threshold for the selected variety tier — same
+// 4-band structure (Minimal / Moderate / High / Severe) as BVS, quartered against that threshold instead
+// of a fixed universal percentage. amax is supplied by the /calculate response, not stored client-side.
 function bgsBandsFor(amax){
   const pct = amax*100;
   return [
@@ -714,17 +724,17 @@ function renderResult(inputs, result){
   document.getElementById('cleanVal').textContent = '$'+fmt(cleanPV)+'/ha';
   document.getElementById('cleanTotal').textContent = '$'+fmt(cleanPV*blockSize)+' total across '+blockSize+' ha over '+T+' years';
   document.getElementById('virusTotal').textContent = '$'+fmt(virusPV*blockSize)+' total across '+blockSize+' ha';
-  document.getElementById('virusPct').textContent = pctStr(cleanPV? virusPV/cleanPV*100:0)+' of clean NPV over '+T+'-year horizon';
+  document.getElementById('virusPct').textContent = pctStr(cleanPV? virusPV/cleanPV*100:0)+' of baseline over '+T+'-year horizon';
   document.getElementById('gtdVal').textContent = '$'+fmt(gtdPV)+'/ha';
   document.getElementById('gtdTotal').textContent = '$'+fmt(gtdPV*blockSize)+' total across '+blockSize+' ha';
-  document.getElementById('gtdPct').textContent = pctStr(cleanPV? gtdPV/cleanPV*100:0)+' of clean NPV over '+T+'-year horizon'
+  document.getElementById('gtdPct').textContent = pctStr(cleanPV? gtdPV/cleanPV*100:0)+' of baseline over '+T+'-year horizon'
     + (replantYear!==null ? ` · replant trigger year ${replantYear}` : ' · replant threshold not reached in horizon');
   document.getElementById('gapVal').textContent = '$'+fmt(gapPV)+'/ha';
   document.getElementById('gapTotal').textContent = '$'+fmt(gapPV*blockSize)+' total across '+blockSize+' ha';
-  document.getElementById('gapPct').textContent = pctStr(cleanPV? gapPV/cleanPV*100:0)+' of clean NPV over '+T+'-year horizon · conservative overstatement, no harvest-labour offset';
+  document.getElementById('gapPct').textContent = pctStr(cleanPV? gapPV/cleanPV*100:0)+' of baseline over '+T+'-year horizon · conservative overstatement, no harvest-labour offset';
   document.getElementById('combinedVal').textContent = '$'+fmt(combinedPV)+'/ha';
   document.getElementById('combinedTotal').textContent = '$'+fmt(combinedPV*blockSize)+' total across '+blockSize+' ha';
-  document.getElementById('combinedPct').textContent = pctStr(cleanPV? combinedPV/cleanPV*100:0)+' of clean NPV over '+T+'-year horizon';
+  document.getElementById('combinedPct').textContent = pctStr(cleanPV? combinedPV/cleanPV*100:0)+' of baseline over '+T+'-year horizon';
   document.getElementById('interventionVal').textContent = '$'+fmt(interventionValuePV)+'/ha';
   document.getElementById('interventionTotal').textContent = '$'+fmt(interventionValuePV*blockSize)+' total across '+blockSize+' ha';
   document.getElementById('interventionPct').textContent = state.vt==='high'
@@ -812,7 +822,7 @@ function renderCharts(years, virusPrev, virusPrevHC, affected, amaxPct, replantY
   const amaxPts = years.map(yr=>({x:yr, y:amaxPct}));
   const gtdDatasets = [
     {label:'Affected vine positions (%)', data:affectedPts, borderColor:'#9C5A34', backgroundColor:'rgba(156,90,52,.14)', fill:true, tension:.2, pointRadius:0, borderWidth:2},
-    {label:'Replant threshold (Aₘₐₓ)', data:amaxPts, borderColor:'#7A3B2E', borderDash:[5,4], fill:false, pointRadius:0, borderWidth:1.5}
+    {label:'Replant threshold', data:amaxPts, borderColor:'#7A3B2E', borderDash:[5,4], fill:false, pointRadius:0, borderWidth:1.5}
   ];
   if(replantYear!==null){
     gtdDatasets.push({
