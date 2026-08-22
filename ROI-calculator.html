@@ -83,6 +83,30 @@
   }
   .header-cta:hover { background: var(--green-mid); color: var(--cream) !important; }
 
+  .menu-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 0;
+  }
+  .menu-toggle span {
+    display: block; width: 22px; height: 2px; background: var(--green); transition: transform 0.2s, opacity 0.2s;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav {
+    display: none; flex-direction: column; position: sticky; top: 60px; z-index: 99;
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    max-height: 0; overflow: hidden; transition: max-height 0.25s ease;
+  }
+  .mobile-nav.open { max-height: 400px; }
+  .mobile-nav a {
+    padding: 16px 24px; font-size: 14px; font-weight: 500; color: var(--text-mid);
+    text-decoration: none; border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav a.active { color: var(--green); }
+  .mobile-nav a.header-cta { color: var(--cream) !important; text-align: center; margin: 12px 24px; border-bottom: none; }
+
   .hero {
     padding: 72px 48px 56px; max-width: 1140px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 300px; gap: 64px; align-items: start;
@@ -248,6 +272,9 @@
   @media (max-width: 900px) {
     header { padding: 0 24px; }
     .header-nav a:not(.header-cta) { display: none; }
+    .header-nav .header-cta { display: none; }
+    .menu-toggle { display: flex; }
+    .mobile-nav { display: flex; }
     .hero { padding: 48px 24px 36px; }
     .calc-section { padding: 12px 24px 56px; }
     .input-panel { position: static; }
@@ -271,13 +298,24 @@
     BARS Institute
   </a>
   <div class="header-nav">
-    <a href="/assessment-types">Assessment types</a>
-    <a href="/process">The process</a>
+    <a href="/assessment-types">Assessment Types</a>
+    <a href="/process">The Process</a>
     <a href="/ROI-calculator" class="active">Vineyard Disease Impact Calculator</a>
-    <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
+    <a href="/vineyard-biological-risk-assessment">What is a BARS Assessment?</a>
     <a href="mailto:sarah@bars.institute" class="header-cta">Contact →</a>
   </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="/assessment-types">Assessment Types</a>
+  <a href="/process">The Process</a>
+  <a href="/ROI-calculator" class="active">Vineyard Disease Impact Calculator</a>
+  <a href="/vineyard-biological-risk-assessment">What is a BARS Assessment?</a>
+  <a href="mailto:sarah@bars.institute" class="header-cta">Contact →</a>
+</div>
 
 <section class="hero">
   <div class="hero-main">
@@ -851,6 +889,25 @@ function setBlockDefaults(){
   document.getElementById('price').value = Math.round((cg.priceD*adj.priceMult)/50)*50; // nearest $50/t
 }
 
+function setupMobileNav(){
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', ()=>{
+    const isOpen = nav.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  // Close the drawer after tapping a link (in-page anchors won't navigate away)
+  nav.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      nav.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 function init(){
   const cultivarSel = document.getElementById('cultivarGroup');
   cultivarSel.innerHTML = Object.entries(CULTIVAR_GROUPS).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('');
@@ -873,6 +930,7 @@ function init(){
   buildPills(document.getElementById('vtPills'), VT, 'vt', computeAndRender);
   buildPills(document.getElementById('kappaPills'), KAPPA, 'kappa', computeAndRender);
   setupLeadForm();
+  setupMobileNav();
 
   cultivarSel.addEventListener('change', ()=>{setBlockDefaults(); computeAndRender();});
   tierSel.addEventListener('change', ()=>{setBlockDefaults(); computeAndRender();});
