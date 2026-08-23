@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8Y5Y8Q9EH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M8Y5Y8Q9EH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'G-M8Y5Y8Q9EH'); 
+  gtag('config', 'G-M8Y5Y8Q9EH'); 
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,6 +82,30 @@
     }
     .header-cta:hover { background: var(--green-mid); color: var(--cream) !important; }
 
+
+  .menu-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 0;
+  }
+  .menu-toggle span {
+    display: block; width: 22px; height: 2px; background: var(--green); transition: transform 0.2s, opacity 0.2s;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav {
+    display: none; flex-direction: column; position: sticky; top: 60px; z-index: 99;
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    max-height: 0; overflow: hidden; transition: max-height 0.25s ease;
+  }
+  .mobile-nav.open { max-height: 400px; }
+  .mobile-nav a {
+    padding: 16px 24px; font-size: 14px; font-weight: 500; color: var(--text-mid);
+    text-decoration: none; border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav a.active { color: var(--green); }
+  .mobile-nav a.header-cta { color: var(--cream) !important; text-align: center; margin: 12px 24px; border-bottom: none; }
     /* HERO */
     .hero {
       padding: 88px 48px 72px;
@@ -268,6 +292,9 @@
     @media(max-width: 900px) {
       header { padding: 0 24px; }
       .header-nav a:not(.header-cta) { display: none; }
+      .header-nav .header-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .mobile-nav { display: flex; }
       .hero { padding: 56px 24px 48px; grid-template-columns: 1fr; gap: 40px; }
       .hero-sidebar { display: none; }
       .urgency { padding: 36px 24px; }
@@ -303,7 +330,19 @@
     <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
     <a href="mailto:sarah@bars.institute" class="header-cta">Contact →</a>
   </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="/assessment-types">Assessment types</a>
+    <a href="/process">The process</a>
+    <a href="/ROI-calculator">Vineyard Disease Impact Calculator</a>
+    <a href="/vineyard-biological-risk-assessment">What is a BARS assessment?</a>
+    <a href="mailto:sarah@bars.institute" class="header-cta">Contact →</a>
+  </div>
+
 
 <section class="hero">
   <div class="hero-main">
@@ -468,6 +507,26 @@ const io = new IntersectionObserver((entries) => {
   });
 },{threshold:0.08});
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('mobileNav');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', function(){
+    var isOpen = nav.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+});
 </script>
 </body>
 </html>
