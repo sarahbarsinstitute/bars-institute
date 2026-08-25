@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BARS Institute | Engagement Intake</title>
 <meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <link rel="icon" type="image/svg+xml" href="/bars-logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" referrerpolicy="no-referrer">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" referrerpolicy="no-referrer"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -66,6 +67,7 @@
 
   #gate-loading { font-size: 14px; color: var(--text-mid); }
   #gate-error { background: var(--error-light); color: var(--error); border-left: 3px solid var(--error); padding: 16px 20px; font-size: 14px; }
+  #already-submitted { background: var(--green-light); color: var(--green-mid); border-left: 3px solid var(--green); padding: 16px 20px; font-size: 14px; }
 
   .client-card {
     background: var(--white); border: 1px solid var(--green); margin-bottom: 32px;
@@ -92,6 +94,9 @@
   }
   input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); background: var(--white); }
   textarea { resize: vertical; min-height: 64px; font-family: 'DM Sans', sans-serif; }
+  input:invalid, select:invalid { box-shadow: none; }
+  .field-error { color: var(--error); font-size: 12px; margin-top: 4px; display: none; }
+  .field-error.show { display: block; }
 
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
@@ -153,6 +158,7 @@
 
   <div id="gate-loading">Checking your link…</div>
   <div id="gate-error" class="hidden"></div>
+  <div id="already-submitted" class="hidden">This intake link has already been submitted. If you need to change something, please contact <a href="mailto:sarah@bars.institute">sarah@bars.institute</a>.</div>
 
   <div id="form-area" class="hidden">
     <div class="meta-box">
@@ -237,16 +243,16 @@ function blockTemplate(propIdx, n) {
 
     <div class="row2">
       <div><label>Block name<input required name="block_name" /></label></div>
-      <div><label>Area (ha)<input required type="number" step="0.01" name="area_ha" /></label></div>
+      <div><label>Area (ha)<input required type="number" step="0.01" min="0.01" name="area_ha" /></label></div>
     </div>
 
     <div class="row2">
       <div><label>Planting year<input type="number" step="1" min="1900" max="2100" name="planting_year" /></label></div>
-      <div><label>Variety<input name="variety" /></label></div>
+      <div><label>Variety<input required name="variety" /></label></div>
     </div>
     <div class="row2">
       <div><label>Cultivar group
-        <select name="cultivar_group">
+        <select required name="cultivar_group">
           <option value="">Select…</option>
           <option>Red</option><option>White</option><option>Mixed</option><option>Other/Unspecified</option>
         </select>
@@ -254,18 +260,18 @@ function blockTemplate(propIdx, n) {
       <div><label>Tonnes per hectare<input type="number" step="0.01" name="tonnes_per_ha" /></label></div>
     </div>
 
-    <label>Block boundary (GPX/KML text, or a link to the file)<textarea name="boundary_gpx"></textarea></label>
+    <label>Block boundary (GPX/KML text, or a link to the file)<span class="hint">Required to generate the automated sampling plan (MET-BARS-001 §3.1).</span><textarea required name="boundary_gpx"></textarea></label>
 
     <div class="row2">
-      <div><label>Row spacing (m)<input type="number" step="0.01" name="row_spacing_m" /></label></div>
-      <div><label>Vine spacing (m)<input type="number" step="0.01" name="vine_spacing_m" /></label></div>
+      <div><label>Row spacing (m)<input required type="number" step="0.01" min="0" name="row_spacing_m" /></label></div>
+      <div><label>Vine spacing (m)<input required type="number" step="0.01" min="0" name="vine_spacing_m" /></label></div>
     </div>
 
     <label>Prior infection foci notes<span class="hint">Any known or suspected prior GLRaV-3 symptom locations within this block.</span><textarea name="prior_infection_foci_notes"></textarea></label>
 
     <div class="field-group-label">Vector Management</div>
     <label>Regime
-      <select name="vector_regime">
+      <select required name="vector_regime">
         <option value="">Select…</option>
         <option>High-control IPM</option>
         <option>Standard IPM</option>
@@ -277,28 +283,30 @@ function blockTemplate(propIdx, n) {
 
     <div class="field-group-label">Financial Model Inputs</div>
     <div class="row3">
-      <div><label>Discount rate (%)<input type="number" step="0.01" name="discount_rate" /></label></div>
-      <div><label>Productive life remaining (yrs)<input type="number" step="1" name="productive_life_years" /></label></div>
-      <div><label>Price downgrade (%)<span class="hint">0 if none</span><input type="number" step="0.01" name="price_downgrade_pct" value="0" /></label></div>
+      <div><label>Discount rate (%)<input type="number" step="0.01" min="0" max="50" name="discount_rate" /></label></div>
+      <div><label>Productive life remaining (yrs)<input type="number" step="1" min="0" max="100" name="productive_life_years" /></label></div>
+      <div><label>Price downgrade (%)<span class="hint">0 if none</span><input type="number" step="0.01" min="0" max="100" name="price_downgrade_pct" value="0" /></label></div>
     </div>
 
     <label style="margin-top:24px;">Grape price ($/tonne or unit) — PERT range</label>
     <div class="row3">
-      <div><label>Min<input type="number" step="0.01" name="grape_price_min" /></label></div>
-      <div><label>Most likely<input type="number" step="0.01" name="grape_price_likely" /></label></div>
-      <div><label>Max<input type="number" step="0.01" name="grape_price_max" /></label></div>
+      <div><label>Min<input type="number" step="0.01" min="0" name="grape_price_min" /></label></div>
+      <div><label>Most likely<input type="number" step="0.01" min="0" name="grape_price_likely" /></label></div>
+      <div><label>Max<input type="number" step="0.01" min="0" name="grape_price_max" /></label></div>
     </div>
+    <p class="field-error" data-pert-error="grape_price">Min must be ≤ Most likely ≤ Max.</p>
 
     <label style="margin-top:24px;">Operating cost ($/ha) — PERT range</label>
     <div class="row3">
-      <div><label>Min<input type="number" step="0.01" name="opex_min" /></label></div>
-      <div><label>Most likely<input type="number" step="0.01" name="opex_likely" /></label></div>
-      <div><label>Max<input type="number" step="0.01" name="opex_max" /></label></div>
+      <div><label>Min<input type="number" step="0.01" min="0" name="opex_min" /></label></div>
+      <div><label>Most likely<input type="number" step="0.01" min="0" name="opex_likely" /></label></div>
+      <div><label>Max<input type="number" step="0.01" min="0" name="opex_max" /></label></div>
     </div>
+    <p class="field-error" data-pert-error="opex">Min must be ≤ Most likely ≤ Max.</p>
 
     <div class="row2">
       <div><label>Replant threshold (Amax)
-        <select name="amax_tier">
+        <select required name="amax_tier">
           <option value="">Select…</option>
           <option>Premium (0.15)</option>
           <option>Mid-tier (0.20)</option>
@@ -306,9 +314,9 @@ function blockTemplate(propIdx, n) {
           <option>Custom</option>
         </select>
       </label></div>
-      <div><label>Replant cost per hectare ($)<input type="number" step="0.01" name="replant_cost_per_ha" /></label></div>
+      <div><label>Replant cost per hectare ($)<input type="number" step="0.01" min="0" name="replant_cost_per_ha" /></label></div>
     </div>
-    <label>Custom Amax value (only if Custom selected above)<input type="number" step="0.01" name="amax_custom" /></label>
+    <label>Custom Amax value (only if Custom selected above)<input type="number" step="0.01" min="0" max="1" name="amax_custom" /></label>
 
     <label>Notes<textarea name="notes"></textarea></label>
   </div>`;
@@ -319,6 +327,18 @@ function addBlock(propIdx) {
   const n = blockCounters[propIdx];
   document.getElementById(`blocks-container-${propIdx}`)
     .insertAdjacentHTML("beforeend", blockTemplate(propIdx, n));
+  wireAmaxCustom(document.querySelector(`.block-item[data-property="${propIdx}"]:last-of-type`));
+}
+
+// Amax custom value is required only when "Custom" is selected.
+function wireAmaxCustom(blockEl) {
+  if (!blockEl) return;
+  const tierSelect = blockEl.querySelector('[name="amax_tier"]');
+  const customInput = blockEl.querySelector('[name="amax_custom"]');
+  if (!tierSelect || !customInput) return;
+  const sync = () => { customInput.required = tierSelect.value === "Custom"; };
+  tierSelect.addEventListener("change", sync);
+  sync();
 }
 
 function propertyTemplate(n) {
@@ -420,10 +440,45 @@ function restoreDraft(draft) {
         const el = lastBlock.querySelector(`[name="${name}"]`);
         if (el) el.value = val;
       });
+      wireAmaxCustom(lastBlock);
     });
   });
 
   if (draft.attested) document.getElementById("attestation-checkbox").checked = true;
+}
+
+// ---------------- Validation helpers ----------------
+
+// Every property must retain at least one block.
+function validateBlockFloor() {
+  let ok = true;
+  document.querySelectorAll("#properties-container > .property-card").forEach(propCard => {
+    if (propCard.querySelectorAll(".block-item").length < 1) ok = false;
+  });
+  return ok;
+}
+
+// PERT ranges (grape price, opex) must satisfy min <= likely <= max when all three are supplied.
+function validatePertRanges() {
+  let ok = true;
+  document.querySelectorAll(".block-item").forEach(blockCard => {
+    ["grape_price", "opex"].forEach(prefix => {
+      const minEl = blockCard.querySelector(`[name="${prefix}_min"]`);
+      const likelyEl = blockCard.querySelector(`[name="${prefix}_likely"]`);
+      const maxEl = blockCard.querySelector(`[name="${prefix}_max"]`);
+      const errEl = blockCard.querySelector(`[data-pert-error="${prefix}"]`);
+      const min = minEl.value === "" ? null : parseFloat(minEl.value);
+      const likely = likelyEl.value === "" ? null : parseFloat(likelyEl.value);
+      const max = maxEl.value === "" ? null : parseFloat(maxEl.value);
+      let rowOk = true;
+      if (min !== null && likely !== null && min > likely) rowOk = false;
+      if (likely !== null && max !== null && likely > max) rowOk = false;
+      if (min !== null && max !== null && min > max) rowOk = false;
+      if (errEl) errEl.classList.toggle("show", !rowOk);
+      if (!rowOk) ok = false;
+    });
+  });
+  return ok;
 }
 
 // ---------------- Gate + init ----------------
@@ -437,9 +492,17 @@ async function gate() {
   }
   try {
     const { data, error } = await sb.rpc("get_engagement_intake_info", { p_token: token });
-    if (error || !data || data.length === 0 || !data[0].valid) throw new Error("invalid");
+    if (error || !data || data.length === 0) throw new Error("invalid");
 
     const info = data[0];
+
+    if (info.status === "submitted" || info.status === "reviewed") {
+      document.getElementById("gate-loading").classList.add("hidden");
+      document.getElementById("already-submitted").classList.remove("hidden");
+      return;
+    }
+    if (!info.valid) throw new Error("invalid");
+
     document.getElementById("client-name-display").textContent = info.client_name;
     document.getElementById("assessment-type-display").textContent = info.assessment_type;
     if (info.expires_at) {
@@ -495,36 +558,44 @@ document.getElementById("intake-form").addEventListener("submit", async (e) => {
     return;
   }
 
+  if (!validateBlockFloor()) {
+    statusEl.className = "err";
+    statusEl.textContent = "Every property needs at least one block. Please add a block or remove the empty property.";
+    return;
+  }
+
+  if (!validatePertRanges()) {
+    statusEl.className = "err";
+    statusEl.textContent = "One or more price/cost ranges are out of order (Min must be ≤ Most likely ≤ Max). Please check the highlighted fields.";
+    return;
+  }
+
   submitBtn.disabled = true;
   submitBtn.textContent = "Submitting…";
 
-  const clientRow = { intake_token: token, attestation_confirmed: true };
+  const clientPayload = {};
   document.querySelectorAll("#client-card input, #client-card textarea").forEach(el => {
     if (!el.name) return;
-    let val = el.value;
-    if (val === "") val = null;
-    clientRow[el.name] = val;
+    clientPayload[el.name] = el.value === "" ? null : el.value;
   });
 
   const propertyCards = document.querySelectorAll("#properties-container > .property-card");
-  const propertyRows = [];
+  const propertyPayload = [];
   propertyCards.forEach(card => {
     const propRef = `Property ${card.dataset.property}`;
-    const row = { intake_token: token, property_ref: propRef };
+    const row = { property_ref: propRef };
     card.querySelectorAll(":scope > .row2 input").forEach(el => {
       if (!el.name) return;
-      let val = el.value;
-      if (val === "") val = null;
-      row[el.name] = val;
+      row[el.name] = el.value === "" ? null : el.value;
     });
-    propertyRows.push(row);
+    propertyPayload.push(row);
   });
 
   const blockCards = document.querySelectorAll(".block-item");
-  const blockRows = [];
+  const blockPayload = [];
   blockCards.forEach(card => {
     const propRef = `Property ${card.dataset.property}`;
-    const row = { intake_token: token, property_ref: propRef };
+    const row = { property_ref: propRef };
     card.querySelectorAll("input, select, textarea").forEach(el => {
       if (!el.name) return;
       let val = el.value;
@@ -532,18 +603,18 @@ document.getElementById("intake-form").addEventListener("submit", async (e) => {
       if (el.type === "number" && val !== null) val = parseFloat(val);
       row[el.name] = val;
     });
-    blockRows.push(row);
+    blockPayload.push(row);
   });
 
   try {
-    const { error: clientError } = await sb.from("intake_client_details").insert([clientRow]);
-    if (clientError) throw clientError;
-
-    const { error: propError } = await sb.from("intake_properties").insert(propertyRows);
-    if (propError) throw propError;
-
-    const { error: blockError } = await sb.from("intake_submissions").insert(blockRows);
-    if (blockError) throw blockError;
+    const { data, error } = await sb.rpc("submit_intake_data", {
+      p_token: token,
+      p_client: clientPayload,
+      p_properties: propertyPayload,
+      p_blocks: blockPayload
+    });
+    if (error) throw error;
+    if (!data || data.success !== true) throw new Error("submission_failed");
 
     if (DRAFT_KEY) localStorage.removeItem(DRAFT_KEY);
 
@@ -551,8 +622,15 @@ document.getElementById("intake-form").addEventListener("submit", async (e) => {
     statusEl.textContent = "Thank you — your data has been submitted securely to BARS Institute.";
     document.getElementById("intake-form").querySelectorAll("input, select, textarea, button").forEach(el => el.disabled = true);
   } catch (err) {
+    let msg = "Something went wrong submitting your data. Please try again or contact sarah@bars.institute.";
+    const reason = err && err.message ? err.message : "";
+    if (reason.includes("already_submitted")) {
+      msg = "This link has already been submitted. Please contact sarah@bars.institute if you need to make changes.";
+    } else if (reason.includes("expired_token") || reason.includes("invalid_token")) {
+      msg = "This link is invalid or has expired. Please contact sarah@bars.institute for a new link.";
+    }
     statusEl.className = "err";
-    statusEl.textContent = "Something went wrong submitting your data. Please try again or contact sarah@bars.institute.";
+    statusEl.textContent = msg;
     submitBtn.disabled = false;
     submitBtn.textContent = "Submit intake data";
   }
