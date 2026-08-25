@@ -13,50 +13,30 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --green: #1A3A2E;
-    --green-mid: #265241;
-    --green-light: #EEF4F0;
-    --gold: #B8922A;
-    --gold-light: #F5ECDA;
-    --cream: #FAF7F2;
-    --cream-dark: #F2EDE5;
-    --text: #1C1C1A;
-    --text-mid: #4A4A47;
-    --text-muted: #8A8A85;
-    --white: #FFFFFF;
-    --border: #E2DDD6;
-    --border-dark: #CCC7BF;
-    --error: #A13D2F;
-    --error-light: #F5E2DE;
+    --green: #1A3A2E; --green-mid: #265241; --green-light: #EEF4F0;
+    --gold: #B8922A; --gold-light: #F5ECDA;
+    --cream: #FAF7F2; --cream-dark: #F2EDE5;
+    --text: #1C1C1A; --text-mid: #4A4A47; --text-muted: #8A8A85;
+    --white: #FFFFFF; --border: #E2DDD6; --border-dark: #CCC7BF;
+    --error: #A13D2F; --error-light: #F5E2DE;
   }
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text);
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, .field-legend, .meta-key { font-family: 'Geist', sans-serif; }
+  h1, h2, h3, .meta-key { font-family: 'Geist', sans-serif; }
 
   header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(250,247,242,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 48px; height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; background: rgba(250,247,242,0.95);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+    padding: 0 48px; height: 60px; display: flex; align-items: center; justify-content: space-between;
   }
   .logo {
-    font-family: 'DM Sans', sans-serif; font-weight: 500;
-    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--green); display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--green);
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
   }
-  .header-tag {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted);
-  }
+  .header-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
 
   .wrap { max-width: 780px; margin: 0 auto; padding: 56px 24px 100px; }
 
@@ -65,120 +45,87 @@
     color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
   }
   .page-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); }
-  .page-title {
-    font-size: clamp(28px, 4vw, 38px); font-weight: 600; letter-spacing: -0.01em;
-    color: var(--text); margin-bottom: 12px;
-  }
-  .page-sub {
-    font-size: 15px; font-weight: 300; color: var(--text-mid); max-width: 560px;
-    line-height: 1.7; margin-bottom: 40px;
-  }
+  .page-title { font-size: clamp(28px, 4vw, 38px); font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-bottom: 12px; }
+  .page-sub { font-size: 15px; font-weight: 300; color: var(--text-mid); max-width: 560px; line-height: 1.7; margin-bottom: 40px; }
 
   .meta-box {
-    background: var(--white); border: 1px solid var(--border);
-    padding: 20px 24px; margin-bottom: 40px; border-left: 3px solid var(--green);
+    background: var(--white); border: 1px solid var(--border); padding: 20px 24px;
+    margin-bottom: 32px; border-left: 3px solid var(--green);
   }
   .meta-row { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 13.5px; color: var(--text-mid); }
   .meta-row + .meta-row { margin-top: 8px; }
-  .meta-key {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-right: 6px;
-  }
+  .meta-key { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-right: 6px; }
   .meta-val { font-weight: 500; color: var(--text); }
 
-  #gate-loading { font-size: 14px; color: var(--text-mid); }
-  #gate-error {
-    background: var(--error-light); color: var(--error); border-left: 3px solid var(--error);
-    padding: 16px 20px; font-size: 14px;
+  .draft-banner {
+    background: var(--gold-light); border: 1px solid var(--gold); padding: 16px 20px;
+    margin-bottom: 32px; font-size: 13.5px; color: var(--text); display: flex;
+    align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   }
+  .draft-banner .actions { display: flex; gap: 10px; }
 
-  .block-card {
-    background: var(--white); border: 1px solid var(--border);
-    margin-bottom: 24px; position: relative; padding: 32px 28px 12px;
+  #gate-loading { font-size: 14px; color: var(--text-mid); }
+  #gate-error { background: var(--error-light); color: var(--error); border-left: 3px solid var(--error); padding: 16px 20px; font-size: 14px; }
+
+  .client-card {
+    background: var(--white); border: 1px solid var(--green); margin-bottom: 32px;
+    padding: 28px 24px; position: relative;
   }
-  .block-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green);
-  }
-  .block-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
-  }
+  .client-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); }
+
+  .property-card { background: var(--cream-dark); border: 1px solid var(--border-dark); margin-bottom: 32px; padding: 28px 24px; }
+  .property-card::before { content: ''; display: block; height: 3px; background: var(--gold); margin: -28px -24px 24px; }
+
+  .block-card { background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; position: relative; padding: 32px 28px 12px; }
+  .block-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); }
+
+  .block-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
   .block-header h3 { font-size: 15px; font-weight: 600; color: var(--green); letter-spacing: -0.01em; }
 
-  .field-group-label {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--text-muted); margin-top: 28px; margin-bottom: 4px;
-  }
+  .field-group-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-top: 28px; margin-bottom: 4px; }
 
-  label {
-    display: block; font-size: 13px; font-weight: 500; color: var(--text-mid);
-    margin: 18px 0 6px;
-  }
-  label .hint {
-    display: block; font-weight: 300; color: var(--text-muted); font-size: 12px;
-    margin-top: 3px; line-height: 1.5;
-  }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--text-mid); margin: 18px 0 6px; }
+  label .hint { display: block; font-weight: 300; color: var(--text-muted); font-size: 12px; margin-top: 3px; line-height: 1.5; }
   input, select, textarea {
     width: 100%; padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 14px;
-    border: 1px solid var(--border-dark); background: var(--cream); color: var(--text);
-    transition: border-color 0.15s;
+    border: 1px solid var(--border-dark); background: var(--cream); color: var(--text); transition: border-color 0.15s;
   }
-  input:focus, select:focus, textarea:focus {
-    outline: none; border-color: var(--green); background: var(--white);
-  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); background: var(--white); }
   textarea { resize: vertical; min-height: 64px; font-family: 'DM Sans', sans-serif; }
 
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
   @media (max-width: 600px) { .row2, .row3 { grid-template-columns: 1fr; } }
 
-  button {
-    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-    letter-spacing: 0.04em; cursor: pointer; border: none; padding: 12px 24px;
-    transition: background 0.2s, transform 0.15s;
-  }
+  button { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; cursor: pointer; border: none; padding: 12px 24px; transition: background 0.2s, transform 0.15s; }
   .btn-primary { background: var(--green); color: var(--cream); }
   .btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
   .btn-primary:disabled { opacity: 0.6; cursor: default; transform: none; }
-  .btn-secondary {
-    background: transparent; border: 1px solid var(--green); color: var(--green);
-    padding: 10px 20px; margin-top: 4px;
-  }
+  .btn-secondary { background: transparent; border: 1px solid var(--green); color: var(--green); padding: 10px 20px; margin-top: 4px; }
   .btn-secondary:hover { background: var(--green-light); }
-  .btn-remove {
-    background: transparent; color: var(--error); border: 1px solid var(--error);
-    font-size: 11px; padding: 5px 12px; letter-spacing: 0.04em;
-  }
+  .btn-secondary-gold { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 24px; margin-top: 8px; }
+  .btn-secondary-gold:hover { background: var(--gold-light); }
+  .btn-remove { background: transparent; color: var(--error); border: 1px solid var(--error); font-size: 11px; padding: 5px 12px; letter-spacing: 0.04em; }
   .btn-remove:hover { background: var(--error-light); }
+  .btn-small-gold { background: var(--gold); color: var(--white); padding: 8px 16px; font-size: 12px; }
+  .btn-small-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-mid); padding: 8px 16px; font-size: 12px; }
 
-  .submit-row {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
-  }
+  .submit-row { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 16px; }
   .submit-note { font-size: 12px; color: var(--text-muted); max-width: 340px; }
 
-  #status {
-    font-size: 13.5px; margin-top: 16px; padding: 14px 18px; display: none;
-    border-left: 3px solid transparent;
-  }
+  #status { font-size: 13.5px; margin-top: 16px; padding: 14px 18px; display: none; border-left: 3px solid transparent; }
   #status.ok { background: var(--green-light); color: var(--green-mid); border-left-color: var(--green); display: block; }
   #status.err { background: var(--error-light); color: var(--error); border-left-color: var(--error); display: block; }
+  #autosave-note { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
 
   .hidden { display: none; }
 
-  footer {
-    background: #0E1F19; padding: 24px 48px;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  }
-  .footer-l {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(250,247,242,0.6); display: flex; align-items: center; gap: 10px;
-  }
+  footer { background: #0E1F19; padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-l { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.6); display: flex; align-items: center; gap: 10px; }
   .footer-r { font-size: 11px; color: rgba(250,247,242,0.4); }
 
   @media(max-width: 640px) {
-    header { padding: 0 20px; }
-    .wrap { padding: 40px 20px 80px; }
+    header { padding: 0 20px; } .wrap { padding: 40px 20px 80px; }
     footer { padding: 20px; flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -202,7 +149,7 @@
 <div class="wrap">
   <div class="page-eyebrow">Confidential Data Submission</div>
   <h1 class="page-title">Engagement intake</h1>
-  <p class="page-sub">Provide the block-level detail below so we can generate your sampling plan and financial model inputs. Data is transmitted securely and is visible only to BARS Institute.</p>
+  <p class="page-sub">Provide your details, then add each property and its blocks below. Your progress is saved automatically in this browser as you go, so you can close this page and pick up where you left off.</p>
 
   <div id="gate-loading">Checking your link…</div>
   <div id="gate-error" class="hidden"></div>
@@ -211,17 +158,44 @@
     <div class="meta-box">
       <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val" id="client-name-display"></span></div>
       <div class="meta-row"><span class="meta-key">Engagement type</span><span class="meta-val" id="assessment-type-display"></span><span id="baseline-display"></span></div>
+      <div class="meta-row"><span class="meta-key">Link expires</span><span class="meta-val" id="expiry-display"></span></div>
+    </div>
+
+    <div id="draft-banner" class="draft-banner hidden">
+      <span>We found saved progress from an earlier visit.</span>
+      <div class="actions">
+        <button type="button" class="btn-small-gold" id="resume-draft">Resume where I left off</button>
+        <button type="button" class="btn-small-outline" id="discard-draft">Start fresh</button>
+      </div>
     </div>
 
     <form id="intake-form">
-      <div id="blocks-container"></div>
-      <button type="button" class="btn-secondary" id="add-block">+ Add another block</button>
+      <div class="client-card" id="client-card">
+        <div class="block-header"><h3>Your Details</h3></div>
+        <div class="row2">
+          <div><label>Client / entity name<input required name="client_name" /></label></div>
+          <div><label>Contact email<input type="email" name="client_email" /></label></div>
+        </div>
+        <label>Postal address<textarea required name="client_address"></textarea></label>
+        <label>Contact phone<input type="tel" name="client_phone" /></label>
+      </div>
+
+      <div id="properties-container"></div>
+      <button type="button" class="btn-secondary-gold" id="add-property">+ Add another property / vineyard</button>
+
+      <div class="block-card" style="margin-top:32px;">
+        <label style="display:flex; align-items:flex-start; gap:10px; margin-top:8px;">
+          <input type="checkbox" required id="attestation-checkbox" style="width:auto; margin-top:3px;" />
+          <span>I confirm the information provided in this form is true and accurate to the best of my knowledge.</span>
+        </label>
+      </div>
 
       <div class="submit-row">
         <p class="submit-note">Once submitted, this data is reviewed by the Lead Assessor before it enters the modelling pipeline.</p>
         <button type="submit" class="btn-primary" id="submit-btn">Submit intake data</button>
       </div>
       <div id="status"></div>
+      <p id="autosave-note"></p>
     </form>
   </div>
 </div>
@@ -242,21 +216,23 @@
 
 <script>
 // ---- Configuration ----
-const SUPABASE_URL = "https://hkinwbesslgjmqzbipcr.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhraW53YmVzc2xnam1xemJpcGNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjQ5ODgsImV4cCI6MjEwMDg0MDk4OH0.JZvUD2JtI1Wq6gyo5neRljJaEXh-GadBXnhGFmSv1PQ";
+const SUPABASE_URL = "YOUR_SUPABASE_URL";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
+const DRAFT_KEY = token ? `bars_intake_draft_${token}` : null;
 
-let blockCount = 0;
+let propertyCount = 0;
+const blockCounters = {};
 
-function blockTemplate(n) {
+function blockTemplate(propIdx, n) {
   return `
-  <div class="block-card" data-block="${n}">
+  <div class="block-card block-item" data-property="${propIdx}">
     <div class="block-header">
       <h3>Block ${n}</h3>
-      <button type="button" class="btn-remove" onclick="this.closest('.block-card').remove()">Remove</button>
+      <button type="button" class="btn-remove" onclick="this.closest('.block-item').remove()">Remove</button>
     </div>
 
     <div class="row2">
@@ -265,13 +241,17 @@ function blockTemplate(n) {
     </div>
 
     <div class="row2">
+      <div><label>Planting year<input type="number" step="1" min="1900" max="2100" name="planting_year" /></label></div>
       <div><label>Variety<input name="variety" /></label></div>
+    </div>
+    <div class="row2">
       <div><label>Cultivar group
         <select name="cultivar_group">
           <option value="">Select…</option>
           <option>Red</option><option>White</option><option>Mixed</option><option>Other/Unspecified</option>
         </select>
       </label></div>
+      <div><label>Tonnes per hectare<input type="number" step="0.01" name="tonnes_per_ha" /></label></div>
     </div>
 
     <label>Block boundary (GPX/KML text, or a link to the file)<textarea name="boundary_gpx"></textarea></label>
@@ -280,6 +260,8 @@ function blockTemplate(n) {
       <div><label>Row spacing (m)<input type="number" step="0.01" name="row_spacing_m" /></label></div>
       <div><label>Vine spacing (m)<input type="number" step="0.01" name="vine_spacing_m" /></label></div>
     </div>
+
+    <label>Prior infection foci notes<span class="hint">Any known or suspected prior GLRaV-3 symptom locations within this block.</span><textarea name="prior_infection_foci_notes"></textarea></label>
 
     <div class="field-group-label">Vector Management</div>
     <label>Regime
@@ -314,27 +296,137 @@ function blockTemplate(n) {
       <div><label>Max<input type="number" step="0.01" name="opex_max" /></label></div>
     </div>
 
-    <label>Replant threshold (Amax)
-      <select name="amax_tier">
-        <option value="">Select…</option>
-        <option>Premium (0.15)</option>
-        <option>Mid-tier (0.20)</option>
-        <option>Commodity (0.25)</option>
-        <option>Custom</option>
-      </select>
-    </label>
+    <div class="row2">
+      <div><label>Replant threshold (Amax)
+        <select name="amax_tier">
+          <option value="">Select…</option>
+          <option>Premium (0.15)</option>
+          <option>Mid-tier (0.20)</option>
+          <option>Commodity (0.25)</option>
+          <option>Custom</option>
+        </select>
+      </label></div>
+      <div><label>Replant cost per hectare ($)<input type="number" step="0.01" name="replant_cost_per_ha" /></label></div>
+    </div>
     <label>Custom Amax value (only if Custom selected above)<input type="number" step="0.01" name="amax_custom" /></label>
 
     <label>Notes<textarea name="notes"></textarea></label>
   </div>`;
 }
 
-function addBlock() {
-  blockCount++;
-  document.getElementById("blocks-container").insertAdjacentHTML("beforeend", blockTemplate(blockCount));
+function addBlock(propIdx) {
+  blockCounters[propIdx] = (blockCounters[propIdx] || 0) + 1;
+  const n = blockCounters[propIdx];
+  document.getElementById(`blocks-container-${propIdx}`)
+    .insertAdjacentHTML("beforeend", blockTemplate(propIdx, n));
 }
 
-document.getElementById("add-block").addEventListener("click", addBlock);
+function propertyTemplate(n) {
+  const removeBtn = n > 1
+    ? `<button type="button" class="btn-remove" onclick="this.closest('.property-card').remove()">Remove property</button>`
+    : "";
+  return `
+  <div class="property-card" data-property="${n}">
+    <div class="block-header">
+      <h3>Property ${n}</h3>
+      ${removeBtn}
+    </div>
+
+    <div class="row2">
+      <div><label>Vineyard / property name<input required name="vineyard_name" /></label></div>
+      <div><label>Physical address<input required name="address" /></label></div>
+    </div>
+
+    <div class="field-group-label" style="margin-top:28px;">Blocks for this property</div>
+    <div id="blocks-container-${n}"></div>
+    <button type="button" class="btn-secondary" onclick="addBlock(${n})">+ Add block</button>
+  </div>`;
+}
+
+function addProperty() {
+  propertyCount++;
+  document.getElementById("properties-container")
+    .insertAdjacentHTML("beforeend", propertyTemplate(propertyCount));
+  addBlock(propertyCount);
+}
+
+document.getElementById("add-property").addEventListener("click", addProperty);
+
+// ---------------- Draft save / resume (localStorage, this browser only) ----------------
+
+function serializeForm() {
+  const client = {};
+  document.querySelectorAll("#client-card input, #client-card textarea").forEach(el => {
+    if (el.name) client[el.name] = el.value;
+  });
+
+  const properties = [];
+  document.querySelectorAll("#properties-container > .property-card").forEach(propCard => {
+    const propFields = {};
+    propCard.querySelectorAll(":scope > .row2 input").forEach(el => { if (el.name) propFields[el.name] = el.value; });
+
+    const blocks = [];
+    propCard.querySelectorAll(".block-item").forEach(blockCard => {
+      const blockFields = {};
+      blockCard.querySelectorAll("input, select, textarea").forEach(el => {
+        if (el.name) blockFields[el.name] = el.value;
+      });
+      blocks.push(blockFields);
+    });
+
+    properties.push({ fields: propFields, blocks });
+  });
+
+  return { client, properties, attested: document.getElementById("attestation-checkbox").checked };
+}
+
+function saveDraft() {
+  if (!DRAFT_KEY) return;
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(serializeForm()));
+    const note = document.getElementById("autosave-note");
+    if (note) note.textContent = "Progress saved — " + new Date().toLocaleTimeString();
+  } catch (e) { /* storage unavailable — fail silently, submission still works */ }
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveDraft, 600);
+}
+
+function restoreDraft(draft) {
+  // Client fields
+  Object.entries(draft.client || {}).forEach(([name, val]) => {
+    const el = document.querySelector(`#client-card [name="${name}"]`);
+    if (el) el.value = val;
+  });
+
+  // Rebuild properties + their blocks
+  (draft.properties || []).forEach(prop => {
+    propertyCount++;
+    const n = propertyCount;
+    document.getElementById("properties-container").insertAdjacentHTML("beforeend", propertyTemplate(n));
+    const propCard = document.querySelector(`.property-card[data-property="${n}"]`);
+    Object.entries(prop.fields || {}).forEach(([name, val]) => {
+      const el = propCard.querySelector(`[name="${name}"]`);
+      if (el) el.value = val;
+    });
+    (prop.blocks || []).forEach(blockData => {
+      addBlock(n);
+      const blockCards = document.querySelectorAll(`.block-item[data-property="${n}"]`);
+      const lastBlock = blockCards[blockCards.length - 1];
+      Object.entries(blockData).forEach(([name, val]) => {
+        const el = lastBlock.querySelector(`[name="${name}"]`);
+        if (el) el.value = val;
+      });
+    });
+  });
+
+  if (draft.attested) document.getElementById("attestation-checkbox").checked = true;
+}
+
+// ---------------- Gate + init ----------------
 
 async function gate() {
   if (!token) {
@@ -345,19 +437,44 @@ async function gate() {
   }
   try {
     const { data, error } = await sb.rpc("get_engagement_intake_info", { p_token: token });
-    if (error || !data || data.length === 0 || !data[0].valid) {
-      throw new Error("invalid");
-    }
+    if (error || !data || data.length === 0 || !data[0].valid) throw new Error("invalid");
+
     const info = data[0];
     document.getElementById("client-name-display").textContent = info.client_name;
     document.getElementById("assessment-type-display").textContent = info.assessment_type;
+    if (info.expires_at) {
+      document.getElementById("expiry-display").textContent =
+        new Date(info.expires_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    } else {
+      document.getElementById("expiry-display").textContent = "—";
+    }
     if (info.assessment_type === "Annual Monitor") {
       document.getElementById("baseline-display").innerHTML =
         ` <span class="meta-key" style="margin-left:12px;">Baseline</span><span class="meta-val">${info.baseline_report_ref || "not on file — contact BARS Institute"}</span>`;
     }
+
     document.getElementById("gate-loading").classList.add("hidden");
     document.getElementById("form-area").classList.remove("hidden");
-    addBlock(); // start with one block
+
+    let draft = null;
+    try { draft = JSON.parse(localStorage.getItem(DRAFT_KEY)); } catch (e) { draft = null; }
+
+    if (draft && (draft.properties || []).length) {
+      document.getElementById("draft-banner").classList.remove("hidden");
+      document.getElementById("resume-draft").addEventListener("click", () => {
+        document.getElementById("draft-banner").classList.add("hidden");
+        restoreDraft(draft);
+      });
+      document.getElementById("discard-draft").addEventListener("click", () => {
+        document.getElementById("draft-banner").classList.add("hidden");
+        localStorage.removeItem(DRAFT_KEY);
+        addProperty();
+      });
+    } else {
+      addProperty();
+    }
+
+    document.getElementById("intake-form").addEventListener("input", scheduleSave);
   } catch (e) {
     document.getElementById("gate-loading").classList.add("hidden");
     document.getElementById("gate-error").textContent =
@@ -370,13 +487,44 @@ document.getElementById("intake-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const submitBtn = document.getElementById("submit-btn");
   const statusEl = document.getElementById("status");
+
+  const attested = document.getElementById("attestation-checkbox").checked;
+  if (!attested) {
+    statusEl.className = "err";
+    statusEl.textContent = "Please confirm the accuracy attestation before submitting.";
+    return;
+  }
+
   submitBtn.disabled = true;
   submitBtn.textContent = "Submitting…";
 
-  const cards = document.querySelectorAll(".block-card");
-  const rows = [];
-  for (const card of cards) {
-    const row = { intake_token: token };
+  const clientRow = { intake_token: token, attestation_confirmed: true };
+  document.querySelectorAll("#client-card input, #client-card textarea").forEach(el => {
+    if (!el.name) return;
+    let val = el.value;
+    if (val === "") val = null;
+    clientRow[el.name] = val;
+  });
+
+  const propertyCards = document.querySelectorAll("#properties-container > .property-card");
+  const propertyRows = [];
+  propertyCards.forEach(card => {
+    const propRef = `Property ${card.dataset.property}`;
+    const row = { intake_token: token, property_ref: propRef };
+    card.querySelectorAll(":scope > .row2 input").forEach(el => {
+      if (!el.name) return;
+      let val = el.value;
+      if (val === "") val = null;
+      row[el.name] = val;
+    });
+    propertyRows.push(row);
+  });
+
+  const blockCards = document.querySelectorAll(".block-item");
+  const blockRows = [];
+  blockCards.forEach(card => {
+    const propRef = `Property ${card.dataset.property}`;
+    const row = { intake_token: token, property_ref: propRef };
     card.querySelectorAll("input, select, textarea").forEach(el => {
       if (!el.name) return;
       let val = el.value;
@@ -384,12 +532,21 @@ document.getElementById("intake-form").addEventListener("submit", async (e) => {
       if (el.type === "number" && val !== null) val = parseFloat(val);
       row[el.name] = val;
     });
-    rows.push(row);
-  }
+    blockRows.push(row);
+  });
 
   try {
-    const { error } = await sb.from("intake_submissions").insert(rows);
-    if (error) throw error;
+    const { error: clientError } = await sb.from("intake_client_details").insert([clientRow]);
+    if (clientError) throw clientError;
+
+    const { error: propError } = await sb.from("intake_properties").insert(propertyRows);
+    if (propError) throw propError;
+
+    const { error: blockError } = await sb.from("intake_submissions").insert(blockRows);
+    if (blockError) throw blockError;
+
+    if (DRAFT_KEY) localStorage.removeItem(DRAFT_KEY);
+
     statusEl.className = "ok";
     statusEl.textContent = "Thank you — your data has been submitted securely to BARS Institute.";
     document.getElementById("intake-form").querySelectorAll("input, select, textarea, button").forEach(el => el.disabled = true);
