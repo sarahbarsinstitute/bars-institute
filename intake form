@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BARS Institute | Engagement Intake</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/bars-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/supabase/2.39.0/supabase.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #1A3A2E;
+    --green-mid: #265241;
+    --green-light: #EEF4F0;
+    --gold: #B8922A;
+    --gold-light: #F5ECDA;
+    --cream: #FAF7F2;
+    --cream-dark: #F2EDE5;
+    --text: #1C1C1A;
+    --text-mid: #4A4A47;
+    --text-muted: #8A8A85;
+    --white: #FFFFFF;
+    --border: #E2DDD6;
+    --border-dark: #CCC7BF;
+    --error: #A13D2F;
+    --error-light: #F5E2DE;
+  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .field-legend, .meta-key { font-family: 'Geist', sans-serif; }
+
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,247,242,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--green); display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .header-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 56px 24px 100px; }
+
+  .page-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .page-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); }
+  .page-title {
+    font-size: clamp(28px, 4vw, 38px); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin-bottom: 12px;
+  }
+  .page-sub {
+    font-size: 15px; font-weight: 300; color: var(--text-mid); max-width: 560px;
+    line-height: 1.7; margin-bottom: 40px;
+  }
+
+  .meta-box {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 20px 24px; margin-bottom: 40px; border-left: 3px solid var(--green);
+  }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 13.5px; color: var(--text-mid); }
+  .meta-row + .meta-row { margin-top: 8px; }
+  .meta-key {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-right: 6px;
+  }
+  .meta-val { font-weight: 500; color: var(--text); }
+
+  #gate-loading { font-size: 14px; color: var(--text-mid); }
+  #gate-error {
+    background: var(--error-light); color: var(--error); border-left: 3px solid var(--error);
+    padding: 16px 20px; font-size: 14px;
+  }
+
+  .block-card {
+    background: var(--white); border: 1px solid var(--border);
+    margin-bottom: 24px; position: relative; padding: 32px 28px 12px;
+  }
+  .block-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green);
+  }
+  .block-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .block-header h3 { font-size: 15px; font-weight: 600; color: var(--green); letter-spacing: -0.01em; }
+
+  .field-group-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 28px; margin-bottom: 4px;
+  }
+
+  label {
+    display: block; font-size: 13px; font-weight: 500; color: var(--text-mid);
+    margin: 18px 0 6px;
+  }
+  label .hint {
+    display: block; font-weight: 300; color: var(--text-muted); font-size: 12px;
+    margin-top: 3px; line-height: 1.5;
+  }
+  input, select, textarea {
+    width: 100%; padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    border: 1px solid var(--border-dark); background: var(--cream); color: var(--text);
+    transition: border-color 0.15s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--green); background: var(--white);
+  }
+  textarea { resize: vertical; min-height: 64px; font-family: 'DM Sans', sans-serif; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  @media (max-width: 600px) { .row2, .row3 { grid-template-columns: 1fr; } }
+
+  button {
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em; cursor: pointer; border: none; padding: 12px 24px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary { background: var(--green); color: var(--cream); }
+  .btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .btn-secondary {
+    background: transparent; border: 1px solid var(--green); color: var(--green);
+    padding: 10px 20px; margin-top: 4px;
+  }
+  .btn-secondary:hover { background: var(--green-light); }
+  .btn-remove {
+    background: transparent; color: var(--error); border: 1px solid var(--error);
+    font-size: 11px; padding: 5px 12px; letter-spacing: 0.04em;
+  }
+  .btn-remove:hover { background: var(--error-light); }
+
+  .submit-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
+  }
+  .submit-note { font-size: 12px; color: var(--text-muted); max-width: 340px; }
+
+  #status {
+    font-size: 13.5px; margin-top: 16px; padding: 14px 18px; display: none;
+    border-left: 3px solid transparent;
+  }
+  #status.ok { background: var(--green-light); color: var(--green-mid); border-left-color: var(--green); display: block; }
+  #status.err { background: var(--error-light); color: var(--error); border-left-color: var(--error); display: block; }
+
+  .hidden { display: none; }
+
+  footer {
+    background: #0E1F19; padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-l {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(250,247,242,0.6); display: flex; align-items: center; gap: 10px;
+  }
+  .footer-r { font-size: 11px; color: rgba(250,247,242,0.4); }
+
+  @media(max-width: 640px) {
+    header { padding: 0 20px; }
+    .wrap { padding: 40px 20px 80px; }
+    footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://bars.institute" class="logo">
+    <svg viewBox="0 0 200 200" width="28" height="28" xmlns="http://www.w3.org/2000/svg" style="color:#1A3A2E;">
+      <defs><mask id="lc"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#lc)"/>
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    BARS Institute
+  </a>
+  <div class="header-tag">Engagement Intake</div>
+</header>
+
+<div class="wrap">
+  <div class="page-eyebrow">Confidential Data Submission</div>
+  <h1 class="page-title">Engagement intake</h1>
+  <p class="page-sub">Provide the block-level detail below so we can generate your sampling plan and financial model inputs. Data is transmitted securely and is visible only to BARS Institute.</p>
+
+  <div id="gate-loading">Checking your link…</div>
+  <div id="gate-error" class="hidden"></div>
+
+  <div id="form-area" class="hidden">
+    <div class="meta-box">
+      <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val" id="client-name-display"></span></div>
+      <div class="meta-row"><span class="meta-key">Engagement type</span><span class="meta-val" id="assessment-type-display"></span><span id="baseline-display"></span></div>
+    </div>
+
+    <form id="intake-form">
+      <div id="blocks-container"></div>
+      <button type="button" class="btn-secondary" id="add-block">+ Add another block</button>
+
+      <div class="submit-row">
+        <p class="submit-note">Once submitted, this data is reviewed by the Lead Assessor before it enters the modelling pipeline.</p>
+        <button type="submit" class="btn-primary" id="submit-btn">Submit intake data</button>
+      </div>
+      <div id="status"></div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-l">
+    <svg viewBox="0 0 200 200" width="20" height="20" xmlns="http://www.w3.org/2000/svg" style="color:rgba(250,247,242,0.6);">
+      <defs><mask id="lcf"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
+      <circle cx="85" cy="100" r="45" fill="currentColor" mask="url(#lcf)"/>
+      <circle cx="85" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="115" cy="100" r="45" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="100" y1="55" x2="100" y2="145" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    BARS Institute Limited · New Zealand
+  </div>
+  <div class="footer-r">© 2026 BARS Institute Limited</div>
+</footer>
+
+<script>
+// ---- Configuration ----
+const SUPABASE_URL = "https://hkinwbesslgjmqzbipcr.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhraW53YmVzc2xnam1xemJpcGNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjQ5ODgsImV4cCI6MjEwMDg0MDk4OH0.JZvUD2JtI1Wq6gyo5neRljJaEXh-GadBXnhGFmSv1PQ";
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+let blockCount = 0;
+
+function blockTemplate(n) {
+  return `
+  <div class="block-card" data-block="${n}">
+    <div class="block-header">
+      <h3>Block ${n}</h3>
+      <button type="button" class="btn-remove" onclick="this.closest('.block-card').remove()">Remove</button>
+    </div>
+
+    <div class="row2">
+      <div><label>Block name<input required name="block_name" /></label></div>
+      <div><label>Area (ha)<input required type="number" step="0.01" name="area_ha" /></label></div>
+    </div>
+
+    <div class="row2">
+      <div><label>Variety<input name="variety" /></label></div>
+      <div><label>Cultivar group
+        <select name="cultivar_group">
+          <option value="">Select…</option>
+          <option>Red</option><option>White</option><option>Mixed</option><option>Other/Unspecified</option>
+        </select>
+      </label></div>
+    </div>
+
+    <label>Block boundary (GPX/KML text, or a link to the file)<textarea name="boundary_gpx"></textarea></label>
+
+    <div class="row2">
+      <div><label>Row spacing (m)<input type="number" step="0.01" name="row_spacing_m" /></label></div>
+      <div><label>Vine spacing (m)<input type="number" step="0.01" name="vine_spacing_m" /></label></div>
+    </div>
+
+    <div class="field-group-label">Vector Management</div>
+    <label>Regime
+      <select name="vector_regime">
+        <option value="">Select…</option>
+        <option>High-control IPM</option>
+        <option>Standard IPM</option>
+        <option>Organic/constrained control</option>
+      </select>
+      <span class="hint">High-control IPM requires written rouging-programme evidence — note it below, and send the document separately.</span>
+    </label>
+    <label>Rouging evidence note (if High-control IPM)<textarea name="rouging_evidence_note"></textarea></label>
+
+    <div class="field-group-label">Financial Model Inputs</div>
+    <div class="row3">
+      <div><label>Discount rate (%)<input type="number" step="0.01" name="discount_rate" /></label></div>
+      <div><label>Productive life remaining (yrs)<input type="number" step="1" name="productive_life_years" /></label></div>
+      <div><label>Price downgrade (%)<span class="hint">0 if none</span><input type="number" step="0.01" name="price_downgrade_pct" value="0" /></label></div>
+    </div>
+
+    <label style="margin-top:24px;">Grape price ($/tonne or unit) — PERT range</label>
+    <div class="row3">
+      <div><label>Min<input type="number" step="0.01" name="grape_price_min" /></label></div>
+      <div><label>Most likely<input type="number" step="0.01" name="grape_price_likely" /></label></div>
+      <div><label>Max<input type="number" step="0.01" name="grape_price_max" /></label></div>
+    </div>
+
+    <label style="margin-top:24px;">Operating cost ($/ha) — PERT range</label>
+    <div class="row3">
+      <div><label>Min<input type="number" step="0.01" name="opex_min" /></label></div>
+      <div><label>Most likely<input type="number" step="0.01" name="opex_likely" /></label></div>
+      <div><label>Max<input type="number" step="0.01" name="opex_max" /></label></div>
+    </div>
+
+    <label>Replant threshold (Amax)
+      <select name="amax_tier">
+        <option value="">Select…</option>
+        <option>Premium (0.15)</option>
+        <option>Mid-tier (0.20)</option>
+        <option>Commodity (0.25)</option>
+        <option>Custom</option>
+      </select>
+    </label>
+    <label>Custom Amax value (only if Custom selected above)<input type="number" step="0.01" name="amax_custom" /></label>
+
+    <label>Notes<textarea name="notes"></textarea></label>
+  </div>`;
+}
+
+function addBlock() {
+  blockCount++;
+  document.getElementById("blocks-container").insertAdjacentHTML("beforeend", blockTemplate(blockCount));
+}
+
+document.getElementById("add-block").addEventListener("click", addBlock);
+
+async function gate() {
+  if (!token) {
+    document.getElementById("gate-loading").classList.add("hidden");
+    document.getElementById("gate-error").textContent = "No access token provided. Please use the link BARS Institute sent you.";
+    document.getElementById("gate-error").classList.remove("hidden");
+    return;
+  }
+  try {
+    const { data, error } = await sb.rpc("get_engagement_intake_info", { p_token: token });
+    if (error || !data || data.length === 0 || !data[0].valid) {
+      throw new Error("invalid");
+    }
+    const info = data[0];
+    document.getElementById("client-name-display").textContent = info.client_name;
+    document.getElementById("assessment-type-display").textContent = info.assessment_type;
+    if (info.assessment_type === "Annual Monitor") {
+      document.getElementById("baseline-display").innerHTML =
+        ` <span class="meta-key" style="margin-left:12px;">Baseline</span><span class="meta-val">${info.baseline_report_ref || "not on file — contact BARS Institute"}</span>`;
+    }
+    document.getElementById("gate-loading").classList.add("hidden");
+    document.getElementById("form-area").classList.remove("hidden");
+    addBlock(); // start with one block
+  } catch (e) {
+    document.getElementById("gate-loading").classList.add("hidden");
+    document.getElementById("gate-error").textContent =
+      "This link is invalid or has expired. Please contact sarah@bars.institute for a new link.";
+    document.getElementById("gate-error").classList.remove("hidden");
+  }
+}
+
+document.getElementById("intake-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const submitBtn = document.getElementById("submit-btn");
+  const statusEl = document.getElementById("status");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting…";
+
+  const cards = document.querySelectorAll(".block-card");
+  const rows = [];
+  for (const card of cards) {
+    const row = { intake_token: token };
+    card.querySelectorAll("input, select, textarea").forEach(el => {
+      if (!el.name) return;
+      let val = el.value;
+      if (val === "") val = null;
+      if (el.type === "number" && val !== null) val = parseFloat(val);
+      row[el.name] = val;
+    });
+    rows.push(row);
+  }
+
+  try {
+    const { error } = await sb.from("intake_submissions").insert(rows);
+    if (error) throw error;
+    statusEl.className = "ok";
+    statusEl.textContent = "Thank you — your data has been submitted securely to BARS Institute.";
+    document.getElementById("intake-form").querySelectorAll("input, select, textarea, button").forEach(el => el.disabled = true);
+  } catch (err) {
+    statusEl.className = "err";
+    statusEl.textContent = "Something went wrong submitting your data. Please try again or contact sarah@bars.institute.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit intake data";
+  }
+});
+
+gate();
+</script>
+</body>
+</html>
