@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BARS Institute — See what could happen before you decide.</title>
+
+  <meta
+    name="description"
+    content="BARS compares two business decisions across thousands of simulated scenarios, then shows you what the result depends on and where the comparison flips."
+  >
+
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bars.institute/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BARS Institute — See what could happen before you decide.">
+  <meta
+    property="og:description"
+    content="Most models tell you which option wins. BARS tells you which assumption that result is resting on, and what it would take to change it."
+  >
+  <meta property="og:url" content="https://bars.institute/">
+  <meta property="og:site_name" content="BARS Institute">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BARS Institute — See what could happen before you decide.">
+  <meta
+    name="twitter:description"
+    content="Which assumption is your decision resting on, and where does it flip?"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=Public+Sans:opsz,wght@10..24,300;10..24,400;10..24,500;10..24,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BARS Institute",
+    "url": "https://bars.institute",
+    "description": "Decision-support software that compares two business options under uncertainty and identifies the assumption the comparison depends on."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does BARS actually tell me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Which of two options produces the better outcome across thousands of simulated scenarios, how much better, how much room for error there is, and which single assumption the result is resting on and the exact value at which the comparison flips."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from Excel or @RISK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Excel and specialist risk tools like @RISK give you powerful building blocks for modelling uncertainty. BARS packages those capabilities around a specific decision workflow: compare two options, identify the assumption carrying the result, and find the boundary at which the comparison changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a statistics background?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. You give a likely value and a low and a high — the way you would describe it to a colleague. The engine handles the distribution. Every technical choice it makes on your behalf is stated in the report rather than applied silently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know the numbers are right?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every run carries a random seed and an engine version, so the same model reproduces the same figures exactly. Every report includes a technical appendix with the equations, the provenance of every assumption, and every default the engine applied."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if an assumption is a guess?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Say so, and it is recorded as an estimate rather than treated as fact. It appears in the provenance trail, in the flagged-assumptions list, and usually as the assumption the whole decision turns on."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What decisions can it model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five two-option decisions: hire now or wait, in-house or outside provider, invest or don't, raise prices or hold, and proceed or hold on a plan."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #ffffff;
+      --surface: #f5f7fc;
+
+      --ink: #17243d;
+      --ink-mid: #4c5670;
+      --ink-muted: #8891a6;
+
+      --border: #e4e8f0;
+      --border-soft: #edf0f6;
+
+      --navy: #1d2f4e;
+      --navy-deep: #17243d;
+      --blue-deep: #2a5187;
+      --blue: #3567a8;
+      --periwinkle: #7d8ec4;
+      --pink: #e8b7c5;
+      --pink-soft: #f2d5dd;
+
+      --banner-blue: #438fb9;
+      --banner-blue-light: #58a9c9;
+      --banner-pink: #ee8e9d;
+      --banner-mauve: #e3abc1;
+
+      --gold: #b8862e;
+      --gold-soft: #f6efdc;
+
+      --shadow:
+        0 1px 2px rgba(23, 36, 61, 0.04),
+        0 14px 34px -18px rgba(23, 36, 61, 0.16);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Public Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Geist", sans-serif;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    .grad-text {
+      background: linear-gradient(
+        100deg,
+        var(--navy) 4%,
+        var(--blue) 55%,
+        var(--pink) 100%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background:
+        radial-gradient(
+          ellipse 42% 180% at 25% 0%,
+          rgba(238, 142, 157, 0.36),
+          transparent 70%
+        ),
+        radial-gradient(
+          ellipse 50% 180% at 72% 0%,
+          rgba(125, 142, 196, 0.4),
+          transparent 70%
+        ),
+        linear-gradient(
+          105deg,
+          #58a9c9 0%,
+          #438fb9 48%,
+          #357faa 100%
+        );
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0 48px;
+      height: 64px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--white);
+      font-family: "Geist", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+
+    .logo svg {
+      flex-shrink: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .header-nav a:not(.header-cta) {
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 13.5px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:not(.header-cta):hover {
+      color: var(--white);
+    }
+
+    .header-cta {
+      display: inline-block;
+
+      background: rgba(23, 36, 61, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 7px;
+      color: var(--white) !important;
+
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 9px 18px;
+      text-decoration: none;
+
+      transition:
+        background 0.2s,
+        transform 0.2s;
+    }
+
+    .header-cta:hover {
+      background: rgba(23, 36, 61, 0.98);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      transition:
+        transform 0.2s,
+        opacity 0.2s;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+
+      position: sticky;
+      top: 64px;
+      z-index: 99;
+
+      max-height: 0;
+      overflow: hidden;
+
+      background: var(--white);
+      border-bottom: 1px solid var(--border-soft);
+
+      transition: max-height 0.25s ease;
+    }
+
+    .mobile-nav.open {
+      max-height: 400px;
+    }
+
+    .mobile-nav a {
+      border-bottom: 1px solid var(--border-soft);
+      color: var(--ink-mid);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 16px 24px;
+      text-decoration: none;
+    }
+
+    .mobile-nav a.header-cta {
+      margin: 12px 24px;
+      border-bottom: none;
+      text-align: center;
+    }
+
+    /* HERO */
+
+    .hero-bg {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--banner-blue-light) 0%,
+          var(--banner-blue) 48%,
+          #347eaa 100%
+        );
+    }
+
+    .hero-bg::before {
+      content: "";
+
+      position: absolute;
+      inset: -15% -10%;
+      z-index: 0;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          ellipse 38% 48% at 8% 52%,
+          rgba(238, 142, 157, 0.85),
+          transparent 62%
+        ),
+        radial-gradient(
+          ellipse 42% 52% at 27% 8%,
+          rgba(241, 178, 190, 0.72),
+          transparent 65%
+        ),
+        radial-gradient(
+          ellipse 48% 55% at 52% 0%,
+          rgba(227, 171, 193, 0.66),
+          transparent 65%
+        ),
+        radial-gradient(
+          ellipse 58% 65% at 82% 4%,
+          rgba(82, 155, 195, 0.75),
+          transparent 68%
+        );
+
+      filter: blur(46px);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      align-items: center;
+      gap: 60px;
+
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 92px 48px 72px;
+    }
+
+    .hero-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      margin-bottom: 18px;
+
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      max-width: 640px;
+      margin-bottom: 20px;
+
+      color: var(--white);
+      font-size: clamp(36px, 4.2vw, 54px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero .grad-text {
+      background: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #f2d5dd 55%,
+        #e8b7c5 100%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      max-width: 520px;
+      margin-bottom: 30px;
+
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 16.5px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+
+      background: var(--white);
+      border: none;
+      border-radius: 8px;
+      color: var(--navy-deep);
+
+      cursor: pointer;
+      font-family: "Public Sans", sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 14px 24px;
+      text-decoration: none;
+
+      transition: transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 8px;
+      color: var(--white);
+
+      font-size: 14.5px;
+      font-weight: 500;
+      padding: 14px 22px;
+      text-decoration: none;
+
+      transition: background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-note {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+    }
+
+    /* HERO CARD */
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sim-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .sim-card-label {
+      margin-bottom: 4px;
+
+      color: var(--ink-muted);
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .sim-verdict {
+      margin-bottom: 3px;
+
+      font-family: "Geist", sans-serif;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .verdict-grad {
+      background: linear-gradient(
+        100deg,
+        var(--navy) 0%,
+        var(--blue) 58%,
+        var(--pink) 118%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .sim-verdict-sub {
+      margin-bottom: 20px;
+
+      color: var(--ink-mid);
+      font-size: 13px;
+    }
+
+    .sim-flip {
+      margin-bottom: 16px;
+      padding: 16px 18px;
+
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 9px;
+    }
+
+    .sim-flip-label {
+      margin-bottom: 7px;
+
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .sim-flip-text {
+      color: var(--ink);
+      font-size: 13.5px;
+      line-height: 1.62;
+    }
+
+    .sim-flip-text strong {
+      font-weight: 600;
+    }
+
+    .sim-scale {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 14px 0 6px;
+    }
+
+    .sim-scale-track {
+      position: relative;
+
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue) 0%,
+          var(--blue) 56%,
+          var(--pink) 56%,
+          var(--pink) 100%
+        );
+    }
+
+    .sim-scale-mark {
+      position: absolute;
+      top: -5px;
+
+      width: 2px;
+      height: 16px;
+      border-radius: 1px;
+      background: var(--navy-deep);
+    }
+
+    .sim-scale-labels {
+      display: flex;
+      justify-content: space-between;
+
+      color: var(--ink-muted);
+      font-size: 11px;
+    }
+
+    .sim-foot {
+      margin-top: 16px;
+      padding-top: 14px;
+
+      border-top: 1px dashed var(--border);
+      color: var(--ink-muted);
+      font-size: 11.5px;
+      line-height: 1.55;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section.block {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 92px 48px;
+    }
+
+    .section-kicker {
+      margin-bottom: 12px;
+
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin-bottom: 14px;
+
+      font-size: clamp(27px, 3.1vw, 35px);
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      max-width: 640px;
+      margin-bottom: 52px;
+
+      color: var(--ink-mid);
+      font-size: 15.5px;
+      line-height: 1.72;
+    }
+
+    /* WORKED EXAMPLE */
+
+    .case {
+      padding: 92px 48px;
+      background: var(--surface);
+    }
+
+    .case-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 56px;
+      margin-top: 44px;
+    }
+
+    .case-panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .case-panel h3 {
+      margin-bottom: 14px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+
+      border-bottom: 1px solid var(--border-soft);
+      padding: 11px 0;
+
+      font-size: 14px;
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .metric-label {
+      color: var(--ink-mid);
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    .case-note {
+      margin-top: 18px;
+
+      color: var(--ink-mid);
+      font-size: 13px;
+      line-height: 1.68;
+    }
+
+    .case-quote {
+      margin-bottom: 18px;
+
+      font-family: "Geist", sans-serif;
+      font-size: clamp(19px, 2.2vw, 25px);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.38;
+    }
+
+    .case-quote .hl {
+      background: linear-gradient(
+        180deg,
+        transparent 62%,
+        var(--pink-soft) 62%
+      );
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .step-card {
+      position: relative;
+
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 24px;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.25s ease,
+        border-color 0.2s ease;
+    }
+
+    .step-card::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      border-radius: inherit;
+      padding: 1.5px;
+
+      background: linear-gradient(
+        135deg,
+        var(--navy),
+        var(--blue) 50%,
+        var(--pink)
+      );
+
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .step-card:hover {
+      border-color: transparent;
+      box-shadow: 0 18px 34px -20px rgba(53, 103, 168, 0.42);
+      transform: translateY(-3px);
+    }
+
+    .step-card:hover::after {
+      opacity: 1;
+    }
+
+    .step-num {
+      margin-bottom: 12px;
+
+      color: var(--blue);
+      font-family: "Geist", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .step-title {
+      margin-bottom: 8px;
+
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+
+    .step-desc {
+      color: var(--ink-mid);
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    /* PRINCIPLE */
+
+    .principle {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 92px 48px;
+    }
+
+    .principle-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .chain-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .chain-row:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chain-dot {
+      flex-shrink: 0;
+
+      width: 10px;
+      height: 10px;
+      margin-top: 6px;
+      border-radius: 50%;
+
+      background: linear-gradient(135deg, var(--navy), var(--pink));
+    }
+
+    .chain-title {
+      margin-bottom: 4px;
+
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+
+    .chain-desc {
+      color: var(--ink-mid);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    /* DECISION TYPES */
+
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .use-card {
+      position: relative;
+
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.25s ease,
+        border-color 0.2s ease;
+    }
+
+    .use-card:hover {
+      border-color: rgba(53, 103, 168, 0.4);
+      box-shadow: 0 18px 34px -20px rgba(53, 103, 168, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .use-card::before {
+      content: "";
+
+      display: block;
+      width: 34px;
+      height: 3px;
+      margin-bottom: 16px;
+      border-radius: 2px;
+
+      background: linear-gradient(90deg, var(--navy), var(--pink));
+    }
+
+    .use-title {
+      margin-bottom: 7px;
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+
+    .use-desc {
+      color: var(--ink-mid);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .use-tags {
+      margin-top: 14px;
+
+      color: var(--ink-muted);
+      font-size: 11.5px;
+    }
+
+    /* WHO IT IS FOR */
+
+    .who-strip {
+      padding: 72px 48px;
+      background: var(--surface);
+    }
+
+    .who-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .who-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .who-chip {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 11px 19px;
+
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+
+    .who-chip .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--pink));
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      max-width: 800px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      width: 100%;
+      padding: 22px 4px;
+
+      background: none;
+      border: none;
+      color: var(--ink);
+
+      cursor: pointer;
+      font-family: "Public Sans", sans-serif;
+      font-size: 15.5px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .faq-q .icon {
+      position: relative;
+      flex-shrink: 0;
+
+      width: 20px;
+      height: 20px;
+    }
+
+    .faq-q .icon::before,
+    .faq-q .icon::after {
+      content: "";
+
+      position: absolute;
+      border-radius: 2px;
+      background: var(--navy);
+
+      transition:
+        transform 0.2s,
+        opacity 0.2s;
+    }
+
+    .faq-q .icon::before {
+      top: 9px;
+      left: 2px;
+      width: 16px;
+      height: 2px;
+    }
+
+    .faq-q .icon::after {
+      top: 2px;
+      left: 9px;
+      width: 2px;
+      height: 16px;
+    }
+
+    .faq-item.open .faq-q .icon::after {
+      opacity: 0;
+      transform: rotate(90deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .faq-a p {
+      max-width: 660px;
+      padding: 0 4px 22px;
+
+      color: var(--ink-mid);
+      font-size: 14.5px;
+      line-height: 1.72;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+
+      padding: 92px 48px;
+      background:
+        radial-gradient(
+          ellipse 52% 75% at 75% 0%,
+          rgba(238, 142, 157, 0.35),
+          transparent 70%
+        ),
+        linear-gradient(
+          135deg,
+          #347eaa 0%,
+          #438fb9 45%,
+          #58a9c9 80%,
+          #d99bad 150%
+        );
+
+      text-align: center;
+    }
+
+    .cta-section::after {
+      content: "";
+
+      position: absolute;
+      bottom: -180px;
+      left: 50%;
+
+      width: 760px;
+      height: 440px;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(232, 183, 197, 0.34),
+          rgba(232, 183, 197, 0) 70%
+        );
+
+      pointer-events: none;
+      transform: translateX(-50%);
+    }
+
+    .cta-section h2 {
+      position: relative;
+      z-index: 1;
+
+      margin-bottom: 16px;
+
+      color: var(--white);
+      font-size: clamp(27px, 4vw, 42px);
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.14;
+    }
+
+    .cta-sub {
+      position: relative;
+      z-index: 1;
+
+      max-width: 520px;
+      margin: 0 auto 30px;
+
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .cta-small {
+      position: relative;
+      z-index: 1;
+
+      max-width: 520px;
+      margin: 0 auto;
+
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 32px 48px;
+      background: var(--navy-deep);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .footer-l {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .footer-r {
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 12.5px;
+    }
+
+    /* ANIMATION */
+
+    .hero-main > *,
+    .hero-visual .sim-card {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroIn 0.6s ease forwards;
+    }
+
+    .hero h1 {
+      animation-delay: 0.05s;
+    }
+
+    .hero-sub {
+      animation-delay: 0.13s;
+    }
+
+    .hero-actions {
+      animation-delay: 0.2s;
+    }
+
+    .hero-note {
+      animation-delay: 0.26s;
+    }
+
+    .hero-visual .sim-card {
+      animation-delay: 0.2s;
+    }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-main > *,
+      .hero-visual .sim-card {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 980px) {
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .use-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .principle-inner,
+      .case-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      header {
+        padding: 0 24px;
+      }
+
+      .header-nav a:not(.header-cta),
+      .header-nav .header-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 52px 24px 44px;
+      }
+
+      .hero-bg::before {
+        inset: -20% -30%;
+        filter: blur(34px);
+      }
+
+      section.block,
+      .principle {
+        padding: 56px 24px;
+      }
+
+      .case,
+      .who-strip,
+      .cta-section {
+        padding: 56px 24px;
+      }
+
+      .steps,
+      .use-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="/" class="logo" aria-label="BARS Institute home">
+      <svg
+        viewBox="0 0 200 200"
+        width="30"
+        height="30"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFFFFF"></stop>
+            <stop offset="100%" stop-color="#F2D5DD"></stop>
+          </linearGradient>
+
+          <mask id="lc">
+            <rect width="200" height="200" fill="white"></rect>
+            <circle cx="115" cy="100" r="45" fill="black"></circle>
+          </mask>
+        </defs>
+
+        <circle
+          cx="85"
+          cy="100"
+          r="45"
+          fill="url(#logoGrad)"
+          mask="url(#lc)"
+        ></circle>
+
+        <circle
+          cx="85"
+          cy="100"
+          r="45"
+          fill="none"
+          stroke="url(#logoGrad)"
+          stroke-width="1.5"
+        ></circle>
+
+        <circle
+          cx="115"
+          cy="100"
+          r="45"
+          fill="none"
+          stroke="url(#logoGrad)"
+          stroke-width="1.5"
+        ></circle>
+      </svg>
+
+      BARS Institute
+    </a>
+
+    <nav class="header-nav" aria-label="Primary">
+      <a href="#example">Worked example</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#decisions">Decisions</a>
+      <a href="#faq">FAQ</a>
+      <a href="/app" class="header-cta">Open the app</a>
+    </nav>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobileNav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#example">Worked example</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#faq">FAQ</a>
+    <a href="/app" class="header-cta">Open the app</a>
+  </div>
+
+  <main>
+    <section class="hero-bg">
+      <section class="hero">
+        <div class="hero-main">
+          <p class="hero-kicker">
+            Business decision analysis under uncertainty
+          </p>
+
+          <h1>
+            See what could happen
+            <span class="grad-text">before you decide.</span>
+          </h1>
+
+          <p class="hero-sub">
+            Most models give you an answer. BARS compares two decisions across
+            thousands of plausible scenarios, then shows you which assumption
+            the result rests on and where the comparison flips.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/app" class="btn-primary">Run a decision</a>
+            <a href="#example" class="btn-ghost">See a worked example</a>
+          </div>
+
+          <p class="hero-note">
+            No sign-up. Five decision types. Every result traceable to the
+            model and assumptions behind it.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="sim-card">
+            <p class="sim-card-label">Raise prices 8%, or hold</p>
+
+            <p class="sim-verdict verdict-grad">Raise prices</p>
+
+            <p class="sim-verdict-sub">
+              Better 24-month cash flow in 93% of simulated scenarios
+            </p>
+
+            <div class="sim-flip">
+              <p class="sim-flip-label">What the result rests on</p>
+
+              <p class="sim-flip-text">
+                <strong>Volume loss.</strong>
+                Estimated at 5.4% of customers. The comparison flips above
+                <strong>9.5%</strong> — and that figure has no data behind it.
+              </p>
+
+              <div class="sim-scale">
+                <span class="sim-scale-track">
+                  <span
+                    class="sim-scale-mark"
+                    style="left: 56%"
+                  ></span>
+                </span>
+              </div>
+
+              <div class="sim-scale-labels">
+                <span>Raise wins</span>
+                <span>flips at 9.5%</span>
+                <span>Hold wins</span>
+              </div>
+            </div>
+
+            <p class="sim-foot">
+              Real output. 100,000 iterations, seed 20260907, engine v1.18.3
+              — re-running this model reproduces every figure exactly.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div class="case" id="example">
+      <div class="case-inner">
+        <p class="section-kicker">A worked example</p>
+
+        <h2 class="section-heading">
+          Confidence is not the same as evidence
+        </h2>
+
+        <p class="section-intro">
+          A software business doing $248k a month is considering an 8% price
+          rise. The comparison favours raising. But look at what that clarity
+          is built on.
+        </p>
+
+        <div class="case-grid">
+          <div>
+            <p class="case-quote">
+              Raising prices is worth
+              <span class="hl">$231,759</span>
+              over two years — unless you lose more than
+              <span class="hl">9.5% of customers</span>.
+              Nobody has measured that.
+            </p>
+
+            <p class="case-note">
+              That single sentence is the output. Not the 93%, not the expected
+              value — the fact that the result is highly dependent on one
+              number the business has never tested, and that the line is only
+              four percentage points away from where they guessed.
+            </p>
+
+            <p class="case-note">
+              It changes what you do next. Rather than committing on an
+              untested assumption, you now know exactly what to measure —
+              actual volume loss — and how much precision you need before the
+              comparison changes.
+            </p>
+
+            <p class="case-note">
+              A spreadsheet can model uncertainty. BARS is built around the
+              decision: compare the options, identify the assumption carrying
+              the result, find where the comparison flips, and show you what is
+              worth testing next.
+            </p>
+          </div>
+
+          <div class="case-panel">
+            <h3>What the run actually returned</h3>
+
+            <div class="metric-row">
+              <span class="metric-label">Better outcome in</span>
+              <span class="metric-value">93% of scenarios</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Average gain over 24 months</span>
+              <span class="metric-value">$231,759</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Gain in 80% of scenarios</span>
+              <span class="metric-value">$31,901 – $402,496</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Behind in</span>
+              <span class="metric-value">6.7% of scenarios</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Worst case, if behind</span>
+              <span class="metric-value">−$180,103</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Load-bearing assumption</span>
+              <span class="metric-value">Volume loss</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Estimated at / flips above</span>
+              <span class="metric-value">5.4% / 9.5%</span>
+            </div>
+
+            <p class="case-note" style="margin-top: 20px">
+              Every one of these figures came from the engine, not from this
+              page. The run carries a seed and a version, so the same model,
+              seed and engine version reproduce the same numbers — and the
+              report it generates includes the equations that produced them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="how-it-works">
+      <p class="section-kicker">How it works</p>
+
+      <h2 class="section-heading">
+        From a conversation to a defensible comparison
+      </h2>
+
+      <p class="section-intro">
+        No distributions to choose, no correlation matrices to configure. You
+        give ranges instead of false precision; the engine does the rest and
+        shows its working.
+      </p>
+
+      <div class="steps">
+        <div class="step-card">
+          <p class="step-num">01</p>
+          <h3 class="step-title">Frame the decision</h3>
+          <p class="step-desc">
+            Hire now or wait. Raise prices or hold. In-house or outsource.
+            Five two-option decisions, each a real question rather than a
+            calculator.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <p class="step-num">02</p>
+          <h3 class="step-title">Describe what you don't know</h3>
+          <p class="step-desc">
+            “Revenue is probably $235k–$262k, most likely $248k.” If a figure
+            is a guess, say so — it gets flagged rather than treated as fact.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <p class="step-num">03</p>
+          <h3 class="step-title">Compare 100,000 scenarios</h3>
+          <p class="step-desc">
+            Both options face identical simulated conditions, so the comparison
+            is like-for-like rather than two separate forecasts.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <p class="step-num">04</p>
+          <h3 class="step-title">Find what could change the result</h3>
+          <p class="step-desc">
+            The engine re-runs across the plausible range of every assumption
+            to find which one the result rests on, and where the comparison
+            flips.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <p class="step-num">05</p>
+          <h3 class="step-title">Know what to test next</h3>
+          <p class="step-desc">
+            The flip point points to what's worth measuring, piloting, or
+            negotiating before you commit the money — not just that you should
+            be careful.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="principle">
+      <div class="principle-inner">
+        <div>
+          <p class="section-kicker">Why trust the number</p>
+
+          <h2 class="section-heading">
+            The model calculates. Nothing is assumed quietly.
+          </h2>
+
+          <p class="section-intro" style="margin-bottom: 0">
+            AI can help structure the decision and its assumptions, but the
+            calculation engine operates on the resulting model, not on a
+            conversational prompt — it accepts a structured model and nothing
+            else, and cannot be talked into an answer. Every default it applies
+            is reported, not buried, and where an input would decide the result
+            by its absence, the engine refuses to run rather than filling it
+            in.
+          </p>
+        </div>
+
+        <div>
+          <div class="chain-row">
+            <span class="chain-dot" aria-hidden="true"></span>
+
+            <div>
+              <div class="chain-title">
+                279 automated tests, two independent adversarial reviews
+              </div>
+
+              <div class="chain-desc">
+                Both reviews were adversarial, and both found real defects.
+                Every finding is fixed or documented with a reason.
+              </div>
+            </div>
+          </div>
+
+          <div class="chain-row">
+            <span class="chain-dot" aria-hidden="true"></span>
+
+            <div>
+              <div class="chain-title">
+                Reproducible from the model, seed and engine version
+              </div>
+
+              <div class="chain-desc">
+                Each run records its seed and engine version, and the same
+                model, seed and engine version reproduce the same figures.
+              </div>
+            </div>
+          </div>
+
+          <div class="chain-row">
+            <span class="chain-dot" aria-hidden="true"></span>
+
+            <div>
+              <div class="chain-title">
+                A technical appendix with every report
+              </div>
+
+              <div class="chain-desc">
+                The equations, the provenance of every assumption, and every
+                adjustment the engine made. It gives another reviewer
+                everything needed to inspect exactly how the result was
+                produced.
+              </div>
+            </div>
+          </div>
+
+          <div class="chain-row">
+            <span class="chain-dot" aria-hidden="true"></span>
+
+            <div>
+              <div class="chain-title">
+                Estimates are labelled as estimates
+              </div>
+
+              <div class="chain-desc">
+                Anything you could not evidence is flagged in the report and
+                can turn out to be the assumption the decision rests on.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="decisions">
+      <p class="section-kicker">What it models</p>
+
+      <h2 class="section-heading">Five decision types</h2>
+
+      <p class="section-intro">
+        Deliberately narrow. Each one is a two-option comparison with the
+        cash-flow mechanics worked out and its limitations stated. If your
+        decision does not fit, the software says so rather than approximating
+        it.
+      </p>
+
+      <div class="use-grid">
+        <div class="use-card">
+          <h3 class="use-title">Hire now, or wait</h3>
+          <p class="use-desc">
+            Test the cost of hiring now against the benefit of getting the
+            capacity earlier.
+          </p>
+          <p class="use-tags">Cash flow · 24 months · Cash runway</p>
+        </div>
+
+        <div class="use-card">
+          <h3 class="use-title">In-house or outside provider</h3>
+          <p class="use-desc">
+            Build vs buy, hire vs outsource, own vs lease — any two-way cost
+            decision.
+          </p>
+          <p class="use-tags">Cash flow · 36 months</p>
+        </div>
+
+        <div class="use-card">
+          <h3 class="use-title">Invest, or don't</h3>
+          <p class="use-desc">
+            Upfront cost, expected returns and timing, judged against your
+            hurdle rate.
+          </p>
+          <p class="use-tags">Investment analysis · 36 months</p>
+        </div>
+
+        <div class="use-card">
+          <h3 class="use-title">Raise prices, or hold</h3>
+          <p class="use-desc">
+            Weigh the margin gain against the demand you might lose to get it.
+          </p>
+          <p class="use-tags">Cash flow · 24 months · Cash runway</p>
+        </div>
+
+        <div class="use-card">
+          <h3 class="use-title">Proceed, or hold</h3>
+          <p class="use-desc">
+            When costs go out before the benefits come back, test whether cash
+            survives the gap.
+          </p>
+          <p class="use-tags">Cash flow · 18 months · Cash runway</p>
+        </div>
+
+        <div class="use-card" style="background: var(--surface)">
+          <h3 class="use-title">Something else?</h3>
+          <p class="use-desc">
+            If the decision you are facing is not here, tell me what it is —
+            that is how the next one gets built.
+          </p>
+          <p class="use-tags">
+            <a
+              href="mailto:sarah@bars.institute"
+              style="color: var(--blue)"
+            >
+              sarah@bars.institute
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="who-strip">
+      <div class="who-inner">
+        <p class="section-kicker">Who it's for</p>
+
+        <h2 class="section-heading">
+          People who already model these decisions by hand
+        </h2>
+
+        <p class="section-intro" style="margin-bottom: 0">
+          If you build the scenario tabs yourself, you already know the
+          problem: three columns of best, base and worst tell you nothing about
+          which assumption is carrying the result.
+        </p>
+
+        <div class="who-grid">
+          <span class="who-chip">
+            <span class="dot"></span>
+            Fractional CFOs
+          </span>
+
+          <span class="who-chip">
+            <span class="dot"></span>
+            Finance directors
+          </span>
+
+          <span class="who-chip">
+            <span class="dot"></span>
+            FP&amp;A analysts
+          </span>
+
+          <span class="who-chip">
+            <span class="dot"></span>
+            Independent consultants
+          </span>
+
+          <span class="who-chip">
+            <span class="dot"></span>
+            Founders making a capital call
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="faq">
+      <p class="section-kicker">Questions</p>
+
+      <h2 class="section-heading">Frequently asked questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What does BARS actually tell me?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              Which of two options produces the better outcome across thousands
+              of simulated scenarios, how much better, how much room for error
+              there is, and — most usefully — which single assumption the result
+              is resting on and the exact value at which the comparison flips.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is this different from Excel or @RISK?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              Excel and specialist risk tools like @RISK give you powerful
+              building blocks for modelling uncertainty. BARS packages those
+              capabilities around a specific decision workflow: compare two
+              options, identify the assumption carrying the result, and find
+              the boundary at which the comparison changes.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Do I need a statistics background?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              No. You give a likely value and a low and a high — the way you
+              would describe it to a colleague. The engine handles the
+              distribution. Every technical choice it makes on your behalf is
+              stated in the report rather than applied silently, so you can
+              check it or hand it to someone who will.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do I know the numbers are right?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              Every run carries a random seed and an engine version, so the same
+              model reproduces the same figures exactly. Every report includes
+              a technical appendix with the equations, the provenance of every
+              assumption, and every default the engine applied. The engine has
+              279 automated tests and has been through two independent
+              adversarial reviews.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What if an assumption is just a guess?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              Say so, and it is recorded as an estimate rather than treated as
+              fact. It appears in the provenance trail, in the
+              flagged-assumptions list, and as the assumption the decision may
+              turn on. Which is exactly what you want to discover before
+              committing, rather than after.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What decisions can it model?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              Five two-option decisions: hire now or wait, in-house or outside
+              provider, invest or don't, raise prices or hold, and proceed or
+              hold on a plan. If your decision does not fit one of those, the
+              software tells you so rather than approximating it with a model
+              that does not match.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can you just run one for me?
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="faq-a">
+            <p>
+              Yes. Bring a real decision you are advising on and I will model
+              it, run it, and send back the analysis with its technical
+              appendix. That is often the fastest way to see whether this is
+              useful on your own work rather than on someone else's example.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="start">
+      <h2>What would change the decision?</h2>
+
+      <p class="cta-sub">
+        Run one yourself in a few minutes, or send me a decision you are
+        advising on. BARS compares the options, finds the assumption carrying
+        the result, and shows exactly where the comparison flips.
+      </p>
+
+      <div class="cta-actions">
+        <a href="/app" class="btn-primary">Run a decision</a>
+
+        <a
+          href="mailto:sarah@bars.institute?subject=Decision%20analysis"
+          class="btn-ghost"
+        >
+          Send me a decision
+        </a>
+      </div>
+
+      <p class="cta-small">
+        BARS Institute Ltd · Wellington, New Zealand · sarah@bars.institute
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-l">
+        BARS Institute Ltd · bars.institute
+      </div>
+
+      <div class="footer-r">
+        © 2026 BARS Institute Ltd
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("menuToggle");
+      const nav = document.getElementById("mobileNav");
+
+      if (toggle && nav) {
+        toggle.addEventListener("click", function () {
+          const isOpen = nav.classList.toggle("open");
+
+          toggle.classList.toggle("open", isOpen);
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          toggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close menu" : "Open menu"
+          );
+        });
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            nav.classList.remove("open");
+            toggle.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open menu");
+          });
+        });
+      }
+
+      document.querySelectorAll(".faq-item").forEach(function (item) {
+        const question = item.querySelector(".faq-q");
+        const answer = item.querySelector(".faq-a");
+
+        question.addEventListener("click", function () {
+          const isOpen = item.classList.contains("open");
+
+          document
+            .querySelectorAll(".faq-item.open")
+            .forEach(function (openItem) {
+              if (openItem !== item) {
+                openItem.classList.remove("open");
+
+                openItem
+                  .querySelector(".faq-q")
+                  .setAttribute("aria-expanded", "false");
+
+                openItem.querySelector(".faq-a").style.maxHeight = null;
+              }
+            });
+
+          item.classList.toggle("open", !isOpen);
+          question.setAttribute(
+            "aria-expanded",
+            isOpen ? "false" : "true"
+          );
+
+          answer.style.maxHeight = isOpen
+            ? null
+            : answer.scrollHeight + "px";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
