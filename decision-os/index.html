@@ -174,6 +174,13 @@
     text-decoration: none; display: inline-block; transition: background 0.2s;
   }
   .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+  .btn-solid {
+  display: inline-block; margin-top: 24px;
+  background: var(--navy); color: var(--white); border-radius: 0;
+  font-family: 'Public Sans', sans-serif; font-size: 14.5px; font-weight: 600;
+  padding: 14px 24px; text-decoration: none; transition: background 0.2s;
+}
+.btn-solid:hover { background: var(--blue); }
   .hero-note { font-size: 13px; color: rgba(255,255,255,0.66); }
 
   /* HERO CARD — real engine output */
@@ -425,6 +432,10 @@
           This is what BARS produces that a spreadsheet does not. A spreadsheet gives you a number.
           This gives you the number, its fragility, and the experiment that would settle it.
         </p>
+        <a href="/decision-os/BARS-example-report.pdf" target="_blank" rel="noopener"
+           class="btn-solid" data-track-example="case_section">
+          View the full example report (PDF) →
+        </a>
       </div>
 
       <div class="case-panel">
@@ -666,7 +677,16 @@
         });
       });
     }
-
+    document.querySelectorAll('[data-track-example]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'example_report_click', {
+            link_url: a.href,
+            link_location: a.getAttribute('data-track-example')
+          });
+        }
+      });
+    });
     document.querySelectorAll('.faq-item').forEach(function (item) {
       var q = item.querySelector('.faq-q');
       var a = item.querySelector('.faq-a');
