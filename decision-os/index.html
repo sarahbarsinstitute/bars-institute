@@ -599,31 +599,31 @@
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What does BARS actually tell me?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Which of two options produces the better outcome across thousands of simulated futures, how much better, how much room for error there is, and — most usefully — which single assumption the recommendation is resting on and the exact value at which it reverses.</p></div>
+      <div class="faq-a"><p>Which of two options produces the better outcome across thousands of simulated futures, how much better it is, and how much room there is for error. It also identifies the assumption the recommendation depends on most and the exact value at which the recommendation changes.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How is this different from Excel or @RISK?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Excel gives you one number from one set of guesses. @RISK adds distributions but expects you to know which to pick, and still answers only how uncertain the outcome is. BARS answers a different question: given everything you are unsure about, which assumption is the recommendation actually resting on, and how far is it from flipping?</p></div>
+      <div class="faq-a"><p>Excel gives you an answer based on the assumptions you enter. @RISK lets you model uncertainty around those assumptions. BARS goes a step further by comparing two decisions across many possible outcomes and showing which assumption matters most to the result, including the point at which the recommendation changes.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Do I need a statistics background?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>No. You give a likely value and a low and a high — the way you would describe it to a colleague. The engine handles the distribution. Every technical choice it makes on your behalf is stated in the report rather than applied silently, so you can check it or hand it to someone who will.</p></div>
+      <div class="faq-a"><p>No. You provide a likely value, a low value and a high value, much as you would when discussing an assumption with a colleague. The engine handles the distribution. The technical choices it makes are documented in the report, so you can review them or pass the analysis to someone who wants to check the detail.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How do I know the numbers are right?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Every run carries a random seed and an engine version, so the same model reproduces the same figures exactly. Every report includes a technical appendix with the equations, the provenance of every assumption, and every default the engine applied. The engine has 568 automated tests and has been through three independent adversarial source audits and a first-run review of the live product — every one of which found real defects, all of them fixed or documented.</p></div>
+      <div class="faq-a"><p>Every run has a random seed and engine version, so the same model can reproduce the same figures. Reports include the equations, the source of each assumption and the defaults applied by the engine. The engine currently has 568 automated tests and has undergone three independent adversarial source audits, as well as a first-run review of the live product. Issues identified through those reviews have been fixed or documented.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What if an assumption is just a guess?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Say so, and it is recorded as an estimate rather than treated as fact. It appears in the provenance trail, in the flagged-assumptions list, and — in almost every real model — as the assumption the whole decision turns on. Which is exactly what you want to discover before committing, rather than after.</p></div>
+      <div class="faq-a"><p>That's fine. Record it as an estimate rather than a fact. It is then visible in the provenance trail and flagged assumptions list. In many models, an uncertain assumption will also turn out to be one of the factors driving the decision. That is useful information to have before committing to a course of action.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What decisions can it model?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Five two-option decisions: hire now or wait, in-house or outside provider, invest or don't, raise prices or hold, and proceed or hold on a plan. If your decision does not fit one of those, the software tells you so rather than approximating it with a model that does not match — and I would like to hear what it was.</p></div>
+      <div class="faq-a"><p>The current version supports five two-option decisions: hire now or wait, in-house or outside provider, invest or don't, raise prices or hold, and proceed or hold on a plan. If your decision does not fit one of these models, the software will tell you rather than forcing it into an unsuitable model.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Can you just run one for me?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Yes. Bring a real decision you are advising on and I will model it, run it, and send back the analysis with its technical appendix. That is often the fastest way to see whether this is useful on your own work rather than on someone else's example.</p></div>
+      <div class="faq-a"><p>Yes. Bring a real decision you are working on and I can model it, run the analysis and send you the results with the technical appendix. It is a practical way to see whether the approach is useful on your own work.</p></div>
     </div>
   </div>
 </section>
