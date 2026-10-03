@@ -342,7 +342,7 @@
     <a href="#how-it-works">How it works</a>
     <a href="#decisions">Decisions</a>
     <a href="#faq">FAQ</a>
-    <a href="/app" class="header-cta">Open the app</a>
+    <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="header-cta" data-track-waitlist="header">Join the waitlist</a>
   </nav>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
     <span></span><span></span><span></span>
@@ -354,7 +354,7 @@
   <a href="#how-it-works">How it works</a>
   <a href="#decisions">Decisions</a>
   <a href="#faq">FAQ</a>
-  <a href="/app" class="header-cta">Open the app</a>
+  <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="header-cta" data-track-waitlist="header">Join the waitlist</a>
 </div>
 
 <main>
@@ -370,10 +370,10 @@
       99% confident in is worth very little if it turns on a number nobody has measured.
     </p>
     <div class="hero-actions">
-      <a href="/app" class="btn-primary">Run a decision</a>
+      <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="btn-primary" data-track-waitlist="hero">Join the waitlist</a>
       <a href="#example" class="btn-ghost">See a worked example</a>
     </div>
-    <p class="hero-note">No sign-up. Five decision types. Every figure traceable to the assumption that produced it.</p>
+    <p class="hero-note">Early access by waitlist. Five decision types. Every figure traceable to the assumption that produced it.</p>
   </div>
 
   <div class="hero-visual">
@@ -631,11 +631,11 @@
 <section class="cta-section" id="start">
   <h2>Find out what your decision is resting on</h2>
   <p class="cta-sub">
-    Run one yourself in a few minutes, or send me a decision you are advising on and I will model
+    Join the waitlist for early access, or send me a decision you are advising on and I will model
     it and send back the analysis.
   </p>
   <div class="cta-actions">
-    <a href="/app" class="btn-primary">Run a decision</a>
+    <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="btn-primary" data-track-waitlist="closing">Join the waitlist</a>
     <a href="mailto:sarah@bars.institute?subject=Decision%20analysis" class="btn-ghost">Send me a decision</a>
   </div>
   <p class="cta-small">BARS Institute Ltd · New Zealand · hello@bars.institute</p>
@@ -683,6 +683,15 @@
           gtag('event', 'example_report_click', {
             link_url: a.href,
             link_location: a.getAttribute('data-track-example')
+          });
+        }
+      });
+    });
+    document.querySelectorAll('[data-track-waitlist]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'waitlist_click', {
+            link_location: a.getAttribute('data-track-waitlist')
           });
         }
       });
