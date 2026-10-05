@@ -138,11 +138,43 @@
   .hero-bg::before {
     content: ''; position: absolute; inset: -15% -10%;
     background:
-      radial-gradient(ellipse 55% 45% at 16% 18%, rgba(242,213,221,0.85), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 46% 34%, rgba(232,183,197,0.55), transparent 65%),
       radial-gradient(ellipse 70% 60% at 80% 10%, rgba(125,142,196,0.6), transparent 62%),
       linear-gradient(160deg, #17243D 0%, #2A5187 32%, #3567A8 62%, #7D8EC4 86%, #E8B7C5 118%);
     filter: blur(46px); z-index: 0; pointer-events: none;
+  }
+  /* Pink clouds: three soft layers drifting slowly over the blue wash.
+     Only transform is animated, so the blur is painted once and the motion stays cheap. */
+  .hero-clouds { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .hero-clouds span { position: absolute; border-radius: 50%; filter: blur(46px); will-change: transform; }
+  .hero-clouds span:nth-child(1) {
+    width: 62%; height: 74%; left: -12%; top: -22%;
+    background: radial-gradient(ellipse at center, rgba(242,213,221,0.85), rgba(242,213,221,0) 64%);
+    animation: cloudA 46s ease-in-out infinite alternate;
+  }
+  .hero-clouds span:nth-child(2) {
+    width: 68%; height: 80%; left: 14%; top: -4%;
+    background: radial-gradient(ellipse at center, rgba(232,183,197,0.55), rgba(232,183,197,0) 66%);
+    animation: cloudB 62s ease-in-out infinite alternate;
+  }
+  .hero-clouds span:nth-child(3) {
+    width: 44%; height: 56%; left: 52%; top: 48%;
+    background: radial-gradient(ellipse at center, rgba(242,213,221,0.42), rgba(242,213,221,0) 64%);
+    animation: cloudC 54s ease-in-out infinite alternate;
+  }
+  @keyframes cloudA {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(12%, 9%, 0) scale(1.12); }
+    100% { transform: translate3d(22%, -4%, 0) scale(0.96); }
+  }
+  @keyframes cloudB {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(-14%, 8%, 0) scale(0.9); }
+    100% { transform: translate3d(10%, 14%, 0) scale(1.14); }
+  }
+  @keyframes cloudC {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(-22%, -16%, 0) scale(1.2); }
+    100% { transform: translate3d(-36%, 6%, 0) scale(1.05); }
   }
   .hero {
     position: relative; z-index: 1;
@@ -156,9 +188,12 @@
     line-height: 1.1; max-width: 640px; margin-bottom: 20px; letter-spacing: -0.02em;
   }
   .hero .grad-text {
-    background: linear-gradient(100deg, #FFFFFF 0%, var(--pink-soft) 55%, var(--pink) 100%);
+    background: linear-gradient(100deg, #FFFFFF 0%, var(--pink-soft) 22%, var(--pink) 40%, var(--pink-soft) 58%, #FFFFFF 78%, var(--pink) 100%);
+    background-size: 280% 100%;
     -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: textDrift 11s ease-in-out infinite alternate;
   }
+  @keyframes textDrift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
   .hero-sub { font-size: 16.5px; color: rgba(255,255,255,0.86); max-width: 520px; line-height: 1.7; margin-bottom: 30px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
   .btn-primary {
@@ -191,8 +226,10 @@
   /* The card sits inside .hero but on a WHITE surface, so it needs the
      dark-on-light gradient rather than the hero's light-on-dark one. */
   .verdict-grad {
-    background: linear-gradient(100deg, var(--navy) 0%, var(--blue) 58%, var(--pink) 118%);
+    background: linear-gradient(100deg, var(--navy) 0%, var(--blue) 26%, #D98FA6 48%, var(--blue) 70%, var(--navy) 100%);
+    background-size: 260% 100%;
     -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: textDrift 13s ease-in-out infinite alternate;
   }
   .sim-verdict-sub { font-size: 13px; color: var(--ink-mid); margin-bottom: 20px; }
   .sim-flip { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0; padding: 16px 18px; margin-bottom: 16px; }
@@ -240,6 +277,79 @@
   .step-num { font-family: 'Geist', sans-serif; font-size: 12px; font-weight: 600; color: var(--blue); margin-bottom: 12px; letter-spacing: 0.06em; }
   .step-title { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; }
   .step-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; }
+
+  /* WALKTHROUGH — a silent, looping run of the price-rise example.
+     Display only: every figure is copied from the same recorded run as the rest of the page. */
+  .wt { display: grid; grid-template-columns: 0.8fr 1.2fr; background: var(--white); border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 52px; }
+  .wt-side { padding: 30px 30px 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-width: 0; border-right: 1px solid var(--border); }
+  .wt-label { font-size: 11.5px; font-weight: 500; color: var(--ink-muted); letter-spacing: 0.03em; text-transform: uppercase; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .wt-chip { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 9px; background: var(--surface); border: 1px solid var(--border); color: var(--ink-mid); }
+  .wt-cap { font-family: 'Geist', sans-serif; font-size: clamp(18px, 1.9vw, 22px); font-weight: 500; line-height: 1.36; letter-spacing: -0.01em; min-height: 5.5em; }
+  .wt-ctl { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+  .wt-ctl button { font-family: 'Public Sans', sans-serif; background: none; border: none; cursor: pointer; color: var(--ink); }
+  .wt-dot { width: 22px; height: 22px; display: grid; place-items: center; padding: 0; }
+  .wt-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s, transform 0.3s; }
+  .wt-dot[aria-current="true"]::before { background: var(--blue); transform: scale(1.3); }
+  .wt-play { border: 1px solid var(--border) !important; padding: 6px 14px; font-size: 13px; font-weight: 500; margin-left: 8px; min-width: 70px; }
+  .wt-stage { position: relative; background: var(--surface); height: 360px; min-width: 0; }
+  .wt-scene { position: absolute; inset: 0; padding: 30px 34px; display: flex; flex-direction: column; justify-content: center; gap: 18px; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s; }
+  .wt-scene.is-on { opacity: 1; visibility: visible; }
+  .wt-eyebrow { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.05em; text-transform: uppercase; }
+  .wt-big { font-family: 'Geist', sans-serif; font-size: clamp(21px, 2.5vw, 29px); font-weight: 600; line-height: 1.18; letter-spacing: -0.015em; }
+  .wt-num { font-variant-numeric: tabular-nums; }
+  @keyframes wtUp { from { opacity: 0; transform: translateY(10px); } }
+  @keyframes wtGrow { from { transform: scaleX(0); } }
+  @keyframes wtPop { from { opacity: 0; transform: scale(0.6); } }
+  .wt-scene.is-on .w1 { animation: wtUp 0.6s 0.15s both; } .wt-scene.is-on .w2 { animation: wtUp 0.6s 0.55s both; }
+  .wt-scene.is-on .w3 { animation: wtUp 0.6s 0.95s both; } .wt-scene.is-on .w4 { animation: wtUp 0.6s 1.35s both; }
+  .wt-opts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .wt-opt { flex: 1 1 180px; min-width: 0; background: var(--white); border: 1px solid var(--border); padding: 14px 16px; }
+  .wt-opt small { display: block; font-size: 11.5px; color: var(--ink-muted); }
+  .wt-opt b { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 15.5px; }
+  .wt-rows { display: flex; flex-direction: column; gap: 10px; }
+  .wt-row { background: var(--white); border: 1px solid var(--border); padding: 12px 16px; }
+  .wt-row-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; font-size: 14px; }
+  .wt-row-top span:first-child { font-weight: 600; }
+  .wt-row-top span:last-child { color: var(--ink-mid); }
+  .wt-tag { font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; margin-left: 6px; background: var(--gold-soft); color: var(--gold); }
+  .wt-track { position: relative; height: 6px; background: var(--border-soft); margin-top: 10px; }
+  .wt-fill { position: absolute; inset: 0; background: rgba(53,103,168,0.28); transform-origin: left; }
+  .wt-knob { position: absolute; top: -5px; width: 2px; height: 16px; background: var(--navy-deep); }
+  .wt-scene.is-on .wt-fill { animation: wtGrow 0.8s 0.5s both; } .wt-scene.is-on .wt-knob { animation: wtPop 0.4s 1.2s both; }
+  .wt-dots { display: block; width: 100%; max-width: 580px; aspect-ratio: 100 / 40; }
+  .wt-key { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--ink-mid); }
+  .wt-key span::before { content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; background: var(--blue); }
+  .wt-key span.p::before { background: #D98FA6; }
+  .wt-key span.n::before { display: none; }
+  .wt-stats { display: flex; flex-wrap: wrap; gap: 10px; }
+  .wt-stat { flex: 1 1 160px; min-width: 0; background: var(--white); border: 1px solid var(--border); padding: 13px 16px; }
+  .wt-stat b { display: block; font-family: 'Geist', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+  .wt-stat small { font-size: 12.5px; color: var(--ink-mid); }
+  .wt-out { position: relative; height: 1.5em; font-family: 'Geist', sans-serif; font-weight: 600; font-size: clamp(18px, 2vw, 22px); }
+  .wt-out span { position: absolute; left: 0; top: 0; white-space: nowrap; }
+  .wt-out .to { opacity: 0; color: #A8526C; }
+  .wt-flip { position: relative; height: 84px; }
+  .wt-flip .wt-track { position: absolute; left: 0; right: 0; top: 38px; margin: 0; background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 56%, var(--pink) 56%, var(--pink) 100%); }
+  .wt-th { position: absolute; left: 56%; top: 24px; height: 34px; border-left: 2px dashed var(--navy-deep); }
+  .wt-th span { position: absolute; top: -22px; left: 0; transform: translateX(-50%); font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .wt-mark { position: absolute; top: 41px; left: 31.8%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--white); border: 3px solid var(--navy-deep); }
+  .wt-ends { position: absolute; left: 0; right: 0; top: 60px; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-muted); }
+  @keyframes wtSlide { to { left: 62%; } } @keyframes wtHide { to { opacity: 0; } } @keyframes wtShow { to { opacity: 1; } }
+  .wt-scene.is-on .wt-mark { animation: wtSlide 2s 1.4s ease-in-out forwards; }
+  .wt-scene.is-on .wt-out .from { animation: wtHide 0.3s 3s forwards; } .wt-scene.is-on .wt-out .to { animation: wtShow 0.3s 3.1s forwards; }
+  .wt-audit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .wt-audit div { background: var(--white); padding: 12px 15px; min-width: 0; }
+  .wt-audit dt { font-size: 11.5px; color: var(--ink-muted); }
+  .wt-audit dd { font-weight: 600; font-size: 14.5px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  @media (prefers-reduced-motion: reduce) { .wt *, .wt *::before { animation: none !important; transition: none !important; } }
+  @media (max-width: 860px) {
+    .wt { grid-template-columns: 1fr; margin-bottom: 36px; }
+    .wt-side { border-right: none; border-bottom: 1px solid var(--border); padding: 22px 20px 18px; gap: 16px; }
+    .wt-cap { min-height: 5.6em; }
+    .wt-stage { height: 380px; }
+    .wt-scene { padding: 22px 20px; gap: 14px; }
+    .wt-audit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
 
   /* PRINCIPLE */
   .principle { padding: 92px 48px; max-width: 1160px; margin: 0 auto; }
@@ -302,7 +412,10 @@
   .hero-note { animation-delay: 0.26s; }
   .hero-visual .sim-card { animation-delay: 0.2s; }
   @keyframes heroIn { to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .hero-main > *, .hero-visual .sim-card { animation: none; opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-main > *, .hero-visual .sim-card { animation: none; opacity: 1; transform: none; }
+    .hero-clouds span, .hero .grad-text, .verdict-grad { animation: none; }
+  }
   a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
   @media(max-width: 980px) {
@@ -318,6 +431,10 @@
     .mobile-nav { display: flex; }
     .hero { padding: 52px 24px 44px; grid-template-columns: 1fr; gap: 36px; }
     .hero-bg::before { inset: -20% -30%; filter: blur(34px); }
+    .hero-clouds span { filter: blur(34px); }
+    .hero-clouds span:nth-child(1) { width: 110%; height: 52%; left: -30%; top: -14%; }
+    .hero-clouds span:nth-child(2) { width: 120%; height: 56%; left: -10%; top: 12%; }
+    .hero-clouds span:nth-child(3) { width: 90%; height: 40%; left: 30%; top: 58%; }
     section.block, .principle { padding: 56px 24px; }
     .case, .who-strip, .cta-section { padding: 56px 24px; }
     .steps, .use-grid { grid-template-columns: 1fr; }
@@ -364,6 +481,7 @@
 <main>
 
 <section class="hero-bg">
+<div class="hero-clouds" aria-hidden="true"><span></span><span></span><span></span></div>
 <section class="hero">
   <div class="hero-main">
     <p class="hero-kicker">Decision analysis under uncertainty</p>
@@ -468,6 +586,75 @@
     No distributions to choose, no correlation matrices to configure. You give ranges instead of
     false precision; the engine does the rest and shows its working.
   </p>
+  <div class="wt" id="walkthrough" aria-label="Animated walkthrough of the price-rise worked example">
+    <div class="wt-side">
+      <p class="wt-label">Raise prices 8%, or hold <span class="wt-chip">Worked example</span></p>
+      <p class="wt-cap" id="wtCap">Start with the decision, in plain words.</p>
+      <div class="wt-ctl" id="wtCtl"></div>
+    </div>
+    <div class="wt-stage">
+
+      <div class="wt-scene is-on" data-caption="Start with the decision, in plain words.">
+        <span class="wt-eyebrow w1">The decision</span>
+        <p class="wt-big w2">Raise prices 8%, or hold?</p>
+        <div class="wt-opts">
+          <div class="wt-opt w3"><small>Option A</small><b>Raise prices 8%</b></div>
+          <div class="wt-opt w4"><small>Option B</small><b>Hold prices</b></div>
+        </div>
+      </div>
+
+      <div class="wt-scene" data-caption="Give ranges, not single numbers. A guess is flagged as an estimate, not treated as fact.">
+        <span class="wt-eyebrow w1">Assumptions</span>
+        <div class="wt-rows">
+          <div class="wt-row w2">
+            <div class="wt-row-top"><span>Monthly revenue</span><span class="wt-num">$235k to $262k, most likely $248k</span></div>
+            <div class="wt-track"><span class="wt-fill"></span><span class="wt-knob" style="left:48%"></span></div>
+          </div>
+          <div class="wt-row w3"><div class="wt-row-top"><span>Price increase</span><span class="wt-num">8%</span></div></div>
+          <div class="wt-row w4"><div class="wt-row-top"><span>Volume loss <span class="wt-tag">Estimate</span></span><span class="wt-num">about 5.4% of customers</span></div></div>
+        </div>
+      </div>
+
+      <div class="wt-scene" data-caption="Both options face the same 100,000 simulated futures, so the comparison is like for like.">
+        <span class="wt-eyebrow w1"><span class="wt-num" id="wtCount">100,000</span> simulated futures</span>
+        <canvas class="wt-dots" id="wtDots" role="img" aria-label="4,000 dots, each standing for 25 simulated futures. Raising prices is ahead in 93% of them and behind in 7%."></canvas>
+        <div class="wt-key w4"><span>Raising ahead, 93%</span><span class="p">Raising behind, 7%</span><span class="n">Each dot is 25 futures</span></div>
+      </div>
+
+      <div class="wt-scene" data-caption="The result shows how often, how much, and how bad it gets when it goes wrong.">
+        <span class="wt-eyebrow w1">What the run returned</span>
+        <p class="wt-big w2">Raising prices is ahead in <span class="verdict-grad">93%</span> of simulated futures.</p>
+        <div class="wt-stats">
+          <div class="wt-stat w3"><b class="wt-num">$231,759</b><small>average gain over 24 months</small></div>
+          <div class="wt-stat w4"><b class="wt-num">&minus;$180,103</b><small>worst case, if behind</small></div>
+        </div>
+      </div>
+
+      <div class="wt-scene" data-caption="The flip point: the answer reverses if more than 9.5% of customers leave. The estimate is 5.4%, and nobody has measured it.">
+        <span class="wt-eyebrow w1">Flip point &middot; Volume loss</span>
+        <div class="wt-out w2"><span class="from">Raising prices ahead</span><span class="to">Holding ahead</span></div>
+        <div class="wt-flip w2">
+          <div class="wt-track"></div>
+          <div class="wt-th"><span>flips at 9.5%</span></div>
+          <div class="wt-mark"></div>
+          <div class="wt-ends"><span>Raise wins</span><span>Hold wins</span></div>
+        </div>
+      </div>
+
+      <div class="wt-scene" data-caption="Every figure traces back to a run that reproduces exactly.">
+        <span class="wt-eyebrow w1">Audit trail</span>
+        <dl class="wt-audit w2">
+          <div><dt>Iterations</dt><dd>100,000</dd></div>
+          <div><dt>Seed</dt><dd>20260907</dd></div>
+          <div><dt>Engine</dt><dd>v1.39.0</dd></div>
+          <div><dt>Period</dt><dd>24 months</dd></div>
+          <div><dt>Volume loss</dt><dd>Estimate, no data</dd></div>
+          <div><dt>Load-bearing assumption</dt><dd>Volume loss</dd></div>
+        </dl>
+      </div>
+
+    </div>
+  </div>
   <div class="steps">
     <div class="step-card">
       <p class="step-num">01</p>
@@ -722,6 +909,58 @@
       });
     });
   });
+
+  /* WALKTHROUGH — plays the scenes above in a loop. Display only: no figure is computed here. */
+  (function () {
+    var root = document.getElementById('walkthrough'); if (!root) return;
+    var scenes = [].slice.call(root.querySelectorAll('.wt-scene')), cap = document.getElementById('wtCap'),
+        ctl = document.getElementById('wtCtl'), count = document.getElementById('wtCount'), dots = document.getElementById('wtDots'),
+        reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches,
+        playing = !reduced, inView = true, i = 0, timer = null, raf = null, DUR = 5200, btns = [];
+    /* 4,000 dots, 25 futures each: 3,720 ahead and 280 behind, the 93% and 7% the run returned.
+       Which dot is which colour, and the order they appear in, is a fixed shuffle for display only. */
+    var COLS = 100, ROWS = 40, N = COLS * ROWS, order = [], isPink = new Uint8Array(N), seed = 20260907, shown = N,
+        ctx = dots.getContext('2d'), cBlue = getComputedStyle(root).getPropertyValue('--blue').trim() || '#3567A8', cPink = '#D98FA6';
+    function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+    function shuffle() { for (var k = N - 1; k > 0; k--) { var j = Math.floor(rnd() * (k + 1)), t = order[k]; order[k] = order[j]; order[j] = t; } }
+    for (var d = 0; d < N; d++) order[d] = d;
+    shuffle(); for (var q = 0; q < Math.round(N * 0.07); q++) isPink[order[q]] = 1; shuffle();
+    function draw(n) {
+      shown = n; var w = dots.clientWidth, h = dots.clientHeight, r = window.devicePixelRatio || 1; if (!w) return;
+      if (dots.width !== Math.round(w * r)) { dots.width = Math.round(w * r); dots.height = Math.round(h * r); }
+      ctx.setTransform(r, 0, 0, r, 0, 0); ctx.clearRect(0, 0, w, h);
+      var pitch = w / COLS, rad = pitch * 0.33;
+      for (var c = 0; c < 2; c++) {
+        ctx.beginPath();
+        for (var k = 0; k < n; k++) { var id = order[k]; if (isPink[id] !== c) continue;
+          var x = (id % COLS + 0.5) * pitch, y = (Math.floor(id / COLS) + 0.5) * pitch; ctx.moveTo(x + rad, y); ctx.arc(x, y, rad, 0, 6.2832); }
+        ctx.fillStyle = c ? cPink : cBlue; ctx.fill();
+      }
+    }
+    window.addEventListener('resize', function () { draw(shown); });
+    scenes.forEach(function (s, k) {
+      var b = document.createElement('button'); b.className = 'wt-dot'; b.type = 'button';
+      b.setAttribute('aria-label', 'Scene ' + (k + 1) + ' of ' + scenes.length);
+      b.addEventListener('click', function () { show(k); }); ctl.appendChild(b); btns.push(b);
+    });
+    var play = document.createElement('button'); play.className = 'wt-play'; play.type = 'button';
+    play.addEventListener('click', function () { playing = !playing; label(); schedule(); }); ctl.appendChild(play);
+    function label() { play.textContent = playing ? 'Pause' : 'Play'; }
+    function schedule() { clearTimeout(timer); if (playing && inView && !document.hidden) timer = setTimeout(function () { show(i + 1); }, DUR); }
+    function runCount() {
+      cancelAnimationFrame(raf); if (reduced) { count.textContent = '100,000'; draw(N); return; }
+      var t0 = performance.now();
+      (function step(t) { var p = Math.min(1, (t - t0) / 2400), e = 1 - Math.pow(1 - p, 3); count.textContent = Math.round(1e5 * e).toLocaleString('en-US'); draw(Math.round(N * e)); if (p < 1) raf = requestAnimationFrame(step); })(t0);
+    }
+    function show(n) {
+      i = (n + scenes.length) % scenes.length;
+      scenes.forEach(function (s, k) { s.classList.toggle('is-on', k === i); s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); btns[k].setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      cap.textContent = scenes[i].getAttribute('data-caption'); if (scenes[i].contains(count)) runCount(); schedule();
+    }
+    label(); show(0); draw(N);
+    document.addEventListener('visibilitychange', schedule);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { inView = e[0].isIntersecting; schedule(); }, { threshold: 0.25 }).observe(root);
+  })();
 
   /* NOTE ON NUMBERS
      ---------------
