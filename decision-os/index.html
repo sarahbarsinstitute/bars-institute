@@ -52,7 +52,7 @@
     { "@type": "Question", "name": "Do I need a statistics background?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. You give a likely value and a low and a high — the way you would describe it to a colleague. The engine handles the distribution. Every technical choice it makes on your behalf is stated in the report rather than applied silently." } },
     { "@type": "Question", "name": "How do I know the numbers are right?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Every run carries a random seed and an engine version, so the same model reproduces the same figures exactly. Every report includes a technical appendix with the equations, the provenance of every assumption, and every default the engine applied. The engine has 568 automated tests and has been through three independent adversarial source audits and a first-run review of the live product." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Every run carries a random seed and an engine version, so the same model reproduces the same figures exactly. Every report includes a technical appendix with the equations, the provenance of every assumption, and every default the engine applied. The engine has 633 automated tests and has been through three independent adversarial source audits and a first-run review of the live product." } },
     { "@type": "Question", "name": "What if an assumption is a guess?",
       "acceptedAnswer": { "@type": "Answer", "text": "Say so, and it is recorded as an estimate rather than treated as fact. It appears in the provenance trail, in the flagged-assumptions list, and usually as the assumption the whole decision turns on — which is exactly what you want to find out before committing." } },
     { "@type": "Question", "name": "What decisions can it model?",
@@ -337,6 +337,7 @@
     <circle cx="85" cy="100" r="45" fill="#1D2F4E" mask="url(#lc)"/>
     <circle cx="85" cy="100" r="45" fill="none" stroke="#1D2F4E" stroke-width="1.5"/>
     <circle cx="115" cy="100" r="45" fill="none" stroke="#1D2F4E" stroke-width="1.5"/>
+    <line x1="100" y1="55" x2="100" y2="145" stroke="#1D2F4E" stroke-width="1"/>
   </svg>
     BARS Institute
   </a>
@@ -398,7 +399,7 @@
       </div>
 
       <p class="sim-foot">
-        Real output. 100,000 iterations, seed 20260907, engine v1.37.0 — re-running this model
+        Real output. 100,000 iterations, seed 20260907, engine v1.39.0 — re-running this model
         reproduces every figure exactly.
       </p>
     </div>
@@ -446,7 +447,7 @@
         <div class="metric-row"><span class="metric-label">Better outcome in</span><span class="metric-value">93% of futures</span></div>
         <div class="metric-row"><span class="metric-label">Average gain over 24 months</span><span class="metric-value">$231,759</span></div>
         <div class="metric-row"><span class="metric-label">Gain in 80% of futures</span><span class="metric-value">$31,901 – $402,496</span></div>
-        <div class="metric-row"><span class="metric-label">Behind in</span><span class="metric-value">6.7% of futures</span></div>
+        <div class="metric-row"><span class="metric-label">Behind in</span><span class="metric-value">7% of futures</span></div>
         <div class="metric-row"><span class="metric-label">Worst case, if behind</span><span class="metric-value">−$180,103</span></div>
         <div class="metric-row"><span class="metric-label">Load-bearing assumption</span><span class="metric-value">Volume loss</span></div>
         <div class="metric-row"><span class="metric-label">Estimated at / flips above</span><span class="metric-value">5.4% / 9.5%</span></div>
@@ -507,8 +508,8 @@
       <div class="chain-row">
         <span class="chain-dot" aria-hidden="true"></span>
         <div>
-          <div class="chain-title">568 automated tests, four independent reviews</div>
-          <div class="chain-desc">Both audits were adversarial, and both found real defects. Every finding is fixed or documented with a reason.</div>
+          <div class="chain-title">633 automated tests, four independent reviews</div>
+          <div class="chain-desc">The audits were adversarial and found real defects. Every finding is fixed or documented with a reason.</div>
         </div>
       </div>
       <div class="chain-row">
@@ -558,7 +559,7 @@
     <div class="use-card">
       <h3 class="use-title">Invest, or don't</h3>
       <p class="use-desc">Upfront cost, expected returns and timing, judged against your hurdle rate.</p>
-      <p class="use-tags">Investment analysis · 36 months</p>
+      <p class="use-tags">Investment analysis · 60 months</p>
     </div>
     <div class="use-card">
       <h3 class="use-title">Raise prices, or hold</h3>
@@ -614,7 +615,7 @@
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How do I know the numbers are right?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Every run has a random seed and engine version, so the same model can reproduce the same figures. Reports include the equations, the source of each assumption and the defaults applied by the engine. The engine currently has 568 automated tests and has undergone three independent adversarial source audits, as well as a first-run review of the live product. Issues identified through those reviews have been fixed or documented.</p></div>
+      <div class="faq-a"><p>Every run has a random seed and engine version, so the same model can reproduce the same figures. Reports include the equations, the source of each assumption and the defaults applied by the engine. The engine currently has 633 automated tests and has undergone three independent adversarial source audits, as well as a first-run review of the live product. Issues identified through those reviews have been fixed or documented.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What if an assumption is just a guess?<span class="icon" aria-hidden="true"></span></button>
@@ -641,7 +642,7 @@
     <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="btn-primary" data-track-waitlist="closing">Join the waitlist</a>
     <a href="mailto:sarah@bars.institute?subject=Decision%20analysis" class="btn-ghost">Send me a decision</a>
   </div>
-  <p class="cta-small">BARS Institute Ltd · New Zealand · hello@bars.institute</p>
+  <p class="cta-small">BARS Institute Ltd · New Zealand · sarah@bars.institute</p>
 </section>
 
 </main>
@@ -726,13 +727,13 @@
      ---------------
      There is deliberately no calculation in this file. Every figure shown —
      93%, $231,759, 5.4%, 9.5%, the 80% range — is copied from a recorded run
-     of the production engine (100,000 iterations, seed 20260907, v1.18.3) and
+     of the production engine (100,000 iterations, seed 20260907, v1.39.0) and
      is reproducible from engine/examples/price_change.json.
 
      A landing-page calculator would be a second implementation of the same
      maths, and it would drift from the engine the first time a template
      changed. Anyone wanting to run their own numbers uses the real app, which
-     has 568 tests behind it.
+     has 633 tests behind it.
 
      When the engine changes materially, re-run that example and update these
      figures rather than adjusting them by hand. */
