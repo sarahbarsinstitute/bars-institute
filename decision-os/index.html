@@ -217,12 +217,15 @@
 }
 .btn-solid:hover { background: var(--blue); }
   .hero-note { font-size: 13px; color: rgba(255,255,255,0.66); }
+  .hero-note a { color: rgba(255,255,255,0.9); }
 
   /* HERO CARD — real engine output */
   .hero-visual { position: relative; z-index: 1; }
   .sim-card { background: var(--white); border-radius: 0; border: 1px solid var(--border); box-shadow: var(--shadow); padding: 26px; }
   .sim-card-label { font-size: 11.5px; font-weight: 500; color: var(--ink-muted); margin-bottom: 4px; letter-spacing: 0.03em; text-transform: uppercase; }
-  .sim-verdict { font-family: 'Geist', sans-serif; font-size: 21px; font-weight: 600; margin-bottom: 3px; letter-spacing: -0.01em; }
+  .sim-verdict { font-family: 'Geist', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 3px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+  .sim-flip-big { font-family: 'Geist', sans-serif; font-size: clamp(32px, 3vw, 39px); font-weight: 700; line-height: 1.05; letter-spacing: -0.025em; text-transform: uppercase; }
+  .sim-flip-var { font-family: 'Geist', sans-serif; font-size: 19px; font-weight: 600; margin: 6px 0 8px; }
   /* The card sits inside .hero but on a WHITE surface, so it needs the
      dark-on-light gradient rather than the hero's light-on-dark one. */
   .verdict-grad {
@@ -232,7 +235,7 @@
     animation: textDrift 13s ease-in-out infinite alternate;
   }
   .sim-verdict-sub { font-size: 13px; color: var(--ink-mid); margin-bottom: 20px; }
-  .sim-flip { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0; padding: 16px 18px; margin-bottom: 16px; }
+  .sim-flip { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0; padding: 22px 20px 18px; margin-bottom: 16px; }
   .sim-flip-label { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 7px; }
   .sim-flip-text { font-size: 13.5px; line-height: 1.62; color: var(--ink); }
   .sim-flip-text strong { font-weight: 600; }
@@ -261,6 +264,8 @@
   .case-note { font-size: 13px; color: var(--ink-mid); line-height: 1.68; margin-top: 18px; }
   .case-quote { font-family: 'Geist', sans-serif; font-size: clamp(19px, 2.2vw, 25px); font-weight: 500; line-height: 1.38; letter-spacing: -0.01em; margin-bottom: 18px; }
   .case-quote .hl { background: linear-gradient(180deg, transparent 62%, var(--pink-soft) 62%); }
+
+  .case-outcome { font-family: 'Geist', sans-serif; font-size: clamp(24px, 3.2vw, 38px); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; max-width: 880px; margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--border); }
 
   /* STEPS */
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -463,7 +468,8 @@
     <a href="#how-it-works">How it works</a>
     <a href="#decisions">Decisions</a>
     <a href="#faq">FAQ</a>
-    <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="header-cta" data-track-waitlist="header">Join the waitlist</a>
+    <a href="mailto:hello@bars.institute?subject=Join%20the%20waitlist" data-track-waitlist="header">Join the waitlist</a>
+    <a href="mailto:hello@bars.institute?subject=Decision%20analysis" class="header-cta" data-track-decision="header">Send me a decision</a>
   </nav>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
     <span></span><span></span><span></span>
@@ -475,7 +481,8 @@
   <a href="#how-it-works">How it works</a>
   <a href="#decisions">Decisions</a>
   <a href="#faq">FAQ</a>
-  <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="header-cta" data-track-waitlist="header">Join the waitlist</a>
+  <a href="mailto:hello@bars.institute?subject=Join%20the%20waitlist" data-track-waitlist="header">Join the waitlist</a>
+    <a href="mailto:hello@bars.institute?subject=Decision%20analysis" class="header-cta" data-track-decision="header">Send me a decision</a>
 </div>
 
 <main>
@@ -492,23 +499,23 @@
       99% confident in is worth very little if it turns on a number nobody has measured.
     </p>
     <div class="hero-actions">
-      <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="btn-primary" data-track-waitlist="hero">Join the waitlist</a>
-      <a href="#example" class="btn-ghost">See a worked example</a>
+      <a href="mailto:hello@bars.institute?subject=Decision%20analysis" class="btn-primary" data-track-decision="hero">Send me a decision</a>
+      <a href="mailto:hello@bars.institute?subject=Join%20the%20waitlist" class="btn-ghost" data-track-waitlist="hero">Join the waitlist</a>
     </div>
-    <p class="hero-note">Early access by waitlist. Five decision types. Every figure traceable to the assumption that produced it.</p>
+    <p class="hero-note">Send a decision you are advising on and I will model it. <a href="#example">See a worked example</a>.</p>
   </div>
 
   <div class="hero-visual">
     <div class="sim-card">
       <p class="sim-card-label">Raise prices 8%, or hold</p>
-      <p class="sim-verdict verdict-grad">Raise prices</p>
+      <p class="sim-verdict">Raise prices — 93%</p>
       <p class="sim-verdict-sub">Better 24-month cash flow in 93% of simulated futures</p>
 
       <div class="sim-flip">
-        <p class="sim-flip-label">What the answer rests on</p>
+        <p class="sim-flip-big verdict-grad">Flips above 9.5%</p>
+        <p class="sim-flip-var">Volume loss</p>
         <p class="sim-flip-text">
-          <strong>Volume loss.</strong> Estimated at 5.4% of customers. The recommendation
-          reverses above <strong>9.5%</strong> — and that figure has no data behind it.
+          Estimated at 5.4% of customers, and that figure has no data behind it.
         </p>
         <div class="sim-scale">
           <span class="sim-scale-track"><span class="sim-scale-mark" style="left:56%"></span></span>
@@ -571,11 +578,16 @@
         <div class="metric-row"><span class="metric-label">Estimated at / flips above</span><span class="metric-value">5.4% / 9.5%</span></div>
         <p class="case-note" style="margin-top:20px;">
           Every one of these figures came from the engine, not from this page. The run carries a
-          seed and a version, so the same model reproduces the same numbers on any machine — and
+          seed and a version, so the same model and engine version reproduce the same numbers — and
           the report it generates includes the equations that produced them.
         </p>
       </div>
     </div>
+
+    <p class="case-outcome">
+      BARS doesn't just tell you which option wins. It tells you
+      <span class="verdict-grad">what you need to learn before you commit.</span>
+    </p>
   </div>
 </div>
 
@@ -583,8 +595,8 @@
   <p class="section-kicker">How it works</p>
   <h2 class="section-heading">From a conversation to a defensible answer</h2>
   <p class="section-intro">
-    No distributions to choose, no correlation matrices to configure. You give ranges instead of
-    false precision; the engine does the rest and shows its working.
+    No distributions to choose, no correlation matrices to configure. You give ranges; the engine
+    does the rest and shows its working.
   </p>
   <div class="wt" id="walkthrough" aria-label="Animated walkthrough of the price-rise worked example">
     <div class="wt-side">
@@ -659,17 +671,17 @@
     <div class="step-card">
       <p class="step-num">01</p>
       <h3 class="step-title">Pick the decision</h3>
-      <p class="step-desc">Hire now or wait. Raise prices or hold. In-house or outsource. Five two-option decisions, each a real question rather than a calculator.</p>
+      <p class="step-desc">Hire now or wait. Raise prices or hold. In-house or outsource. Five two-option decisions.</p>
     </div>
     <div class="step-card">
       <p class="step-num">02</p>
       <h3 class="step-title">Give ranges, not guesses</h3>
-      <p class="step-desc">"Revenue is probably $235k–$262k, most likely $248k." If a figure is a guess, say so — it gets flagged rather than treated as fact.</p>
+      <p class="step-desc">"Revenue is probably $235k–$262k, most likely $248k." If a figure is a guess, say so and it gets flagged.</p>
     </div>
     <div class="step-card">
       <p class="step-num">03</p>
       <h3 class="step-title">Run 100,000 futures</h3>
-      <p class="step-desc">Both options face identical simulated conditions, so the comparison is like-for-like rather than two separate forecasts.</p>
+      <p class="step-desc">Both options face identical simulated conditions, so the comparison is like-for-like.</p>
     </div>
     <div class="step-card">
       <p class="step-num">04</p>
@@ -683,12 +695,12 @@
   <div class="principle-inner">
     <div>
       <p class="section-kicker">Why trust the number</p>
-      <h2 class="section-heading">AI proposes. Maths calculates. Nothing is assumed quietly.</h2>
+      <h2 class="section-heading">The model calculates. AI does not decide the answer.</h2>
       <p class="section-intro" style="margin-bottom:0;">
-        The calculation engine accepts a structured model and nothing else — it cannot be talked
-        into an answer. Every default it applies on your behalf is reported, not buried, and where
-        an input would decide the result by its absence the engine refuses to run rather than
-        filling it in.
+        Where AI is involved, its job ends at describing the decision as a structured model. A
+        separate calculation engine takes that model and nothing else, so it cannot be talked into
+        an answer. Every default it applies is reported, and where a missing input would decide the
+        result it refuses to run.
       </p>
     </div>
     <div>
@@ -703,7 +715,7 @@
         <span class="chain-dot" aria-hidden="true"></span>
         <div>
           <div class="chain-title">Reproducible to the cent</div>
-          <div class="chain-desc">Each run records its seed and engine version. The same model returns the same figures, on any machine, at any time.</div>
+          <div class="chain-desc">Each run records its seed. The same model and engine version reproduce the same figures.</div>
         </div>
       </div>
       <div class="chain-row">
@@ -717,7 +729,7 @@
         <span class="chain-dot" aria-hidden="true"></span>
         <div>
           <div class="chain-title">Estimates are labelled as estimates</div>
-          <div class="chain-desc">Anything you could not evidence is flagged in the report and usually turns out to be the assumption the decision rests on.</div>
+          <div class="chain-desc">Anything you could not evidence is flagged in the report.</div>
         </div>
       </div>
     </div>
@@ -761,7 +773,7 @@
     <div class="use-card" style="background:var(--surface);">
       <h3 class="use-title">Something else?</h3>
       <p class="use-desc">If the decision you are facing is not here, tell me what it is — that is how the next one gets built.</p>
-      <p class="use-tags"><a href="mailto:sarah@bars.institute" style="color:var(--blue);">sarah@bars.institute</a></p>
+      <p class="use-tags"><a href="mailto:hello@bars.institute" style="color:var(--blue);">hello@bars.institute</a></p>
     </div>
   </div>
 </section>
@@ -790,31 +802,31 @@
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What does BARS actually tell me?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Which of two options produces the better outcome across thousands of simulated futures, how much better it is, and how much room there is for error. It also identifies the assumption the recommendation depends on most and the exact value at which the recommendation changes.</p></div>
+      <div class="faq-a"><p>Which of two options produces the better outcome across thousands of simulated futures, by how much, and with how much room for error. It also identifies the assumption the answer depends on most and the exact value at which it changes.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How is this different from Excel or @RISK?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Excel gives you an answer based on the assumptions you enter. @RISK lets you model uncertainty around those assumptions. BARS goes a step further by comparing two decisions across many possible outcomes and showing which assumption matters most to the result, including the point at which the recommendation changes.</p></div>
+      <div class="faq-a"><p>Excel gives you an answer based on the assumptions you enter. @RISK lets you model uncertainty around them. BARS compares two options across many possible outcomes and shows which assumption matters most, and the point at which the answer changes.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Do I need a statistics background?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>No. You provide a likely value, a low value and a high value, much as you would when discussing an assumption with a colleague. The engine handles the distribution. The technical choices it makes are documented in the report, so you can review them or pass the analysis to someone who wants to check the detail.</p></div>
+      <div class="faq-a"><p>No. You provide a likely value, a low value and a high value. The engine handles the distribution, and the technical choices it makes are documented in the report.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">How do I know the numbers are right?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Every run has a random seed and engine version, so the same model can reproduce the same figures. Reports include the equations, the source of each assumption and the defaults applied by the engine. The engine currently has 633 automated tests and has undergone three independent adversarial source audits, as well as a first-run review of the live product. Issues identified through those reviews have been fixed or documented.</p></div>
+      <div class="faq-a"><p>Every run has a random seed and engine version, so the same model and engine version reproduce the same figures. Reports include the equations, the source of each assumption and the defaults the engine applied. The engine has 633 automated tests and has been through three independent adversarial source audits and a first-run review of the live product.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What if an assumption is just a guess?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>That's fine. Record it as an estimate rather than a fact. It is then visible in the provenance trail and flagged assumptions list. In many models, an uncertain assumption will also turn out to be one of the factors driving the decision. That is useful information to have before committing to a course of action.</p></div>
+      <div class="faq-a"><p>That's fine. Record it as an estimate and it is flagged in the report. Often an estimate turns out to be the assumption the decision rests on, which is worth knowing before you commit.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">What decisions can it model?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>The current version supports five two-option decisions: hire now or wait, in-house or outside provider, invest or don't, raise prices or hold, and proceed or hold on a plan. If your decision does not fit one of these models, the software will tell you rather than forcing it into an unsuitable model.</p></div>
+      <div class="faq-a"><p>Five two-option decisions: hire now or wait, in-house or outside provider, invest or don't, raise prices or hold, and proceed or hold on a plan. If yours does not fit, the software says so.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Can you just run one for me?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Yes. Bring a real decision you are working on and I can model it, run the analysis and send you the results with the technical appendix. It is a practical way to see whether the approach is useful on your own work.</p></div>
+      <div class="faq-a"><p>Yes. Send me a real decision you are working on and I will model it, run the analysis and send back the results with the technical appendix.</p></div>
     </div>
   </div>
 </section>
@@ -822,14 +834,14 @@
 <section class="cta-section" id="start">
   <h2>Find out what your decision is resting on</h2>
   <p class="cta-sub">
-    Join the waitlist for early access, or send me a decision you are advising on and I will model
-    it and send back the analysis.
+    Send me a decision you are advising on and I will model it and send back the analysis. Or join
+    the waitlist for early access.
   </p>
   <div class="cta-actions">
-    <a href="mailto:sarah@bars.institute?subject=Join%20the%20waitlist" class="btn-primary" data-track-waitlist="closing">Join the waitlist</a>
-    <a href="mailto:sarah@bars.institute?subject=Decision%20analysis" class="btn-ghost">Send me a decision</a>
+    <a href="mailto:hello@bars.institute?subject=Decision%20analysis" class="btn-primary" data-track-decision="closing">Send me a decision</a>
+    <a href="mailto:hello@bars.institute?subject=Join%20the%20waitlist" class="btn-ghost" data-track-waitlist="closing">Join the waitlist</a>
   </div>
-  <p class="cta-small">BARS Institute Ltd · New Zealand · sarah@bars.institute</p>
+  <p class="cta-small">BARS Institute Ltd · New Zealand · hello@bars.institute</p>
 </section>
 
 </main>
@@ -878,6 +890,15 @@
           gtag('event', 'example_report_click', {
             link_url: a.href,
             link_location: a.getAttribute('data-track-example')
+          });
+        }
+      });
+    });
+    document.querySelectorAll('[data-track-decision]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'decision_click', {
+            link_location: a.getAttribute('data-track-decision')
           });
         }
       });
