@@ -12,19 +12,19 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BARS Institute — Which assumption is your decision resting on?</title>
-<meta name="description" content="BARS turns a two-option business decision into thousands of simulated futures, then tells you the one assumption the answer actually depends on — and the exact value at which it flips.">
+<title>BARS Institute | Which assumption is your decision resting on?</title>
+<meta name="description" content="BARS turns a two-option business decision into thousands of simulated futures, then tells you the one assumption the answer actually depends on, and the exact value at which it flips.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://bars.institute/">
 <link rel="icon" type="image/svg+xml" href="/bars-logo.svg">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="BARS Institute — See what could happen before you decide.">
+<meta property="og:title" content="BARS Institute | See what could happen before you decide.">
 <meta property="og:description" content="Most models tell you which option wins. BARS tells you which assumption that answer is resting on, and what it would take to change it.">
 <meta property="og:url" content="https://bars.institute/">
 <meta property="og:site_name" content="BARS Institute">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BARS Institute — See what could happen before you decide.">
+<meta name="twitter:title" content="BARS Institute | See what could happen before you decide.">
 <meta name="twitter:description" content="Which assumption is your decision resting on, and where does it flip?">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
   "@type": "Organization",
   "name": "BARS Institute",
   "url": "https://bars.institute",
-  "description": "Decision-support software that compares two business options under uncertainty and identifies the assumption the recommendation depends on."
+  "description": "Decision-support software that compares two business options under uncertainty and identifies the assumption the result depends on."
 }
 </script>
 <script type="application/ld+json">
@@ -46,15 +46,15 @@
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "What does BARS actually tell me?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Which of two options produces the better outcome across thousands of simulated futures, how much better, how much room for error there is, and — most usefully — which single assumption the recommendation is resting on and the exact value at which it reverses." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Which of two options produces the better outcome across thousands of simulated futures, how much better, how much room for error there is, and, most usefully, which single assumption the result is resting on and the exact value at which it reverses." } },
     { "@type": "Question", "name": "How is this different from Excel or @RISK?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Excel gives you one number from one set of guesses. @RISK adds distributions but expects you to know which to pick and still answers only how uncertain the outcome is. BARS answers a different question: given everything you are unsure about, which assumption is the recommendation actually resting on, and how far is it from flipping?" } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Excel gives you one number from one set of guesses. @RISK adds distributions but expects you to know which to pick and still answers only how uncertain the outcome is. BARS answers a different question: given everything you are unsure about, which assumption is the answer actually resting on, and how far is it from flipping?" } },
     { "@type": "Question", "name": "Do I need a statistics background?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. You give a likely value and a low and a high — the way you would describe it to a colleague. The engine handles the distribution. Every technical choice it makes on your behalf is stated in the report rather than applied silently." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "No. You give a likely value and a low and a high, the way you would describe it to a colleague. The engine handles the distribution. Every technical choice it makes on your behalf is stated in the report rather than applied silently." } },
     { "@type": "Question", "name": "How do I know the numbers are right?",
       "acceptedAnswer": { "@type": "Answer", "text": "Every run carries a random seed and an engine version, so the same model reproduces the same figures exactly. Every report includes a technical appendix with the equations, the provenance of every assumption, and every default the engine applied. The engine has 633 automated tests and has been through three independent adversarial source audits and a first-run review of the live product." } },
     { "@type": "Question", "name": "What if an assumption is a guess?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Say so, and it is recorded as an estimate rather than treated as fact. It appears in the provenance trail, in the flagged-assumptions list, and usually as the assumption the whole decision turns on — which is exactly what you want to find out before committing." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Say so, and it is recorded as an estimate rather than treated as fact. It appears in the provenance trail, in the flagged-assumptions list, and usually as the assumption the whole decision turns on, which is exactly what you want to find out before committing." } },
     { "@type": "Question", "name": "What decisions can it model?",
       "acceptedAnswer": { "@type": "Answer", "text": "Five two-option decisions: hire now or wait, in-house or outside provider, invest or don't, raise prices or hold, and proceed or hold on a plan. If your decision does not fit one of those, the software says so rather than approximating it." } }
   ]
@@ -219,7 +219,7 @@
   .hero-note { font-size: 13px; color: rgba(255,255,255,0.66); }
   .hero-note a { color: rgba(255,255,255,0.9); }
 
-  /* HERO CARD — real engine output */
+  /* HERO CARD: real engine output */
   .hero-visual { position: relative; z-index: 1; }
   .sim-card { background: var(--white); border-radius: 0; border: 1px solid var(--border); box-shadow: var(--shadow); padding: 26px; }
   .sim-card-label { font-size: 11.5px; font-weight: 500; color: var(--ink-muted); margin-bottom: 4px; letter-spacing: 0.03em; text-transform: uppercase; }
@@ -283,7 +283,7 @@
   .step-title { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; }
   .step-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; }
 
-  /* WALKTHROUGH — a silent, looping run of the price-rise example.
+  /* WALKTHROUGH: a silent, looping run of the price-rise example.
      Display only: every figure is copied from the same recorded run as the rest of the page. */
   .wt { display: grid; grid-template-columns: 0.8fr 1.2fr; background: var(--white); border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 52px; }
   .wt-side { padding: 30px 30px 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-width: 0; border-right: 1px solid var(--border); }
@@ -408,6 +408,8 @@
   .footer-r { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.4); }
   .footer-links { display: flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.72); }
   .footer-links a { color: rgba(255,255,255,0.72); text-decoration: none; }
+  .footer-disclaimer { max-width: 1160px; margin: 20px auto 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.12); font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.65; color: rgba(255,255,255,0.6); }
+  .cta-disclaimer { margin-top: 14px; max-width: 620px; color: rgba(255,255,255,0.7); }
   .footer-links a:hover, .footer-links a:focus-visible { color: #FFFFFF; text-decoration: underline; }
 
   .hero-main > *, .hero-visual .sim-card { opacity: 0; transform: translateY(14px); animation: heroIn 0.6s ease forwards; }
@@ -495,7 +497,7 @@
     <h1>See what could happen <span class="grad-text">before you decide.</span></h1>
     <p class="hero-sub">
       Most models tell you which option wins. BARS tells you which assumption that answer is
-      resting on — and the exact value at which it flips. Because a recommendation you are
+      resting on, and the exact value at which it flips. Because a result you are
       99% confident in is worth very little if it turns on a number nobody has measured.
     </p>
     <div class="hero-actions">
@@ -508,7 +510,7 @@
   <div class="hero-visual">
     <div class="sim-card">
       <p class="sim-card-label">Raise prices 8%, or hold</p>
-      <p class="sim-verdict">Raise prices — 93%</p>
+      <p class="sim-verdict">Raise prices: 93%</p>
       <p class="sim-verdict-sub">Better 24-month cash flow in 93% of simulated futures</p>
 
       <div class="sim-flip">
@@ -524,7 +526,7 @@
       </div>
 
       <p class="sim-foot">
-        Real output. 100,000 iterations, seed 20260907, engine v1.39.0 — re-running this model
+        Real output. 100,000 iterations, seed 20260907, engine v1.39.0. Re-running this model
         reproduces every figure exactly.
       </p>
     </div>
@@ -537,29 +539,29 @@
     <p class="section-kicker">A worked example</p>
     <h2 class="section-heading">Confidence is not the same as evidence</h2>
     <p class="section-intro">
-      A software business doing $248k a month is considering an 8% price rise. The model is
-      clear: raise. But look at what that clarity is built on.
+      A software business doing $248k a month is considering an 8% price rise. In the model,
+      raising prices comes out ahead. But look at what that result is built on.
     </p>
 
     <div class="case-grid">
       <div>
         <p class="case-quote">
-          Raising prices is worth <span class="hl">$231,759</span> over two years — unless you
+          Raising prices is worth <span class="hl">$231,759</span> over two years, unless you
           lose more than <span class="hl">9.5% of customers</span>. Nobody has measured that.
         </p>
         <p class="case-note">
-          That single sentence is the output. Not the 93%, not the expected value — the fact that
-          the entire recommendation is sitting on one number the business has never tested, and
+          That single sentence is the output. Not the 93%, not the expected value. It is the fact that
+          the entire comparison is sitting on one number the business has never tested, and
           that the line is only four percentage points away from where they guessed.
         </p>
         <p class="case-note">
-          It changes what you do next. You do not commit and hope; you run a limited increase on
-          one segment, measure the actual churn, and come back. The analysis has told you exactly
-          what to go and find out, and how much precision you need.
+          It shows what is worth measuring before committing: here, the actual churn on a limited
+          increase in one segment. The analysis identifies the figure to go and find out, and how
+          much precision it needs.
         </p>
         <p class="case-note">
           This is what BARS produces that a spreadsheet does not. A spreadsheet gives you a number.
-          This gives you the number, its fragility, and the experiment that would settle it.
+          This gives you the number, its fragility, and the figure worth measuring first.
         </p>
         <a href="/decision-os/BARS-example-report.pdf" target="_blank" rel="noopener"
            class="btn-solid" data-track-example="case_section">
@@ -578,7 +580,7 @@
         <div class="metric-row"><span class="metric-label">Estimated at / flips above</span><span class="metric-value">5.4% / 9.5%</span></div>
         <p class="case-note" style="margin-top:20px;">
           Every one of these figures came from the engine, not from this page. The run carries a
-          seed and a version, so the same model and engine version reproduce the same numbers — and
+          seed and a version, so the same model and engine version reproduce the same numbers, and
           the report it generates includes the equations that produced them.
         </p>
       </div>
@@ -593,7 +595,7 @@
 
 <section class="block" id="how-it-works">
   <p class="section-kicker">How it works</p>
-  <h2 class="section-heading">From a conversation to a defensible answer</h2>
+  <h2 class="section-heading">From a conversation to an answer you can trace</h2>
   <p class="section-intro">
     No distributions to choose, no correlation matrices to configure. You give ranges; the engine
     does the rest and shows its working.
@@ -752,13 +754,13 @@
     </div>
     <div class="use-card">
       <h3 class="use-title">In-house or outside provider</h3>
-      <p class="use-desc">Build vs buy, hire vs outsource, own vs lease — any two-way cost decision.</p>
+      <p class="use-desc">Build vs buy, hire vs outsource, own vs lease: any two-way cost decision.</p>
       <p class="use-tags">Cash flow · 36 months</p>
     </div>
     <div class="use-card">
-      <h3 class="use-title">Invest, or don't</h3>
-      <p class="use-desc">Upfront cost, expected returns and timing, judged against your hurdle rate.</p>
-      <p class="use-tags">Investment analysis · 60 months</p>
+      <h3 class="use-title">Fund a project, or don't</h3>
+      <p class="use-desc">Upfront cost, expected returns and timing, compared with your hurdle rate. For business projects and capital purchases, not shares, funds or other financial products.</p>
+      <p class="use-tags">Project return analysis · 60 months</p>
     </div>
     <div class="use-card">
       <h3 class="use-title">Raise prices, or hold</h3>
@@ -772,7 +774,7 @@
     </div>
     <div class="use-card" style="background:var(--surface);">
       <h3 class="use-title">Something else?</h3>
-      <p class="use-desc">If the decision you are facing is not here, tell me what it is — that is how the next one gets built.</p>
+      <p class="use-desc">If the decision you are facing is not here, tell me what it is. That is how the next one gets built.</p>
       <p class="use-tags"><a href="mailto:hello@bars.institute" style="color:var(--blue);">hello@bars.institute</a></p>
     </div>
   </div>
@@ -791,7 +793,7 @@
       <span class="who-chip"><span class="dot"></span>Finance directors</span>
       <span class="who-chip"><span class="dot"></span>FP&amp;A analysts</span>
       <span class="who-chip"><span class="dot"></span>Independent consultants</span>
-      <span class="who-chip"><span class="dot"></span>Founders making a capital call</span>
+      <span class="who-chip"><span class="dot"></span>Founders weighing a major spend</span>
     </div>
   </div>
 </div>
@@ -826,7 +828,7 @@
     </div>
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">Can you just run one for me?<span class="icon" aria-hidden="true"></span></button>
-      <div class="faq-a"><p>Yes. Send me a real decision you are working on and I will model it, run the analysis and send back the results with the technical appendix.</p></div>
+      <div class="faq-a"><p>Yes. Send me a real decision you are working on and I will model it, run the analysis and send back the results with the technical appendix. You get the analysis and its assumptions; the decision stays with you and your client.</p></div>
     </div>
   </div>
 </section>
@@ -834,14 +836,16 @@
 <section class="cta-section" id="start">
   <h2>Find out what your decision is resting on</h2>
   <p class="cta-sub">
-    Send me a decision you are advising on and I will model it and send back the analysis. Or join
-    the waitlist for early access.
+    Send me a decision you are advising on and I will model it and send back the analysis. You get the
+    analysis and its assumptions; the decision stays with you and your client. Or join the waitlist
+    for early access.
   </p>
   <div class="cta-actions">
     <a href="mailto:hello@bars.institute?subject=Decision%20analysis" class="btn-primary" data-track-decision="closing">Send me a decision</a>
     <a href="mailto:hello@bars.institute?subject=Join%20the%20waitlist" class="btn-ghost" data-track-waitlist="closing">Join the waitlist</a>
   </div>
   <p class="cta-small">BARS Institute Ltd · New Zealand · hello@bars.institute</p>
+  <p class="cta-small cta-disclaimer">BARS Institute provides decision-modelling software and analysis. Results are simulations based on the assumptions supplied, not predictions, and are general information only. They are not financial, investment, accounting, tax or legal advice, and not a recommendation to take any action. BARS Institute Limited is not a registered financial advice provider. Decisions remain your own; consider seeking advice from a qualified professional.</p>
 </section>
 
 </main>
@@ -864,6 +868,7 @@
     </div>
     <div class="footer-r">© 2026 BARS Institute Limited</div>
   </div>
+  <p class="footer-disclaimer">BARS Institute provides decision-modelling software and analysis. Results are simulations based on the assumptions supplied, not predictions, and are general information only. They are not financial, investment, accounting, tax or legal advice, and not a recommendation to take any action. BARS Institute Limited is not a registered financial advice provider. Decisions remain your own; consider seeking advice from a qualified professional.</p>
 </footer>
 
 <script>
@@ -931,7 +936,7 @@
     });
   });
 
-  /* WALKTHROUGH — plays the scenes above in a loop. Display only: no figure is computed here. */
+  /* WALKTHROUGH: plays the scenes above in a loop. Display only: no figure is computed here. */
   (function () {
     var root = document.getElementById('walkthrough'); if (!root) return;
     var scenes = [].slice.call(root.querySelectorAll('.wt-scene')), cap = document.getElementById('wtCap'),
@@ -985,8 +990,8 @@
 
   /* NOTE ON NUMBERS
      ---------------
-     There is deliberately no calculation in this file. Every figure shown —
-     93%, $231,759, 5.4%, 9.5%, the 80% range — is copied from a recorded run
+     There is deliberately no calculation in this file. Every figure shown (
+     93%, $231,759, 5.4%, 9.5%, the 80% range) is copied from a recorded run
      of the production engine (100,000 iterations, seed 20260907, v1.39.0) and
      is reproducible from engine/examples/price_change.json.
 
