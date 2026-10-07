@@ -22,76 +22,73 @@
 <meta property="og:description" content="Specialised analytical tools that turn uncertainty into transparent, probability-based evidence. Decision OS for business decisions, Vineyard Risk for biological asset risk.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500&family=Geist:wght@400;500;600;700&family=Public+Sans:opsz,wght@10..24,300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --white: #FFFFFF;
-    --surface: #F5F7FC;
-    --ink: #17243D;
-    --ink-mid: #4C5670;
-    --ink-muted: #8891A6;
-    --border: #E4E8F0;
-    --border-soft: #EDF0F6;
-    --navy: #1D2F4E;
-    --navy-deep: #17243D;
-    --blue-deep: #2A5187;
-    --blue: #3567A8;
-    --pink: #E8B7C5;
-    --pink-soft: #F2D5DD;
-    --shadow: 0 1px 2px rgba(23,36,61,0.04), 0 14px 34px -18px rgba(23,36,61,0.16);
+    --white: #FFFFFF; --surface: #F4F6FB; --ink: #17243D; --ink-mid: #4C5670; --ink-muted: #8891A6;
+    --border: #E4E8F0; --border-soft: #EDF0F6; --navy: #1D2F4E; --navy-deep: #17243D;
+    --blue-deep: #2A5187; --blue: #3567A8; --pink: #E8B7C5; --pink-soft: #F2D5DD; --pink-deep: #D98FA6;
+    --shadow: 0 1px 2px rgba(23,36,61,0.04), 0 24px 60px -28px rgba(23,36,61,0.28);
   }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     background: var(--white); color: var(--ink);
     font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
   }
   h1, h2 { font-family: 'Geist', sans-serif; }
 
+  /* Same floating pill header as the Decision OS page */
   header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-soft);
-    padding: 0 48px; height: 60px;
+    position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 100;
+    width: min(1080px, calc(100% - 28px)); height: 58px; padding: 0 22px; border-radius: 999px;
+    background: rgba(255,255,255,0.74); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 10px 30px -18px rgba(23,36,61,0.3);
     display: flex; align-items: center;
   }
   .logo {
     font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink);
-    display: flex; align-items: center; gap: 12px; text-decoration: none;
+    display: flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;
   }
 
-  .hero { max-width: 760px; margin: 0 auto; padding: 64px 24px 8px; text-align: center; }
+  /* Same sky as the Decision OS hero, kept still here so this page stays the quieter of the two */
+  .sky { background: linear-gradient(180deg, #D5E0F5 0%, #E6ECF9 34%, #F4E4EC 66%, #FFFFFF 100%); }
+  .hero { max-width: 900px; margin: 0 auto; padding: 150px 24px 8px; text-align: center; }
   .hero h1 {
-    font-size: clamp(32px, 4.4vw, 46px); font-weight: 600; line-height: 1.16;
-    letter-spacing: -0.015em; margin-bottom: 18px;
+    font-size: clamp(34px, 5.4vw, 62px); font-weight: 600; line-height: 1.05;
+    letter-spacing: -0.035em; margin-bottom: 22px; color: var(--navy-deep);
   }
-  .hero-sub { font-size: 16.5px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+  .grad-text {
+    display: block; padding-bottom: 0.08em;
+    background: linear-gradient(100deg, var(--navy) 0%, var(--blue) 24%, var(--pink-deep) 48%, var(--blue) 72%, var(--navy) 100%);
+    background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: textDrift 11s ease-in-out infinite alternate;
+  }
+  @keyframes textDrift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+  .hero-sub { font-size: 17px; color: var(--ink-mid); line-height: 1.65; max-width: 580px; margin: 0 auto; }
 
-  .products { max-width: 1080px; margin: 0 auto; padding: 64px 24px 96px; }
-  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .products { max-width: 1080px; margin: 0 auto; padding: 60px 24px 96px; }
+  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .product-card {
-    background: var(--white); border: 1px solid var(--border); border-radius: 0;
-    padding: 40px 36px;
+    background: var(--white); border: 1px solid rgba(255,255,255,0.9); border-radius: 28px;
+    padding: 40px 36px; box-shadow: var(--shadow);
     display: grid; grid-template-rows: subgrid; grid-row: span 7; align-items: start;
-    transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
   }
-  .product-card:hover { border-color: var(--blue); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .product-card:hover { transform: translateY(-3px); box-shadow: 0 1px 2px rgba(23,36,61,0.04), 0 30px 64px -26px rgba(23,36,61,0.36); }
 
-  .product-motif { height: 5px; width: 100%; margin-bottom: 28px; }
+  .product-motif { height: 8px; width: 100%; margin-bottom: 28px; border-radius: 999px; }
   .motif-decision {
     background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 62%, var(--pink) 62%, var(--pink) 100%);
     position: relative;
   }
   .motif-decision::after {
-    content: ''; position: absolute; top: -5px; left: 62%; width: 2px; height: 15px; background: var(--navy-deep);
+    content: ''; position: absolute; top: -6px; left: 62%; width: 3px; height: 20px; margin-left: -1.5px; border-radius: 2px; background: var(--navy-deep);
   }
-  .motif-vineyard {
-    height: auto; display: flex; flex-direction: column; gap: 4px; margin-bottom: 28px;
-  }
-  .motif-vineyard span { display: block; height: 2px; background: var(--navy); }
+  .motif-vineyard { height: auto; display: flex; flex-direction: column; gap: 4px; margin-bottom: 28px; border-radius: 0; }
+  .motif-vineyard span { display: block; height: 2px; border-radius: 2px; background: var(--navy); }
   .motif-vineyard span:nth-child(1) { width: 100%; opacity: 0.9; }
   .motif-vineyard span:nth-child(2) { width: 82%; opacity: 0.65; }
   .motif-vineyard span:nth-child(3) { width: 100%; opacity: 0.9; }
@@ -99,36 +96,38 @@
 
   .product-name { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 10px; }
   .product-category { font-size: 13.5px; font-weight: 500; color: var(--blue); margin-bottom: 16px; }
-  .product-tagline { font-family: 'Geist', sans-serif; font-size: clamp(21px, 2.2vw, 25px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.28; margin-bottom: 16px; }
+  .product-tagline { font-family: 'Geist', sans-serif; font-size: clamp(22px, 2.4vw, 28px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 16px; }
   .product-desc { font-size: 14.5px; color: var(--ink-mid); line-height: 1.68; margin-bottom: 20px; }
   .product-audience { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 28px; }
   .product-btn {
     align-self: flex-start; background: var(--navy); color: var(--white);
-    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
-    padding: 13px 24px; border-radius: 0; text-decoration: none; display: inline-block;
-    transition: background 0.2s;
+    font-size: 14px; font-weight: 600; padding: 13px 24px; border-radius: 999px;
+    text-decoration: none; display: inline-block; transition: background 0.2s;
   }
-  .product-btn:hover { background: var(--blue); }
-  .product-card.vineyard .product-btn { background: var(--navy); }
-  .product-card.vineyard .product-btn:hover { background: var(--blue-deep); }
+  .product-card:hover .product-btn { background: var(--blue); }
 
-  .choose-label { text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 28px; }
+  .choose-label { text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 28px; }
 
-  .closing-strip { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+  .closing-strip { padding: 0 24px 72px; text-align: center; }
   .closing-strip p { font-size: 14px; color: var(--ink-mid); letter-spacing: 0.01em; }
 
- footer { background: var(--navy-deep); padding: 28px 48px; }
-.footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.footer-l { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 12px; }
-.footer-links { display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
-.footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
-.footer-links a:hover { color: var(--white); }
-.footer-r { font-size: 12px; color: rgba(255,255,255,0.4); }
+  footer { padding: 30px 38px 40px; border-top: 1px solid var(--border); }
+  .footer-inner { max-width: 1128px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-l { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mid); display: flex; align-items: center; gap: 12px; }
+  .footer-links { display: flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-mid); flex-wrap: wrap; }
+  .footer-links a { color: var(--ink-mid); text-decoration: none; }
+  .footer-links a:hover, .footer-links a:focus-visible { color: var(--navy); text-decoration: underline; }
+  .footer-r { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); }
 
+  a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .grad-text { animation: none; } .product-card { transition: none; } }
   @media (max-width: 760px) {
-    header, .products { padding-left: 24px; padding-right: 24px; }
+    header { padding: 0 18px; }
+    .hero { padding: 120px 18px 8px; }
+    .products { padding: 44px 18px 64px; }
     .product-grid { grid-template-columns: 1fr; }
-    footer { padding: 24px; }
+    .product-card { padding: 30px 24px; }
+    footer { padding: 24px 22px 32px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -150,8 +149,9 @@
   </a>
 </header>
 
+<div class="sky">
 <section class="hero">
-  <h1>Quantify uncertainty before the decision matters.</h1>
+  <h1>Quantify uncertainty <span class="grad-text">before the decision matters.</span></h1>
   <p class="hero-sub">BARS Institute develops specialised analytical tools that turn uncertainty into transparent, probability-based evidence for better decisions.</p>
 </section>
 
@@ -178,6 +178,7 @@
     </a>
   </div>
 </section>
+</div>
 
 <div class="closing-strip">
   <p>Specialised methodologies. Transparent assumptions. Quantified evidence.</p>
@@ -188,10 +189,10 @@
     <div class="footer-l">
       <svg viewBox="0 0 200 200" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs><mask id="footerCrescent"><rect width="200" height="200" fill="white"/><circle cx="115" cy="100" r="45" fill="black"/></mask></defs>
-        <circle cx="85" cy="100" r="45" fill="#FFFFFF" mask="url(#footerCrescent)"/>
-        <circle cx="85" cy="100" r="45" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-        <circle cx="115" cy="100" r="45" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-        <line x1="100" y1="55" x2="100" y2="145" stroke="#FFFFFF" stroke-width="1"/>
+        <circle cx="85" cy="100" r="45" fill="#1D2F4E" mask="url(#footerCrescent)"/>
+        <circle cx="85" cy="100" r="45" fill="none" stroke="#1D2F4E" stroke-width="1.5"/>
+        <circle cx="115" cy="100" r="45" fill="none" stroke="#1D2F4E" stroke-width="1.5"/>
+        <line x1="100" y1="55" x2="100" y2="145" stroke="#1D2F4E" stroke-width="1"/>
       </svg>
       BARS Institute Limited · New Zealand · bars.institute
     </div>
